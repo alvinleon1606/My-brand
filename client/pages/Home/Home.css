@@ -1,13 +1,5 @@
 /* Home page */
-.home-wrapper{
-    --primary-color: #252734; /* main color for background */
-    --secondary-color: #2A2C39; /* second main color for background  */
-    --text1-color: white; /* sub Text color */
-    --text2-color: #84858E; /* sub Text color */
-
-    /* properties */
-}
-.services-section{
+body{
     --primary-color: #252734; /* main color for background */
     --secondary-color: #2A2C39; /* second main color for background  */
     --text1-color: white; /* sub Text color */
@@ -74,6 +66,7 @@ nav ul li:hover{
     height: 25px;
     cursor: pointer;
 }
+/*   ********************************************   */
 
 /* Hero-section */
 .hero-section{
@@ -169,9 +162,11 @@ nav ul li:hover{
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid var(--text2-color)
 }
 .social-icons i{
-    color: var(--text2-color);
+    color: var(--text1-color);
+    font-size: 10px;
 }
 .hero-pic{
     width: 200px;
@@ -236,7 +231,6 @@ nav ul li:hover{
 .single-card{
     height: 400px;
     width: 100%;
-    /* background-color: red; */
     padding: 4px;
 }
 .single-card .one{
@@ -286,14 +280,10 @@ nav ul li:hover{
 
 /* statistics Section */
 .statistics{
-    --primary-color: #252734; /* main color for background */
-    --secondary-color: #2A2C39; /* second main color for background  */
-    --text1-color: white; /* sub Text color */
-    --text2-color: #84858E; /* sub Text color */
-
-
     background-color: var(--primary-color);
-
+}
+.footer{
+    background-color: var(--secondary-color);
 }
 .card-container{
     margin-left: 200px;
@@ -333,4 +323,76 @@ nav ul li:hover{
 .desc p{
     color: var(--text2-color)
    
+}
+/*    *****************************************    */
+
+/* Footer */
+.footer-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 4rem;
+}
+.footer-subscribe{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.email-input{
+    width: 70%;
+    padding: 0.6rem;
+    border-radius: 2px;
+    border: none;
+}
+.email-input:focus{
+    outline: none;
+    border: none;
+}
+.subscribe-button{
+    width: 10%;
+    background-color: var(--primary-color);
+    color: var(--text1-color);
+    border: 1px solid var(--text2-color);
+    font-weight: bold;
+    border-radius: 5px;
+}
+.subscribe-button:hover{
+    background-color: black;
+    border: none;
+    cursor: pointer;
+}
+
+/* footer-contacts-info */
+
+.footer-contacts-info{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 1.5rem;
+}
+.footer-contacts{
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+.footer-telephone{
+    display: flex;
+    gap: 1rem;
+}
+.footer-telephone p{
+    color: var(--text1-color);
+}
+.footer-email{
+    display: flex;
+    gap: 1rem;
+}
+.footer-email p{
+   color: var(--text1-color);
+}
+hr{
+    width: 100%;
+    margin-top: 2rem;
+    border: 0.5px solid #84858E20
 }
