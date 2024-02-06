@@ -75,7 +75,7 @@ nav ul li:hover{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #2a2c3990;
+    border: 1px solid var(--text2-color);
     border-radius: 20px;
     margin: 10px 10px;
 }
