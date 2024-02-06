@@ -32,12 +32,12 @@
     gap: 0.3rem;
     flex-direction: column;
   }
-  .card-text-part h3, .blog-desc{
+  .card-text-part h3{
     color: var(--text1-color);
   }
-  .card-text-part i, p{
-    color: var(--text2-color);
+  .card-text-part i, p, .blog-desc{
     font-size: 15px;
+    color: var(--text2-color);
   }
 
   .likes-comments{
