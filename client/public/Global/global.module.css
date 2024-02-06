@@ -40,4 +40,6 @@ body{
     padding-bottom: 4rem;
     background-color: var(--secondary-color);
 }
-
+a{
+    text-decoration: none;
+}
