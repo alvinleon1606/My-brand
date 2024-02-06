@@ -1,3 +1,9 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body{
     --primary-color: #252734; /* main color for background */
     --secondary-color: #2A2C39; /* second main color for background  */
@@ -63,6 +69,7 @@ nav ul li:hover{
     height: 25px;
     cursor: pointer;
 }
+/* ABout hero */
 .header-hero{
     display: flex;
     justify-content: center;
