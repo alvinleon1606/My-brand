@@ -6,8 +6,8 @@
 body{
     font-family: 'Markazi Text', serif;
         /* Global colors */
-        --primary-color: #252734; /* main color for background */
-        --secondary-color: #2A2C39; /* second main color for background  */
+        --primary-color: #08182F; /* main color for background */
+        --secondary-color: #091B34; /* second main color for background  */
         --text1-color: white; /* sub Text color */
         --text2-color: #84858E; /* sub Text color */
 }
@@ -204,6 +204,9 @@ hr{
 /* Small hero */
 /* ABout hero */
 .header-hero{
+    background-image: url(../assets/images/hero-background.jpg);
+    background-position: center;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;

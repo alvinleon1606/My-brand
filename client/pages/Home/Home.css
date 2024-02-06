@@ -134,7 +134,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #252734c9;
+    background-color: #08182fb7;
     padding: 40px;
 }
 .services-title{
@@ -230,12 +230,14 @@
     align-items: center;
 }
 .icon-desc{
-    width: 200px;
+    width: 240px;
     height: 100px;
-    background-color: #252734;
+    padding: 1rem;
+    background-color: var(--secondary-color);
     display: flex;
     align-items: center;
     gap: 1rem;
+    border-radius: 0.5rem;
 }
 .icon{
     font-size: 2rem;
