@@ -57,6 +57,7 @@ button{
     background-color: var(--secondary-color);
     color: var(--text1-color);
     border: 1px solid var(--text2-color);
+    cursor: pointer;
 }
 .question{
     margin: 1rem;
