@@ -137,7 +137,7 @@ nav ul li:hover{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 1rem;
 }
 .get-resume{
     padding: 0.5rem;
