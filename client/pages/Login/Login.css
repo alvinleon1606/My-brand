@@ -1,0 +1,75 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    --primary-color: #252734; /* main color for background */
+    --secondary-color: #2A2C39; /* second main color for background  */
+    --text1-color: white; /* sub Text color */
+    --text2-color: #84858E; /* sub Text color */
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--primary-color);
+    height: 100vh;
+}
+.login-wrapper{
+    width: 40%;
+}
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.7rem;
+    border: 1px solid var(--text2-color);
+    padding: 4rem;
+}
+form h1{
+    color: var(--text1-color);
+}
+.fields{
+    margin: 3rem 0;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    width: 80%;
+}
+input{
+    width: 100%;
+    padding: 0.7rem;
+    border: none;
+    background: transparent;
+    border: 1px solid var(--secondary-color);
+    color: var(--text1-color);
+    font-size: 15px;
+}
+input:focus{
+    outline: none;
+}
+button{
+    width: 50%;
+    padding: 1rem;
+    background-color: var(--secondary-color);
+    color: var(--text1-color);
+    border: 1px solid var(--text2-color);
+}
+.question{
+    margin: 1rem;
+}
+.question p{
+    color: var(--text2-color);
+}
+.question span{
+    color: rgb(6, 98, 141);
+    font-weight: bolder;
+    cursor: pointer;
+}
+.question i{
+    color: var(--text2-color);
+    font-weight: bolder;
+}
