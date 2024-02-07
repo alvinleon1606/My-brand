@@ -47,6 +47,7 @@ input{
     background-color: var(--text1-color);
     color: black;
     font-size: 15px;
+    border: none;
 }
 input:focus{
     outline: none;
