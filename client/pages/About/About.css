@@ -118,3 +118,118 @@
 .schools  h4{
     color:var(--text2-color)
 }
+
+/* Media query */
+
+@media (max-width: 700px){
+    /* about me --- years and education */
+    .video-play-desc{
+        display: block;
+        width: 100%;
+    }
+    .about-desc{
+        width: 100%;
+        padding: 1rem;
+    }
+    /* about centered */
+    .about-centered-part{
+        padding: 2rem 0;
+    }
+    /* filters */
+    .filter-menus{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 0 1rem;
+    }
+
+    /* year and experience */
+    .education-background{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .years{
+        display: flex;
+        justify-content: flex-end;
+    }
+    /* filter buttons */
+    .experience, .education{
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
+@media (min-width: 701px) and (max-width: 900px) {
+        /* about me --- years and education */
+    .about-desc{
+        width: 100%;
+        padding: 1rem;
+    }
+    /* about centered */
+    .about-centered-part{
+        padding: 2rem 0;
+    }
+    /* filters */
+    .filter-menus{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 0 1rem;
+    }
+
+    /* year and experience */
+    .education-background{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .years{
+        display: flex;
+        justify-content: flex-end;
+    }
+    /* filter buttons */
+    .experience, .education{
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+    .humberger{
+        display: none;
+    }
+
+    .video-play-desc{
+        width: 100%;
+    }
+    
+    /* about me --- years and education */
+    .about-desc{
+        width: 100%;
+        padding: 1rem;
+    }
+    /* about centered */
+    .about-centered-part{
+        padding: 2rem 0;
+    }
+    /* filters */
+    .filter-menus{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 0 1rem;
+    }
+
+    .years{
+        display: flex;
+        justify-content: flex-end;
+    }
+    /* filter buttons */
+    .experience, .education{
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+}
