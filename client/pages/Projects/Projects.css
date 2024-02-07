@@ -2,10 +2,6 @@
 .projects{
     background-color: var(--secondary-color);
 }
-.Projects-container{
-    /* padding: 3rem 0 3rem; */
-    top: 0;
-  }
 .projects-categories{
     padding: 10px;
     display: flex;
@@ -40,3 +36,33 @@
     background-color: var(--primary-color);
     color: var(--text1-color)
 }
+
+/* Media querry */
+@media (max-width: 700px){
+    .projects-categories{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem 0;
+    }
+    .projects-cards{
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 0;
+    }
+}
+@media (min-width: 701px) and (max-width: 900px) {
+    .projects-categories{
+        padding: 2rem 0;
+    }
+    .projects-cards{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+    .humberger{
+      visibility: hidden;
+    }
+  }
