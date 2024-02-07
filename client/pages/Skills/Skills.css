@@ -27,7 +27,6 @@
 
   /* Skills card */
   .skills-cards{
-    /* background-color: green; */
     padding: 3rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -73,4 +72,41 @@
     left: 0;
     background-color: var(--text2-color);
     width: 80%;
+  }
+
+  /* Media querry */
+  @media (max-width: 700px){
+    .skills-title{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .skills-cards{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 2rem 0.5rem;
+    }
+    .card{
+      width: 100%;
+    }
+  }
+  @media (min-width: 701px) and (max-width: 900px) {
+    /*  */
+    .skills-title{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .skills-cards{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding: 2rem 0.5rem;
+    }
+  }
+  @media (min-width: 901px) and (max-width: 1200px) {
+    .humberger{
+      visibility: hidden;
+    }
   }
