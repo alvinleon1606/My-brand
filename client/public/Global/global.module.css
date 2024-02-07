@@ -207,7 +207,6 @@ hr{
 }
 
 /* Small hero */
-/* ABout hero */
 .header-hero{
     background-image: url(../assets/images/hero-background.jpg);
     background-position: center;
@@ -248,6 +247,10 @@ hr{
 
   /* Phones */
   @media (max-width: 600px) {
+    /* nav */
+    nav{
+        display: none;
+    }
     .humberger{
         display: block;
     }
@@ -293,6 +296,10 @@ hr{
   }
 
   @media (min-width: 601px) and (max-width: 900px) {
+    /* nav */
+    nav{
+        display: none;
+    }
     .humberger{
         display: block;
     }
@@ -306,4 +313,114 @@ hr{
     }
 
     /* ****************** FOOTER *************** */
+        .footer-wrapper{
+            padding: 4rem 0 0;
+        }
+        .footer-subscribe{
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .email-input{
+            width: 90%;
+        }
+        .subscribe-button{
+            width: 50%;
+            padding: 0.5rem
+        }
+        .footer-contacts-info{
+            background-color: var(--secondary-color)
+        }
+        .footer-contacts > .footer-telephone:nth-child(1){
+            display: none;
+        }
+        .footer-sicial-media{
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        
+  }
+
+  @media (min-width: 901px) and (max-width: 1200px) {
+
+    .humberger{
+        display: block;
+    }
+    .humberger i{
+        font-size: 40px;
+        color: var(--text1-color);
+    }
+    /* Wrappers */
+    .all-wrapper, .wrapper, .wrapper-noColor, .centered-part, .servise-wrapper{
+        padding: 0;
+    }
+
+    /* ****************** FOOTER *************** */
+        .footer-wrapper{
+            padding: 4rem 0 0;
+        }
+        .footer-subscribe{
+            width: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .email-input{
+            width: 90%;
+        }
+        .subscribe-button{
+            width: 50%;
+            padding: 0.5rem
+        }
+        .footer-contacts-info{
+            background-color: var(--secondary-color)
+        }
+        .footer-contacts {
+            display: flex;
+            width: 100%;
+        }
+        .footer-sicial-media{
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+  }
+
+  /* 1200 and above */
+  @media (min-width: 1201px) {
+
+    /* ****************** FOOTER *************** */
+        .footer-wrapper{
+            padding: 4rem 0 0;
+        }
+        .footer-subscribe{
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .email-input{
+            width: 90%;
+        }
+        .subscribe-button{
+            width: 50%;
+            padding: 0.5rem
+        }
+        .footer-contacts-info{
+            background-color: var(--secondary-color)
+        }
+        .footer-contacts {
+            display: flex;
+            width: 100%;
+        }
+        .footer-sicial-media{
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
   }
