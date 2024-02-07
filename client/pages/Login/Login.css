@@ -43,11 +43,9 @@ form h1{
 }
 input{
     width: 100%;
-    padding: 0.7rem;
-    border: none;
-    background: transparent;
-    border: 1px solid var(--secondary-color);
-    color: var(--text1-color);
+    padding: 1rem;
+    background-color: var(--text1-color);
+    color: black;
     font-size: 15px;
 }
 input:focus{
@@ -75,4 +73,71 @@ button{
 .question i{
     color: var(--text2-color);
     font-weight: bolder;
+}
+
+/* Media querries */
+@media (max-width: 700px){
+    body{
+        display: flex;
+        justify-content: center;
+    }
+    .login-wrapper{
+        width: 90%;
+        
+    }
+    form{
+        padding: 3rem 1rem;
+        width: 100%;
+    }
+    .fields{
+        margin: 3rem 0;
+        width: 100%;
+        display: flex;
+        gap: 3rem;  
+    }
+    input{
+        width: 100%;
+        padding: 1rem;
+        background-color: var(--text1-color);
+        color: black;
+    }
+}
+@media (min-width: 701px) and (max-width: 900px) {
+ 
+    .login-wrapper{
+        width: 90%;
+        
+    }
+    .fields{
+        margin: 3rem 0;
+        width: 100%;
+        display: flex;
+        gap: 3rem;  
+    }
+
+    input{
+        width: 100%;
+        padding: 1rem;
+        background-color: var(--text1-color);
+        color: black;
+    }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+    .login-wrapper{
+        width: 80%;
+        
+    }
+    .fields{
+        margin: 3rem 0;
+        width: 100%;
+        display: flex;
+        gap: 3rem;  
+    }
+
+    input{
+        width: 100%;
+        padding: 1rem;
+        background-color: var(--text1-color);
+        color: black;
+    }
 }
