@@ -7,8 +7,10 @@
   }
   .skills-title{
     display: flex;
+    justify-content: center;
     flex-direction: column;
     gap: 1rem;
+    align-items: center;
   }
   .small-title{
     display: flex;
