@@ -236,6 +236,7 @@ hr{
 .header-hero-content h1{
     color: var(--text1-color);
     font-size: 50px;
+    text-align: center;
 }
 .header-nav .active{
   color: var(--text1-color);
@@ -309,6 +310,9 @@ hr{
 
   @media (min-width: 601px) and (max-width: 900px) {
     /* nav */
+    .nav-bar{
+        padding: 1rem;
+    }
     nav{
         display: none;
     }
@@ -357,7 +361,9 @@ hr{
   }
 
   @media (min-width: 901px) and (max-width: 1200px) {
-
+    .nav-bar{
+        padding: 1rem;
+    }
     .humberger{
         display: block;
     }
