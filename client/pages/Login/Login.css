@@ -45,9 +45,10 @@ input{
     width: 100%;
     padding: 1rem;
     background-color: var(--text1-color);
-    color: black;
+    color: var(--text1-color);
     font-size: 15px;
-    border: none;
+    border: 1px solid white;
+    background: transparent;
 }
 input:focus{
     outline: none;
