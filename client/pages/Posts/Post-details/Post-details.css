@@ -80,21 +80,30 @@
   .names-email input{
     width: 100%;
     padding: 10px;
-    border: none;
+    border: 1px solid var(--text1-color);
+    background-color: transparent;
+    color: var(--text1-color);
+
   }
   .names-email input:focus{
     border: none;
     outline: none;
+    border: 1px solid var(--text1-color);
+
   }
   .comment-textarea textarea{
     width: 100%;
     border: none;
     margin-top: 10px;
     padding: 10px;
+    border: 1px solid var(--text1-color);
+    background-color: transparent;
+    color: var(--text1-color);
   }
   .comment-textarea textarea:focus{
     outline: none;
-    border: none;
+    border: 1px solid var(--text1-color);
+
   }
 form button{
     width: 25%;
@@ -140,6 +149,7 @@ form button{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    padding: 0 2rem;
   }
   .categ{
     display: flex;

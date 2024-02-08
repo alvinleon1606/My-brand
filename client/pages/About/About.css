@@ -30,7 +30,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 1rem;
 }
 .get-resume{
     padding: 0.5rem;
@@ -44,6 +44,7 @@
 }
 #play{
     border: 1px solid var(--text2-color);
+    cursor: pointer;
 }
 .about-desc{
     width: 70%;
