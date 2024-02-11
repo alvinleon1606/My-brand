@@ -126,7 +126,7 @@
 /* services-section */
 .services-section{
     height: 600px;
-    background-image: url(../../public/assets/images/services.jpg);
+    background-image: url(./assets/services.jpg);
     background-position: center;
     background-size:cover;
     background-repeat: no-repeat;

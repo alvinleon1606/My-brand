@@ -4,27 +4,265 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>nplcodes</title>
-    <link rel="stylesheet" href="../../public/Global/global.module.css">
+    <link rel="stylesheet" href="./global.module.css">
     <!-- Home page css -->
-    <link rel="stylesheet" href="./About.css">
+    <style>
+        /*  */
+.about-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary-color);
+}
+.video-play-icon{
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fa-solid{
+    color: var(--text2-color);
+}
+.video-play-desc{
+    display: flex;
+    gap: 2rem;
+    width: 80%;
+}
+.video-play{
+    background-color: var(--primary-color);
+    border-radius: 0.5rem;
+    padding: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+.get-resume{
+    padding: 0.5rem;
+    color: var(--text1-color);
+    background-color: var(--primary-color);
+    border: 1px solid var(--text2-color);
+    border-radius: 5px;
+}
+.get-resume i{
+    color: var(--text1-color);
+}
+#play{
+    border: 1px solid var(--text2-color);
+    cursor: pointer;
+}
+.about-desc{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.about-desc h1{
+    color: var(--text1-color);
+}
+.about-desc h3,p{
+    color: var(--text2-color)
+}
+
+/* About education info */
+.about-centered-part{
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+.education-experience{
+    background-color: var(--primary-color);
+}
+.filter-menus{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.experience, .education{
+    border: 2px solid var(--text2-color);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: var(--text1-color);
+    cursor: pointer;
+}
+.experience:hover, .education:hover{
+    background-color: var(--text2-color)
+}
+
+/* Education */
+.education-background{
+    padding: 2rem 2rem;
+    display: grid;
+    grid-template-columns: 0.4fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 4rem;
+}
+.years{
+    color: var(--text2-color);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-right: 1px solid var(--text2-color);
+    padding-right: 4rem;
+}
+.separator{
+    color: var(--text2-color);
+}
+.schools{
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+.schools h3{
+    color: var(--text1-color);
+}
+.schools  h4{
+    color:var(--text2-color)
+}
+
+/* Media query */
+
+@media (max-width: 700px){
+    /* about me --- years and education */
+    .video-play-desc{
+        display: block;
+        width: 100%;
+    }
+    .about-desc{
+        width: 100%;
+        padding: 1rem;
+    }
+    /* about centered */
+    .about-centered-part{
+        padding: 2rem 0;
+    }
+    /* filters */
+    .filter-menus{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 0 1rem;
+    }
+
+    /* year and experience */
+    .education-background{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .years{
+        display: flex;
+        justify-content: flex-end;
+    }
+    /* filter buttons */
+    .experience, .education{
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
+@media (min-width: 701px) and (max-width: 900px) {
+        /* about me --- years and education */
+    .about-desc{
+        width: 100%;
+        padding: 1rem;
+    }
+    /* about centered */
+    .about-centered-part{
+        padding: 2rem 0;
+    }
+    /* filters */
+    .filter-menus{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 0 1rem;
+    }
+
+    /* year and experience */
+    .education-background{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .years{
+        display: flex;
+        justify-content: flex-end;
+    }
+    /* filter buttons */
+    .experience, .education{
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+    .humberger{
+        display: none;
+    }
+
+    .video-play-desc{
+        width: 100%;
+    }
+    
+    /* about me --- years and education */
+    .about-desc{
+        width: 100%;
+        padding: 1rem;
+    }
+    /* about centered */
+    .about-centered-part{
+        padding: 2rem 0;
+    }
+    /* filters */
+    .filter-menus{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 0 1rem;
+    }
+
+    .years{
+        display: flex;
+        justify-content: flex-end;
+    }
+    /* filter buttons */
+    .experience, .education{
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+}
+
+    </style>
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/86a1656fba.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="wrapper">
         <div class="nav-bar">
-            <a href="../Home/Home.html"><h1 class="logo-name">LeonX</h1></a>
+            <a href="./index.html"><h1 class="logo-name">LeonX</h1></a>
             <nav>
                 <ul>
-                    <a href="../Home/Home.html"><li>Home</li></a>
-                    <a href="../About/About.html"><li>About Me</li></a>
-                    <a href="../Posts/Posts.html"><li>Blogs</li></a>
-                    <a href="../Skills/Skills.html"><li>Skills</li></a>
-                    <a href="../Projects/Projects.html"><li>Projects</li></a>
-                    <a href="../Contact/Contact.html"><li>Contact</li></a>
+                    <li>Home</li>
+                    <a href="./About.html"><li>About Me</li></a>
+                    <a href="./Posts.html"><li>Blogs</li></a>
+                    <a href="./Skills.html"><li>Skills</li></a>
+                    <a href="./Projects.html"><li>Projects</li></a>
+                    <a href="./Contact.html"><li>Contact</li></a>
                 </ul>
                 <div class="login-theme-buttons">
-                    <a href="../Login/Login.html">
+                    <a href="./Login.html">
                         <button class="login-button">Login</button>
                     </a>
                 </div>

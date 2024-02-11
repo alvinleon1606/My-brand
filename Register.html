@@ -1,4 +1,13 @@
-*{
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nplcodes</title>
+    <link rel="stylesheet" href="../../public/Global/global.module.css">
+    <!-- blog page css -->
+    <style>
+        *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -10,7 +19,6 @@ body{
     --secondary-color: #091B34; /* second main color for background  */
     --text1-color: white; /* sub Text color */
     --text2-color: #84858E; /* sub Text color */
-
 
     display: flex;
     justify-content: center;
@@ -46,7 +54,6 @@ input{
     padding: 1rem;
     background-color: var(--text1-color);
     color: var(--text1-color);
-    font-size: 15px;
     border: 1px solid white;
     background: transparent;
 }
@@ -76,6 +83,8 @@ button{
     color: var(--text2-color);
     font-weight: bolder;
 }
+
+
 
 /* Media querries */
 @media (max-width: 700px){
@@ -143,3 +152,23 @@ button{
         color: black;
     }
 }
+    </style>
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/86a1656fba.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="login-wrapper">
+            <form>
+                <h1>Sign Up</h1>
+                <div class="fields">
+                    <input type="text" placeholder="Names">
+                    <input type="email" placeholder="Email@example.com">
+                    <input type="password" placeholder="Your password">
+                    <input type="password" placeholder="Comfirm password">
+                </div>
+                <button>Sign Up</button>
+            </form>
+    </div>
+    <p class="question"><i>Already have account?</i> <a href="./Login.html"><span>Sign In</span></a></p>
+</body>
+</html>
