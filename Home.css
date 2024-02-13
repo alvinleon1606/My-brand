@@ -81,8 +81,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border:1px solid red;
     cursor: pointer;
+    animation: zoomBorder 2s infinite;
 }
+@keyframes zoomBorder {
+    0% {
+      transform: scale(1);
+          }
+    50% {
+      transform: scale(1.2);
+      
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 .fa-solid{
     color: var(--text2-color);
 }

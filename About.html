@@ -22,6 +22,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 2px solid transparent;
+    animation: zoomBorder 2s infinite;
+}
+@keyframes zoomBorder {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 .fa-solid{
     color: var(--text2-color);
@@ -94,6 +107,9 @@
     color: var(--text1-color);
     cursor: pointer;
 }
+.education.active, .experience.active{
+        background-color: var(--text2-color);
+    }
 .experience:hover, .education:hover{
     background-color: var(--text2-color)
 }
@@ -249,6 +265,17 @@
     <script src="https://kit.fontawesome.com/86a1656fba.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+              </div>
+              <video width="400" controls>
+                <source src="https://www.youtube.com/watch?v=fLeJJPxua3E" type="video/mp4">
+                Not supported
+              </video>
+        </div>
+    </div>
     <div class="wrapper">
     <div class="nav-bar">
             <nav>
@@ -277,8 +304,6 @@
                     </li>
                 </ul>
                 <div class="humburger">
-                    <!-- <i class="fa-solid fa-bars"></i>
-                    <i class="fa-solid fa-xmark"></i> -->
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -369,6 +394,45 @@
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been indus 
                                         dard dummy text ever since the 1500 when an uniknown prnter
                                         took galley of type and scrambled make specimen book has not only five centuries the into electronic.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="expirience-background">
+                            <div class="years">
+                                <h4>2020- 2024</h4>
+                            </div>
+                            <div class="schools">
+                                <h3>Fullstack Engineer  </h3>
+                                <h4>California, Berkeley </h4>
+                                <div class="desc">
+                                    <p>
+                                        dard dummy text ever since the 1500 when an uniknown prnter
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="years">
+                                <h4>2019- 2020</h4>
+                            </div>
+                            <div class="schools">
+                                <h3>Software Inter  </h3>
+                                <h4>at McTorn Ltd </h4>
+                                <div class="desc">
+                                    <p>
+                                        dard dummy text ever since the 1500 when an uniknown prnter
+                                    </p>
+                                </div>
+                            </div> 
+                            <div class="years">
+                                <h4>2015- 2018</h4>
+                            </div>
+                            <div class="schools">
+                                <h3>Web Developer </h3>
+                                <h4>BK Tech house rwanda</h4>
+                                <div class="desc">
+                                    <p>
+                                        took galley of type and scrambled make specimen book has not only five 
+                                        centuries the into electronic.
                                     </p>
                                 </div>
                             </div>
