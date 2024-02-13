@@ -43,6 +43,7 @@ body{
 }
 a{
     text-decoration: none;
+    color: var(--text2-color);
 }
 /* NavBar */
 .nav-bar{
@@ -61,10 +62,20 @@ a{
 }
 nav{
     display: flex;
+    width: 100%;
+    justify-content: space-between;
     gap: 2rem;
 }
-.humberger{
+.humburger{
     display: none;
+}
+.bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 nav ul{
     list-style: none;
@@ -254,22 +265,76 @@ hr{
   .all-section{
     padding-top: 6.25rem;
   }
-
+  
+  header{
+    width: 100%;
+  }
+  .bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+  }
   /* Phones */
   @media (max-width: 600px) {
     /* nav */
+    .humburger{
+        display: block;
+    }
+    .humburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .humburger.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    .humburger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    nav{
+        width: 100%;
+    }
+    li.nav-item{
+        margin: 5px ;
+    }
+    .nav-bar{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    ul {
+        position: absolute;
+        left: -100%;
+        top: 0;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        display: flex;
+        flex-direction: column;
+        background-color:#091B34;
+        padding: 20px 0;
+    }
+    .nav-item{
+        margin: 16px 0;
+    }
+    ul.active{
+        left: 0;
+    }
+    .fa-xmark{
+        display: none;
+    }
+    .fa-xmark.active{
+        display: block;
+    }
     .nav-bar{
         padding: 1rem;
     }
-    nav{
-        display: none;
-    }
-    .humberger{
-        display: block;
-    }
-    .humberger i{
-        font-size: 40px;
-        color: var(--text1-color);
+    .login-button{
+        color: var(--text2-color);
+        text-align: center;
     }
     /* Wrappers */
     .all-wrapper, .wrapper, .wrapper-noColor, .centered-part, .servise-wrapper{
@@ -316,7 +381,7 @@ hr{
     nav{
         display: none;
     }
-    .humberger{
+    .humburger{
         display: block;
     }
     .humberger i{
