@@ -2,6 +2,7 @@
 const humbergerBtn = document.querySelector('.humburger');
 const menus = document.querySelector('.nav-menu');
 
+
 humbergerBtn.addEventListener("click", () => {
     humbergerBtn.classList.toggle('active');
     menus.classList.toggle('active');
@@ -15,9 +16,8 @@ const videoPlayIcon = document.querySelector('.video-play-icon');
 
 
 videoPlayIcon.addEventListener('click', () =>{
-    modal.style.display = "block"
-})
-
+    modal.style.display = "block";
+});
 
 // close 
 var span = document.getElementsByClassName("close")[0];
@@ -32,37 +32,18 @@ window.onclick = function(e) {
     }
   }
 
+// ++++++++++++++++++++++++ Services +++++++++++++++++++++++++++
+  // Services variables
+  const prevBtn = document.querySelector('.fa-circle-chevron-left');
+  const nextBtn = document.querySelector('.fa-circle-chevron-right');
+  const cardsContainer = document.querySelector('.cards');
 
-//   About Me
-// +++++++++++++++++ Background ++++++++++++++++
+  prevBtn.addEventListener("click", () => {
+    cardsContainer.scrollLeft -= 900;
+  })
 
-var educationInfo = document.querySelector('.education-background');
-var personalInfo = document.querySelector('.expirience-background');
-// Buttons
-var educationBtn = document.querySelector('.education');
-var personalBtn = document.querySelector('.experience');
+  nextBtn.addEventListener("click", () => {
+    cardsContainer.scrollLeft += 900;
+  })
 
-document.querySelector('.education').addEventListener('click', function() {
-    
-    educationInfo.style.display = 'grid';
-    educationBtn.classList.add('active');
-    personalInfo.style.display = 'none';
-    personalBtn.classList.remove('active');
-  });
 
-  window.onload=() =>{
-    educationInfo.style.display = 'grid';
-    educationBtn.classList.add('active');
-    personalInfo.style.display = 'none';
-    personalBtn.classList.remove('active');
-  }
-  
-  document.querySelector('.experience').addEventListener('click', function() {
-    var educationInfo = document.querySelector('.education-background');
-    var personalInfo = document.querySelector('.expirience-background');
-    
-    educationInfo.style.display = 'none';
-    educationBtn.classList.remove('active');
-    personalInfo.style.display = 'grid';
-    personalBtn.classList.add('active');
-  });

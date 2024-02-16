@@ -177,15 +177,36 @@
     grid-template-columns: 0.2fr 2.6fr 0.2fr;
     gap: 20px;
 }
-.cards{
+/* .cards{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 }
 .single-card{
     height: 400px;
     width: 100%;
     padding: 4px;
+} */
+.carousel-viewport {
+    white-space: nowrap;
+    min-width: 800px;
+  }
+.single-card {
+    width: 33.333333333%;
+    flex: 0 0 auto;
+    height: 400px; 
+    padding: 4px;
+}
+
+.cards {
+    display: inline-flex;
+    gap: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+}
+.cards::-webkit-scrollbar{
+    display: none;
 }
 .single-card .one{
     width: 100%;
@@ -230,6 +251,7 @@
 }
 .slider-2 i{
     font-size: 25px;
+    cursor: pointer;
 }
 
 /* statistics Section */

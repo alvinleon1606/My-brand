@@ -4,9 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>nplcodes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;700&display=swap" rel="stylesheet">
     <!-- Font awesome icons -->
     <script src="https://kit.fontawesome.com/86a1656fba.js" crossorigin="anonymous"></script>
     <style>
+        .project-modal{
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            height: 100%;
+            width: 100%;
+            background-color: #08182fbe;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .project-modal-content{
+            background-color: var(--secondary-color);
+            height: 500px;
+            width: 800px;
+            border: 1px solid var(--text2-color);
+        }
         /* Projects Section */
 .projects{
     background-color: var(--secondary-color);
@@ -25,14 +46,27 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0.3rem;
 }
+.web-projects{
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.3rem;
+}
+.ux-projects{
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.3rem;
+}
 .card{
     background-color: var(--primary-color);
-    padding: 20px;
+    padding: 2px;
     border-radius: 5px;
 }
 .card img{
     height: 100%;
     width: 100%;
+    cursor: pointer;
 }
 .projects-filter-button{
     padding: 5px 30px 5px;
@@ -40,6 +74,11 @@
     background-color: var(--secondary-color);
     color: var(--text1-color);
     cursor: pointer;
+}
+.projects-filter-button.active{
+    background-color: rgb(37, 182, 240);
+    color: white;
+    font-weight: bolder;
 }
 .projects-filter-button:hover{
     background-color: var(--primary-color);
@@ -81,6 +120,19 @@
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
 <body>
+    <div class="project-modal">
+        <div class="project-modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <div class="text">
+                    <h1>Projects description</h1>
+                </div>
+            </div>
+            <div class="content">
+                Hello Leon 
+            </div>
+        </div>
+    </div>
     <div class="wrapper">
         <div class="nav-bar">
             <nav>
@@ -109,8 +161,6 @@
                     </li>
                 </ul>
                 <div class="humburger">
-                    <!-- <i class="fa-solid fa-bars"></i>
-                    <i class="fa-solid fa-xmark"></i> -->
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -133,10 +183,10 @@
         <div class="wrapper-noColor">
             <div class="Projects-container">
                 <div class="projects-categories">
-                    <button class="projects-filter-button">All</button>
-                    <button class="projects-filter-button">Web</button>
-                    <button class="projects-filter-button">Mobile</button>
-                    <button class="projects-filter-button">Ui/Ux</button>
+                    <button class="projects-filter-button all">All</button>
+                    <button class="projects-filter-button web">Web</button>
+                    <button class="projects-filter-button mobile">Mobile</button>
+                    <button class="projects-filter-button ux">Ui/Ux</button>
                 </div>
                 <div class="projects-cards">
                     <div class="card">
@@ -153,6 +203,42 @@
                     </div>
                     <div class="card">
                         <img src="./assets/project-3.png" alt="">
+                    </div>
+                </div>
+                <div class="web-projects">
+                    <div class="card">
+                        <img src="./assets/project-2.jpg" alt="">
+                    </div>
+                    <div class="card">
+                        <img src="./assets/project-2.jpg" alt="">
+                    </div>
+                    <div class="card">
+                        <img src="./assets/project-2.jpg" alt="">
+                    </div>
+                    <div class="card">
+                        <img src="./assets/project-2.jpg" alt="">
+                    </div>
+                </div>
+                <div class="mobile-projects">
+                    <div class="card">
+                        <img src="./assets/project-1.jpg" alt="">
+                    </div>
+                    <div class="card">
+                        <img src="./assets/project-2.jpg" alt="">
+                    </div>
+                </div>
+                <div class="ux-projects">
+                    <div class="card">
+                        <img src="./assets/project-1.jpg" alt="">
+                    </div>
+                    <div class="card">
+                        <img src="./assets/project-1.jpg" alt="">
+                    </div>
+                    <div class="card">
+                        <img src="./assets/project-1.jpg" alt="">
+                    </div>
+                    <div class="card">
+                        <img src="./assets/project-1.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -196,5 +282,6 @@
     </div>
 </div>
 <script src="script.js"></script>
+<script src="./js/projects.js"></script>
 </body>
 </html>

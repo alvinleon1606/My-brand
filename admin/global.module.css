@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Markazi Text', serif;
+        /* Global colors */
+        --primary-color: #08182F; /* main color for background */
+        --secondary-color: #091B34; /* second main color for background  */
+        --text1-color: white; /* sub Text color */
+        --text2-color: #84858E; /* sub Text color */
+        width: 100%;
+        height: 100%;
+}
+.container{
+    background-color: var(--secondary-color);
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+    gap: 0rem;
+    padding: 0 30px;
+}
+.container.active{
+    grid-template-columns: 50px 1fr;
+}
+    /* Side nav */
+    .side-nav{
+        height: 100%;
+        top: 0;
+    }
+    .nav-menu{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: 30px 0;
+    }
+    .nav-header h1{
+        color: var(--text1-color);
+        font-size: 40px;
+    }
+    .each-menu{
+        display: flex;
+        gap: 7px;
+        padding: 15px;
+        cursor: pointer;
+    }
+    .each-menu:hover{
+       background-color: black;
+    }
+    .each-menu span{
+        color: var(--text2-color);
+    }
+    .menu-icon i{
+        font-size: 20px;
+        color: var(--text2-color);
+    }
+
+    nav{
+        height: 100%;
+        background-color: var(--secondary-color);
+        padding: 2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-right: 1px solid var(--text2-color);
+    }
+
+    /* Main part */
+    .main{
+        background-color: var(--primary-color);
+    }
+    .body-hero {
+        width: 100%;
+        background: url(../assets/hero-background.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 200px;
+        position: relative;
+    }
+    /* for all other pages */
+    .body-hero-part{
+        width: 100%;
+        background: url(../assets/hero-background.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 0;
+    }
+    .hero-nav, .body-hero-part h1 {
+        display: flex;
+        gap: 5px;
+        color: var(--text1-color);
+    }
+    .hero-nav .menu{
+        color: var(--text2-color);
+    }
+    /* Top nav */
+    .top-nav{
+        background-color: var(--secondary-color);
+        height: 12%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+    .profile-pic{
+        position: relative;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    .profile-name{
+        top:0 ;
+    }
+    .toggle-icon i{
+        font-size: 2rem;
+        color: var(--text1-color);
+    }
+
+    a{
+        text-decoration: none;
+    }

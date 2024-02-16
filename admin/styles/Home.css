@@ -1,0 +1,73 @@
+.card-align{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateY(50%);
+    padding: 0 6rem;
+}
+.card-stat{
+    height: 10rem;
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+    border: 1px solid white;
+}
+.card-stat i{
+    font-size: 4rem;
+}
+.card-stat h1{
+    font-size: 3rem;
+}
+
+/* table */
+.body-users{
+    margin: 6rem;
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    gap: 2rem;
+}
+.caption{
+    padding-bottom: 0.5rem;
+}
+.recent-users{
+    border: 1px solid white;
+    padding: 2rem;
+}
+.latest-message{
+    border: 1px solid white;
+}
+table{
+    width: 100%;
+}
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border:none;
+}
+
+th {
+    background-color: #a09f9f56;
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 1px solid red;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #ffffff56;
+}

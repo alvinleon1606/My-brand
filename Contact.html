@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>nplcodes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./global.module.css">
     <!-- blog page css -->
     <style>
@@ -221,21 +224,21 @@ form button{
         <div class="wrapper-noColor">
             <div class="contact-content">
                     <div class="comment-form">
-                        <form action="">
+                        <form action="" class="form">
                             <div class="names-email">
                                 <div class="row-1">
-                                    <input type="text" placeholder="Names ">
-                                    <input type="email" placeholder="Email ">
+                                    <input type="text" placeholder="Names" id="names">
+                                    <input type="email" placeholder="Email " id="email">
                                 </div>
                                 <div class="row-1">
-                                    <input type="text" placeholder="Telephone number ">
-                                    <input type="email" placeholder="Subject">
+                                    <input type="text" placeholder="Telephone number " id="telephone">
+                                    <input type="text" placeholder="Subject" id="subject">
                                 </div>
                             </div>
                             <div class="comment-textarea">
-                                <textarea name="comment" id="" rows="12" placeholder="Comment ..."></textarea>
+                                <textarea name="comment" id="" rows="12" placeholder="Comment ..." id="message"></textarea>
                             </div>
-                                <button>Send</button>
+                                <button type="submit" id="send-button">Send</button>
                         </form>
                     </div>
                     <div class="info-sideNav">

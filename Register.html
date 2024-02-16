@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>nplcodes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../public/Global/global.module.css">
     <!-- blog page css -->
     <style>
@@ -158,17 +161,22 @@ button{
 </head>
 <body>
     <div class="login-wrapper">
-            <form>
+            <form id="form">
                 <h1>Sign Up</h1>
                 <div class="fields">
-                    <input type="text" placeholder="Names">
-                    <input type="email" placeholder="Email@example.com">
-                    <input type="password" placeholder="Your password">
-                    <input type="password" placeholder="Comfirm password">
+                    <input type="text" placeholder="Names" id="names">
+                    <p class="names-error"></p>
+                    <input type="email" placeholder="Email@example.com" id="email">
+                    <p class="email"></p>
+                    <input type="password" placeholder="Your password" id="password">
+                    <p class="password-error"></p>
+                    <input type="password" placeholder="Comfirm password" id="Comfirm-password">
+                    <p class="comfirm-password-error"></p>
                 </div>
-                <button>Sign Up</button>
+                <button type="submit">Sign Up</button>
             </form>
     </div>
     <p class="question"><i>Already have account?</i> <a href="./Login.html"><span>Sign In</span></a></p>
+    <script src="../validations/Register.js"></script>
 </body>
 </html>
