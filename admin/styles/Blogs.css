@@ -16,7 +16,6 @@
     height: 80%;
     width: 70%;
     border: 1px solid var(--text2-color);
-    overflow-y: scroll;
 }
 /* The Close Button */
 .close {
@@ -38,7 +37,6 @@
     background-color: var(--primary-color);
     color: white;
   }
-
   /* ===================================================== */
 
 .blogs-list{
@@ -106,21 +104,67 @@
     cursor: pointer;
 }
 
-/* footer buttons */
-.blog-card-footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 0;
-    gap: 5px;
+/* Comments and action , blog image */
+.content{
+    display: grid;
+    grid-template-columns: 1fr 0.7fr;
+    gap: 10px;
+    padding: 20px;
 }
-.next{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    cursor: pointer;
+.blog-image-desc-actions{
+    width: 100%;
+    max-height: 500px;
 }
+.blog-image{
+    width: 100%;
+    max-height: 500px;
+    border-radius: 10px;
+}
+.blog-desc-actions{
+    color: var(--text2-color);
+    padding: 20px;
+}
+.actions{
+    margin-top: 1rem;
+}
+.actions button{
+    padding: 5px 20px;
+}
+
+.single-comment{
+    background-color: rgba(112, 128, 144, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+}
+.comment{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.comment.active{
+    display: none;
+}
+.time-ago{
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+}
+
+/* Comments:  names-email */
+.blog-comments{
+    overflow-y: scroll;
+    max-height: 500px;
+}
+
+.names-email{
+    padding-bottom: 10px;
+}
+.names-email h4{
+    color: var(--text2-color);
+    font-size: 20px;
+}
+.names-email p{
+    color: var(--text2-color);
+    padding-left: 10px;
+}
+
