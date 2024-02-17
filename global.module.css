@@ -14,6 +14,13 @@ body{
         height: 100%;
 }
 
+input{
+    border: none;
+}
+input:focus{
+    outline: none;
+}
+
 /* all wrapper content div container */
 .all-wrapper{
     /* wrapper settings */

@@ -446,10 +446,11 @@
         <div class="footer">
             <div class="wrapper-noColor">
                 <div class="footer-wrapper">
-                    <div class="footer-subscribe">
-                        <input type="text" class="email-input" placeholder="Emailadres@example.com">
-                        <button class="subscribe-button">Subscribe</button>
-                    </div>
+                        <form class="footer-subscribe">
+                            <input type="text" class="email-input" required placeholder="Emailadres@example.com">
+                            <button class="subscribe-button" type="submit">Subscribe</button>
+                        </form>
+                        <div class="email-error"></div>
                     <hr />
                     <div class="footer-contacts-info">
                         <div class="footer-contacts">
@@ -482,5 +483,6 @@
     </div>
     <script src="./js/about.js"></script>
     <script src="./script.js"></script>
+    <script src="../validations/contact.js"></script>
 </body>
 </html>

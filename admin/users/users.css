@@ -1,0 +1,68 @@
+.users-list{
+    margin: 0 6rem;
+    background-color: #091B34;
+}
+.users-header-menus{
+    padding: 1rem 6rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+.users-header-menus input{
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    border: none;
+}
+.users-header-menus input:focus{
+    outline: none;
+}
+
+table{
+    width: 100%;
+}
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border:none;
+}
+
+th {
+    background-color: #a09f9f56;
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 1px solid red;
+    color: white;
+}
+td button{
+    padding: 7px;
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0.541);
+    color: white;
+    border: none;
+}
+td button:hover{
+  background-color: red;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #ffffff56;
+}
+tbody tr:nth-child(odd) {
+    background-color: #ffffff23;
+}
+
+
+
+
+

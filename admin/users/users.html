@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;700&display=swap" rel="stylesheet">
     <!-- css -->
-    <link rel="stylesheet" href="./global.module.css">
-    <link rel="stylesheet" href="./styles/Home.css">
+    <link rel="stylesheet" href="../global.module.css">
+    <link rel="stylesheet" href="./users.css">
     <!-- icons -->
     <script src="https://kit.fontawesome.com/86a1656fba.js" crossorigin="anonymous"></script>
 </head>
@@ -22,26 +22,24 @@
                         <h1>LeonX</h1>
                     </div>
                     <div class="nav-menu">
-                        <div class="each-menu">
-                            <div class="menu-icon"><i class="fa-brands fa-windows"></i></div>
-                            <span>Dashboard</span>
-                        </div>
-                        <a href="./Blogs.html">
+                        <a href="../Home.html">
                             <div class="each-menu">
-                                <div class="menu-icon"><i class="fa-regular fa-newspaper"></i></div>
-                                <span>Blogs</span>
+                                <div class="menu-icon"><i class="fa-brands fa-windows"></i></div>
+                                <span>Dashboard</span>
                             </div>
                         </a>
+                        <div class="each-menu">
+                            <div class="menu-icon"><i class="fa-regular fa-newspaper"></i></div>
+                            <span>Blogs</span>
+                        </div>
                         <div class="each-menu">
                             <div class="menu-icon"><i class="fa-solid fa-code"></i></div>
                             <span>Skills</span>
                         </div>
-                        <a href="../admin/projects/Projects.html">
-                            <div class="each-menu">
-                                <div class="menu-icon"><i class="fa-brands fa-app-store-ios"></i></div>
-                                <span>Projects</span>
-                            </div>
-                        </a>
+                        <div class="each-menu">
+                            <div class="menu-icon"><i class="fa-brands fa-app-store-ios"></i></div>
+                            <span>Projects</span>
+                        </div>
                         <div class="each-menu">
                             <div class="menu-icon"><i class="fa-brands fa-servicestack"></i></div>
                             <span>Services</span>
@@ -50,12 +48,6 @@
                             <div class="menu-icon"><i class="fa-solid fa-chart-simple"></i></div>
                             <span>Statistics</span>
                         </div>
-                        <a href="../admin/messages/messages.html">
-                            <div class="each-menu">
-                                <div class="menu-icon"><i class="fa-solid fa-chart-simple"></i></div>
-                                <span>Messages</span>
-                            </div>
-                        </a>
                     </div>
                 </div>
                 <div class="nav-footer">
@@ -64,12 +56,10 @@
                             <div class="menu-icon"><i class="fa-solid fa-gear"></i></div>
                             <span>Settings</span>
                         </div>
-                        <a href="../index.html">
-                            <div class="each-menu">
-                                <div class="menu-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
-                                <span>Logout</span>
-                            </div>
-                        </a>
+                        <div class="each-menu">
+                            <div class="menu-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
+                            <span>Logout</span>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -82,43 +72,27 @@
                 </div>
             </div>
             <div class="body">
-                <div class="body-hero">
-                    <div class="card-align">
-                        <a href="./users/users.html">
-                            <div class="card-stat">
-                                <div class="card-icon"><i class="fa-solid fa-users"></i></div>
-                                <div class="stat-number-text">
-                                    <h1>400+</h1>
-                                    <p>Users</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="./subs/subs.html">
-                            <div class="card-stat">
-                                <div class="card-icon"><i class="fa-brands fa-app-store"></i></div>
-                                <div class="stat-number-text">
-                                    <h1>10+</h1>
-                                    <p>Subscribers</p>
-                                </div>
-                            </div>
-                        </a> 
-                        <a href="./messages/messages.html">
-                            <div class="card-stat">
-                                <div class="card-icon"><i class="fa-regular fa-envelope"></i></div>
-                                <div class="stat-number-text">
-                                    <h1>200+</h1>
-                                    <p>Messages</p>
-                                </div>
-                            </div>
-                        </a>
+                <div class="body-hero-part">
+                    <h1>Users List</h1>
+                    <div class="hero-nav">
+                        <p class="menu">Home</p>
+                        <i class="fa-solid fa-grip-lines-vertical"></i>
+                        <p>Users</p>
                     </div>
                 </div>
-            </div>
-                <div class="body-users">
-                    <div class="recent-users">
-                        <div class="caption">
-                            <h1 style="color: white;">Recent Users</h1>
-                        </div>
+                <div class="users-content">
+                    <div class="users-header-menus">
+                        <input type="text" placeholder="Search ...">
+                            <select name="category" id="">
+                                <option value="">Filter</option>
+                                <option value="">2020</option>
+                                <option value="">2021</option>
+                                <option value="">2022</option>
+                                <option value="">2023</option>
+                                <option value="">2024</option>
+                            </select>
+                    </div>
+                    <div class="users-list">
                         <div class="table-container">
                             <table>
                                 <thead>
@@ -126,6 +100,8 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone</th>
+                                        <th>Joined Date</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -133,34 +109,58 @@
                                         <td>John Doe</td>
                                         <td>john@example.com</td>
                                         <td>(123) 456-7890</td>
+                                        <td>23 May, 2023</td>
+                                        <td><button>Delete</button></td>
                                     </tr>
                                     <tr>
                                         <td>John Doe</td>
                                         <td>john@example.com</td>
                                         <td>(123) 456-7890</td>
+                                        <td>23 May, 2023</td>
+                                        <td><button>Delete</button></td>
                                     </tr>
                                     <tr>
                                         <td>John Doe</td>
                                         <td>john@example.com</td>
                                         <td>(123) 456-7890</td>
+                                        <td>23 May, 2023</td>
+                                        <td><button>Delete</button></td>
                                     </tr>
                                     <tr>
                                         <td>John Doe</td>
                                         <td>john@example.com</td>
                                         <td>(123) 456-7890</td>
+                                        <td>23 May, 2023</td>
+                                        <td><button>Delete</button></td>
                                     </tr>
                                     <tr>
                                         <td>Jane Smith</td>
                                         <td>jane@example.com</td>
                                         <td>(987) 654-3210</td>
+                                        <td>23 May, 2023</td>
+                                        <td><button>Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jane Smith</td>
+                                        <td>jane@example.com</td>
+                                        <td>(987) 654-3210</td>
+                                        <td>23 May, 2023</td>
+                                        <td><button>Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jane Smith</td>
+                                        <td>jane@example.com</td>
+                                        <td>(987) 654-3210</td>
+                                        <td>23 May, 2023</td>
+                                        <td><button>Delete</button></td>
                                     </tr>
                                     <!-- Add more rows as needed -->
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <div class="latest-message" style="color: white;">Latest Meassage</div>
                 </div>
+            </div>
             </div>
         </main>
     </div>

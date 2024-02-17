@@ -1,0 +1,122 @@
+body{
+    font-family: 'Markazi Text', serif;
+    --primary-color: #08182F; /* main color for background */
+    --secondary-color: #091B34; /* second main color for background  */
+    --text1-color: white; /* sub Text color */
+    --text2-color: #84858E; /* sub Text color */
+}
+.messages-list{
+    margin: 0 6rem;
+    background-color: var(--secondary-color);
+    padding: 2rem;
+}
+.messages-parts{
+    display: grid;
+    grid-template-columns: 0.7fr 1fr;
+    gap: 10px;
+}
+.visitors{
+    height: 30vh;
+    padding: 3px;
+}
+.single-visitors-message{
+    height: 40vh;
+    padding: 8px;
+}
+
+/* Search */
+.search, select{
+    padding: 10px 20px;
+
+}
+.search:focus{
+    outline: none;
+}
+
+/* visitor card */
+.visitor-card{
+    background-color: gray;
+    display: grid;
+    grid-template-columns: 1fr 0.1fr;
+    padding: 2px 5px;
+    margin-top: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.image{
+    padding: 10px; 
+}
+.visitor-card img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.image-names{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.action-delete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.action-delete button{
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+}
+.action-delete button:focus{
+    outline: none;
+}
+.messages-parts{
+    padding-top: 30px;
+}
+.visitors{
+    overflow-y: scroll;
+    min-height: 50vh;
+}
+
+/* Message part */
+
+.single-message{
+    background-color: rgba(112, 128, 144, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+}
+.message{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.message.active{
+    display: none;
+}
+.time-ago{
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+}
+
+/* names-email */
+.names-email{
+    padding-bottom: 10px;
+}
+.names-email h4{
+    color: var(--text2-color);
+    font-size: 30px;
+}
+.names-email p{
+    color: var(--text2-color);
+    padding-left: 10px;
+}
+
+
+
+
+
+
+

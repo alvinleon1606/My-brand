@@ -224,19 +224,24 @@ form button{
         <div class="wrapper-noColor">
             <div class="contact-content">
                     <div class="comment-form">
-                        <form action="" class="form">
+                        <form class="form">
                             <div class="names-email">
                                 <div class="row-1">
                                     <input type="text" placeholder="Names" id="names">
+                                    <p class="names-error"></p>
                                     <input type="email" placeholder="Email " id="email">
+                                    <p class="email-error"></p>
                                 </div>
                                 <div class="row-1">
                                     <input type="text" placeholder="Telephone number " id="telephone">
+                                    <p class="telephone-error"></p>
                                     <input type="text" placeholder="Subject" id="subject">
+                                    <p class="subject-error"></p>
                                 </div>
                             </div>
                             <div class="comment-textarea">
-                                <textarea name="comment" id="" rows="12" placeholder="Comment ..." id="message"></textarea>
+                                <input name="message"  id="message" style="width: 100%; height: 300px;">
+                                <p class="message-error"></p>
                             </div>
                                 <button type="submit" id="send-button">Send</button>
                         </form>
@@ -315,5 +320,7 @@ form button{
     </div>
 </div>
 <script src="script.js"></script>
+<script src="../validations/subscribe.js"></script>
+<script src="../validations/contact.js"></script>
 </body>
 </html>
