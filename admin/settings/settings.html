@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>np-leonx | Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;700&display=swap" rel="stylesheet">
+    <!-- css -->
+    <link rel="stylesheet" href="../global.module.css">
+    <link rel="stylesheet" href="./settings.css">
+    <!-- icons -->
+    <script src="https://kit.fontawesome.com/86a1656fba.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="side-nav">
+            <nav>
+                <div class="header-body-nav">
+                    <div class="nav-header">
+                        <h1>LeonX</h1>
+                    </div>
+                    <div class="nav-menu">
+                        <a href="../../admin/Home.html">
+                            <div class="each-menu">
+                                <div class="menu-icon"><i class="fa-brands fa-windows"></i></div>
+                                <span>Dashboard</span>
+                            </div>
+                        </a>
+                        <a href="../Blogs.html">
+                            <div class="each-menu">
+                                <div class="menu-icon"><i class="fa-regular fa-newspaper"></i></div>
+                                <span>Blogs</span>
+                            </div>
+                        </a>
+                        <div class="each-menu">
+                            <div class="menu-icon"><i class="fa-solid fa-code"></i></div>
+                            <span>Skills</span>
+                        </div>
+                        <a href="../projects/Projects.html">
+                            <div class="each-menu">
+                                <div class="menu-icon"><i class="fa-brands fa-app-store-ios"></i></div>
+                                <span>Projects</span>
+                            </div>
+                        </a>
+                        <div class="each-menu">
+                            <div class="menu-icon"><i class="fa-brands fa-servicestack"></i></div>
+                            <span>Services</span>
+                        </div>
+                        <div class="each-menu">
+                            <div class="menu-icon"><i class="fa-solid fa-chart-simple"></i></div>
+                            <span>Statistics</span>
+                        </div>
+                        <a href="../messages/messages.html">
+                            <div class="each-menu">
+                                <div class="menu-icon"><i class="fa-solid fa-envelope"></i></div>
+                                <span>Messages</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-footer">
+                    <div class="nav-footer-menu">
+                        <div class="each-menu">
+                            <div class="menu-icon"><i class="fa-solid fa-gear"></i></div>
+                            <span>Settings</span>
+                        </div>
+                        <a href="../../index.html">
+                            <div class="each-menu">
+                                <div class="menu-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
+                                <span>Logout</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <main class="main">
+            <div class="top-nav">
+                <div class="toggle-icon"><i class="fa-solid fa-bars"></i></div>
+                <div class="profile-pic">
+                    <p class="profile-name">NL</p>
+                </div>
+            </div>
+            <div class="body">
+                <div class="body-hero">
+                    <div class="card-align">
+                            <div class="card-stat">
+                                <img src="../../assets/mee_1.png" alt="" class="my-profile">
+                            </div>
+                    </div>
+                </div>
+            </div>
+                <div class="body-settings">
+                    <div class="left-settings">
+                        <form class="new-blog-form">
+                            <div class="inputs">
+                                <div class="names">
+                                    <input type="text" placeholder="Names ..." id="names">
+                                    <p class="name-error"></p>
+                                </div>
+                                <div class="proffession">
+                                    <input type="text" placeholder="Proffession ..." id="proffession">
+                                    <p class="proffession-error"></p>
+                                </div>
+                            </div>
+                            <div class="inputs">
+                                <div class="file">
+                                    <input type="file" id="profile-pic">
+                                    <p class="profile-error"></p>
+                                </div>
+                                <div class="email">
+                                    <input type="text" placeholder="Email ..." id="email">
+                                    <p class="email-error"></p>
+                                </div>
+                            </div>
+                            <div class="inputs">
+                                <div class="telephone">
+                                    <input type="text" placeholder="Telephone ..." id="telephone">
+                                    <p class="telephone-error"></p>
+                                </div>
+                                <div class="other">
+                                    <input type="text" placeholder="Security word ..." id="security">
+                                    <p class="security-error"></p>
+                                </div>
+                            </div>
+                            <div class="inputs">
+                                <div class="password">
+                                    <input type="text" placeholder="Password ..." id="password">
+                                    <p class="password-error"></p>
+                                </div>
+                                <div class="password">
+                                    <input type="text" placeholder="Comfirm password ..." id="password">
+                                    <p class="comfirm-password-error"></p>
+                                </div>
+                            </div>
+                            <div class="inputs-button">
+                                <button type="submit">Update Settings</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="right-settings">
+                        <div class="text-area">
+                            <textarea name="description" placeholder="About Me text..." id="about" cols="30" rows="16"></textarea>
+                            <p class="description-error"></p>
+                        </div>
+                        <div class="file">
+                            <p>Intro Video</p>
+                            <input type="file" class="intro-video">
+                            <p class="intro-video-error"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

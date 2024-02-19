@@ -88,19 +88,19 @@
                             <button>Blogs List</button>
                         </a>
                     </div>
-                    <form action="">
+                    <form id="my-form">
                         <div class="inputs">
-                            <input type="text" placeholder="Blog title ..." value="What is best stack to learn in 2024?">
-                            <input type="text" placeholder="Categoty" value="Web Development">
+                            <input type="text" placeholder="Blog title ..." id="title">
+                            <input type="text" placeholder="Categoty" id="category">
                         </div>
                         <div class="inputs">
-                            <input type="file" placeholder="Blog image.." value="webpage.jpg">
-                            <input type="text" placeholder="Tags.." value="React | Next | Prisma">
+                            <input type="file" placeholder="Blog image.." id="image">
+                            <input type="text" placeholder="Tags.." id="tag">
                         </div>
                         <div class="text-area">
-                            <textarea name="description" placeholder="Volutpat dignissim est id porttitor. Suspendisse tincidunt ultrices condimentum. Maecenas laoreet rhoncus lorem quis facilisis. Phasellus quis euismod risus. Maecenas " id="" cols="30" rows="14"></textarea>
+                            <textarea name="description" placeholder="Volutpat dignissim est id porttitor. Suspendisse tincidunt ultrices condimentum. Maecenas laoreet rhoncus lorem quis facilisis. Phasellus quis euismod risus. Maecenas " id="description" cols="30" rows="14"></textarea>
                         </div>
-                        <button>Edit</button>
+                        <button type="submit">Edit</button>
                     </form>
                 </div>
             </div>
@@ -108,5 +108,6 @@
         </main>
     </div>
     <script src="./script.js"></script>
+    <script src="./editBlog.js"></script>
 </body>
 </html>

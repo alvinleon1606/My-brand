@@ -19,14 +19,27 @@ form{
     display: flex;
     gap: 10px;
     margin: 4px 0;
+    width: 100%;
 }
-.inputs input{
+.title{
+    width: 100%;
+}
+.category{
+    width: 100%;
+}
+.tag{
+    width: 100%;
+}
+.file{
+    width: 100%;
+}
+.inputs input, select{
     padding: 10px;
     border: none;
     width: 100%;
     background-color: white;
 }
-.inputs input:focus{
+.inputs input:focus, select:focus{
     padding: 10px;
     outline: none;
 }

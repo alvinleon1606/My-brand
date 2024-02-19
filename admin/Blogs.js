@@ -17,11 +17,11 @@ card.forEach(eacgCard => eacgCard.addEventListener('click', ()=>{
 // close 
 var span = document.getElementsByClassName("close")[0];
 
-span.onclick = function() {
+span.addEventListener('click', () =>{
    BlogModal.style.display = "none";
- }
+})
 
-window.onclick = function(e) {
+window.onclick = (e) => {
    if (e.target == BlogModal) {
        BlogModal.style.display = "none";
    }

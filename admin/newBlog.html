@@ -88,25 +88,56 @@
                             <button>Blogs List</button>
                         </a>
                     </div>
-                    <form action="">
+                    <form class="new-blog-form">
                         <div class="inputs">
-                            <input type="text" placeholder="Blog title ...">
-                            <input type="text" placeholder="Categoty">
+                            <div class="title">
+                                <input type="text" placeholder="Blog title ..." id="title">
+                                <p class="title-error"></p>
+                            </div>
+                            <div class="category">
+                                <select name="category" id="category">
+                                    <option value="">Category</option>
+                                    <option value="Web development">Web development</option>
+                                    <option value="Ai">Ai</option>
+                                    <option value="Software Eng.">Software Eng.</option>
+                                    <option value="Technology">Technology</option>
+                                    <option value="React Js">React Js</option>
+                                    <option value="Next Js">Next Js</option>
+                                    <option value="Rest Api">Rest Api</option>
+                                </select>
+                                <p class="category-error"></p>
+                            </div>
                         </div>
                         <div class="inputs">
-                            <input type="file" placeholder="Blog image..">
-                            <input type="text" placeholder="Tags..">
+                            <div class="tag">
+                                <select name="tags" id="tags">
+                                    <option value="">Tags...</option>
+                                    <option value="Ai">Ai</option>
+                                    <option value="Technology">Technology</option>
+                                    <option value="React Js">React Js</option>
+                                    <option value="Next Js">Next Js</option>
+                                    <option value="Rest Api">Rest Api</option>
+                                </select>
+                                <p class="tag-error"></p>
+                            </div>
+                            <div class="file">
+                                <input type="file" placeholder="Blog image.." id="blog-image">
+                                <p class="file-error"></p>
+                            </div>
                         </div>
                         <div class="text-area">
-                            <textarea name="description" placeholder="Description ..." id="" cols="30" rows="14"></textarea>
+                            <textarea name="description" placeholder="Description ..." id="description" cols="30" rows="14"></textarea>
+                            <p class="description-error"></p>
                         </div>
-                        <button>Create</button>
+                        <button type="submit">Add</button>
                     </form>
                 </div>
             </div>
             </div>
         </main>
+
     </div>
     <script src="./script.js"></script>
+    <script src="./newBlog.js"></script>
 </body>
 </html>
