@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>np-leonx | Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;700&display=swap" rel="stylesheet">
+    <!-- css -->
+    <link rel="stylesheet" href="../global.module.css">
+    <link rel="stylesheet" href="./newSkill.css">
+    <!-- icons -->
+    <script src="https://kit.fontawesome.com/86a1656fba.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="side-nav">
+            <nav>
+                <div class="header-body-nav">
+                    <div class="nav-header">
+                        <h1>LeonX</h1>
+                    </div>
+                    <div class="nav-menu">
+                        <a href="../admin/Home.html">
+                            <div class="each-menu">
+                                <div class="menu-icon"><i class="fa-brands fa-windows"></i></div>
+                                <span>Dashboard</span>
+                            </div>
+                        </a>
+                        <a href="./Blogs.html">
+                            <div class="each-menu">
+                                <div class="menu-icon"><i class="fa-regular fa-newspaper"></i></div>
+                                <span>Blogs</span>
+                            </div>
+                        </a>
+                        <div class="each-menu">
+                            <div class="menu-icon"><i class="fa-solid fa-code"></i></div>
+                            <span>Skills</span>
+                        </div>
+                        <div class="each-menu">
+                            <div class="menu-icon"><i class="fa-brands fa-app-store-ios"></i></div>
+                            <span>Projects</span>
+                        </div>
+                        <div class="each-menu">
+                            <div class="menu-icon"><i class="fa-brands fa-servicestack"></i></div>
+                            <span>Services</span>
+                        </div>
+                        <div class="each-menu">
+                            <div class="menu-icon"><i class="fa-solid fa-chart-simple"></i></div>
+                            <span>Statistics</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-footer">
+                    <div class="nav-footer-menu">
+                        <div class="each-menu">
+                            <div class="menu-icon"><i class="fa-solid fa-gear"></i></div>
+                            <span>Settings</span>
+                        </div>
+                        <div class="each-menu">
+                            <div class="menu-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
+                            <span>Logout</span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <main class="main">
+            <div class="top-nav">
+                <div class="toggle-icon"><i class="fa-solid fa-bars"></i></div>
+                <div class="profile-pic">
+                    <p class="profile-name">NL</p>
+                </div>
+            </div>
+            <div class="body">
+                <div class="body-hero-part">
+                    <h1>Edit Skill</h1>
+                    <div class="hero-nav">
+                        <p class="menu">Home</p>
+                        <i class="fa-solid fa-grip-lines-vertical"></i>
+                        <p>Skill</p>
+                    </div>
+                </div>
+                <div class="new-skill-form">
+                    <div class="skill-header-menu">
+                        <a href="./Skills.html">
+                            <button>Skills List</button>
+                        </a>
+                    </div>
+                    <form id="my-form">
+                        <div class="inputs">
+                            <input type="text" placeholder="Skill Title ..." id="title">
+                        </div>
+                        <div class="inputs">
+                            <input type="text" placeholder="Skill Desc ..." id="desc">
+                        </div>
+                        <div class="inputs">
+                            <input type="file" id="icon">
+                        </div>
+                        <div class="inputs">
+                            <input type="text" placeholder="Percentage.." id="percent">
+                        </div>
+                        <button type="submit">Add</button>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </main>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -7,8 +7,8 @@ body{
 }
 .messages-list{
     margin: 0 6rem;
-    background-color: var(--secondary-color);
     padding: 2rem;
+    max-height: 650px;
 }
 .messages-parts{
     display: grid;
@@ -16,7 +16,7 @@ body{
     gap: 10px;
 }
 .visitors{
-    height: 30vh;
+    height: 65vh;
     padding: 3px;
 }
 .single-visitors-message{
@@ -61,9 +61,17 @@ body{
     justify-content: center;
     align-items: center;
 }
-.action-delete button{
+.action-delete .delete{
     padding: 5px 10px;
     background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+}
+.reply{
+    padding: 5px 10px;
+    background-color: rgb(31, 163, 224);
     color: white;
     border: none;
     cursor: pointer;

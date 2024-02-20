@@ -64,3 +64,6 @@
     cursor: pointer;
 }
 
+li{
+    color: var(--text2-color);
+}

@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;700&display=swap" rel="stylesheet">
     <!-- css -->
     <link rel="stylesheet" href="../global.module.css">
-    <link rel="stylesheet" href="./newSkill.css">
+    <link rel="stylesheet" href="./newService.css">
     <!-- icons -->
     <script src="https://kit.fontawesome.com/86a1656fba.js" crossorigin="anonymous"></script>
 </head>
@@ -75,31 +75,41 @@
             </div>
             <div class="body">
                 <div class="body-hero-part">
-                    <h1>Create New Skill </h1>
+                    <h1>Add New Service</h1>
                     <div class="hero-nav">
                         <p class="menu">Home</p>
                         <i class="fa-solid fa-grip-lines-vertical"></i>
-                        <p>Skill</p>
+                        <p>Services</p>
                     </div>
                 </div>
                 <div class="new-skill-form">
                     <div class="skill-header-menu">
-                        <a href="./Skills.html">
-                            <button>Skills List</button>
+                        <a href="./services.html">
+                            <button>Services List</button>
                         </a>
                     </div>
                     <form id="my-form">
                         <div class="inputs">
-                            <input type="text" placeholder="Skill Title ..." id="title">
-                        </div>
-                        <div class="inputs">
-                            <input type="text" placeholder="Skill Desc ..." id="desc">
+                            <input type="text" placeholder="Service Title ..." id="title">
                         </div>
                         <div class="inputs">
                             <input type="file" id="icon">
                         </div>
                         <div class="inputs">
-                            <input type="text" placeholder="Percentage.." id="percent">
+                            <select multiple name="tools" id="">
+                                <option value="">React js</option>
+                                <option value="">Next js</option>
+                                <option value="">Prisma</option>
+                                <option value="">GraphQL</option>
+                                <option value="">React js</option>
+                                <option value="">Next js</option>
+                                <option value="">Prisma</option>
+                                <option value="">GraphQL</option>
+                                <option value="">React js</option>
+                                <option value="">Next js</option>
+                                <option value="">Prisma</option>
+                                <option value="">GraphQL</option>
+                            </select>
                         </div>
                         <button type="submit">Add</button>
                     </form>
