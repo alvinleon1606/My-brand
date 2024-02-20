@@ -305,6 +305,9 @@
 /* Media-Phones */
 @media (max-width: 600px){
     /* Wrappers */
+    .slider-2{
+        display: none;
+    }
     /* servicses */
     .servise-wrapper, .overlay{
         padding: 0;
@@ -316,6 +319,9 @@
         grid-template-columns: 1fr;
         height: auto;
         width: 100%;
+    }
+    .single-card{
+        width: 50%;
     }
     .cards, .single-card-items{
         width: 100%;
@@ -375,7 +381,7 @@
         flex-direction: column;
     }
     .cards{
-        display: block;
+        display: flex;
     }
     .cards #two-three{
         display: none;
@@ -397,9 +403,6 @@
   /* Tablet */
   @media (min-width: 601px) and (max-width: 900px) {
      /* Wrappers */
-     nav{
-        display: none;
-    }
     /* servicses */
     .servise-wrapper, .overlay{
         padding: 0;
@@ -505,7 +508,9 @@
   @media (min-width: 901px) and (max-width: 1200px) {
     /* Wrappers */
     nav{
-       display: none;
+       display: flex;
+       align-items: center;
+       padding: 0 20px;
    }
    /* servicses */
    .servise-wrapper, .overlay{
