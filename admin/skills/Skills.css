@@ -1,9 +1,9 @@
-
 .skills-list{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: 0 6rem;
     gap: 5px;
+    background-color: var(--secondary-color);
 }
 .skills-header-menus{
     padding: 1rem 6rem;

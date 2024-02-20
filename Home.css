@@ -1,4 +1,11 @@
 
+.loggedUser i{
+    font-size: 30px;
+    color: red;
+}
+.loggedIn{
+    display: block;
+}
 .home-page{
     padding-top: 6.25rem;
 }
