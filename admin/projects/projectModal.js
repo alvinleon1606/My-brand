@@ -5,7 +5,7 @@ const closeBtn = document.querySelector('.close');
 const card = document.querySelectorAll('.card');
 
 //  on page load
-window.addEventListener('load', ()=>{
+document.addEventListener('DOMContentLoaded', ()=>{
    projectModal.style.display = "none";
 })
 

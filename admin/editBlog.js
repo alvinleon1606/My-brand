@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             blogData[updateIndex] = update;
             localStorage.setItem('Blogs', JSON.stringify(blogData))
+            window.location.href = './Blogs.html';
         });
 
     }

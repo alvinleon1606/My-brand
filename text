@@ -137,3 +137,14 @@ const CreateBlogs= (newBlog) => {
 
 
 
+
+
+
+{/* <img src="../assets/${blogImage}" alt="" class="blog-img">
+<h3 class="blo-tit">${blog.title}</h3>
+<p class="desc">${blog.description}</p>
+<button class="butt" onclick="deleteBlog(${blog.id})">Delete</button>
+<button class="butt" onclick="goToEditBlog(${blog.id})">Edit</button> */}
+
+
+

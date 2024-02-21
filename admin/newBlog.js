@@ -36,13 +36,34 @@ const displayBlogs = () => {
     Blogs.forEach((blog) => {
         const blogImage = (blog.image).split("\\").pop();
         const blogsDiv = document.createElement('div');
-        blogsDiv.classList.add('single-blog', 'card');
+        blogsDiv.classList.add('single-bloggg');
         blogsDiv.innerHTML = `
+            <div class="single-blog card">
             <img src="../assets/${blogImage}" alt="" class="blog-img">
-            <h3 class="blo-tit">${blog.title}</h3>
-            <p class="desc">${blog.description}</p>
-            <button class="butt" onclick="deleteBlog(${blog.id})">Delete</button>
-            <button class="butt" onclick="goToEditBlog(${blog.id})">Edit</button>
+            <div class="blog-title-description-likesComment">
+                <h2>${blog.title}</h2>
+                <div class="blog-desc-likes">
+                    <p>${blog.description}
+                    </p>
+                    <div class="likes-actions">
+                        <div class="likes">
+                            <div class="comment-like">
+                                <i class="fa-regular fa-heart"></i>
+                                <p>200+</p>
+                            </div>
+                            <div class="comment-like">
+                                <i class="fa-regular fa-comments"></i>
+                                <p>200+</p>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <i onclick="goToEditBlog(${blog.id})" class="fa-regular fa-pen-to-square"></i>
+                            <i onclick="deleteBlog(${blog.id})" class="fa-regular fa-trash-can" ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         `;
         blogList.appendChild(blogsDiv);
     });
@@ -124,6 +145,7 @@ form.addEventListener('submit', (e) => {
             category: category
         };
         CreateBlogs(newBlog);
+        window.location.href = './Blogs.html';
     }
 });
 
@@ -147,7 +169,7 @@ const CreateBlogs = (newBlog) => {
     Blogs.push(newBlog);
     const yes = localStorage.setItem('Blogs', JSON.stringify(Blogs));
     if(yes){
-        window.location.href = 'Blogs.html'
+        window.location.href = './Blogs.html';
+        displayBlogs();
     }
-    displayBlogs();
 };
