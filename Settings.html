@@ -22,7 +22,6 @@ body{
     --text1-color: white; /* sub Text color */
     --text2-color: #84858E; /* sub Text color */
 
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,7 +56,6 @@ input{
     padding: 1rem;
     background-color: var(--text1-color);
     color: var(--text1-color);
-    font-size: 15px;
     border: 1px solid white;
     background: transparent;
 }
@@ -88,6 +86,8 @@ button{
     font-weight: bolder;
 }
 
+
+
 /* Media querries */
 @media (max-width: 700px){
     body{
@@ -106,7 +106,7 @@ button{
         margin: 3rem 0;
         width: 100%;
         display: flex;
-        gap: 3rem;  
+        gap: 10px;
     }
     input{
         width: 100%;
@@ -125,7 +125,7 @@ button{
         margin: 3rem 0;
         width: 100%;
         display: flex;
-        gap: 3rem;  
+        gap: 20px;  
     }
 
     input{
@@ -144,7 +144,7 @@ button{
         margin: 3rem 0;
         width: 100%;
         display: flex;
-        gap: 3rem;  
+        gap: 30px;  
     }
 
     input{
@@ -160,16 +160,26 @@ button{
 </head>
 <body>
     <div class="login-wrapper">
-            <form class="form">
-                <h1>Sign In</h1>
+            <form id="form">
+                <h1>Change Settings</h1>
                 <div class="fields">
-                    <input type="email" placeholder="Email@example.com" id="email">
-                    <input type="password" placeholder="passw12345" id="password">
+                    <input type="text" required placeholder="Names" id="names">
+                    <p class="names-error"></p>
+                    <input type="email" required placeholder="Email@example.com" id="email">
+                    <p class="email-error"></p>
+                    <input type="password" required placeholder="Old password" id="password">
+                    <p class="password-error"></p>
+                    <input type="password" required placeholder="New password" id="new1-password">
+                    <p class="new-password-error"></p>
+                    <input type="password" required placeholder="Re-type New password" id="new2-password">
+                    <p class="comfirm-new-password-error"></p>
                 </div>
-                    <button type="submit">Sign In</button>
+                <button type="submit">Update</button>
             </form>
     </div>
-    <p class="question"><i>Don't you have account?</i> <a href="./Register.html"><span>Register</span></a></p>
-    <script src="./js/Login.js"></script>
+    <p class="question"><i>Already have account?</i> <a href="./Login.html"><span>Sign In</span></a></p>
+    <script src="../validations/Settings.js"></script>
+    <script src="./js/userRegistration.js"></script>
+    <script src="./js/UpdateUser.js"></script>
 </body>
 </html>

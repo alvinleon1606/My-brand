@@ -155,9 +155,22 @@
                     <li class="nav-item">
                         <a href="./Contact.html" class="nav-link">Contact</a>
                     </li>
-                    <li class="nav-item login-button">
-                        <a href="./Login.html" class="nav-link">Login</a>
-                    </li>
+                    <a href="./Login.html" class="login">
+                        <li>
+                            Login
+                        </li>
+                    </a>
+                    <div class="logout">
+                        <i class="fa-regular fa-circle-user loggedUserIcon"></i>
+                        <div class="sub-menu">
+                            <a href="./Settings.html">
+                                <li>Settings</li>
+                            </a>
+                            <form action="" class="logout-form">
+                                <button type="submit" class="Logout-menu">Logout</button>
+                            </form>
+                        </div>
+                    </div>
                 </ul>
                 <div class="humburger">
                     <!-- <i class="fa-solid fa-bars"></i>
@@ -333,5 +346,6 @@
 </div>
 <script src="script.js"></script>
 <script src="../validations/subscribe.js"></script>
+<script src="./js/Login.js"></script>
 </body>
 </html>

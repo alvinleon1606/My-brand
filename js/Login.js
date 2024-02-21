@@ -1,5 +1,6 @@
+const logoutButton = document.querySelector('.logout');
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('form');
+    const form = document.querySelector('.form');
     
     form.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -13,15 +14,34 @@ document.addEventListener('DOMContentLoaded', function () {
         if (user && user.password === password) {
             if(user.email ==='leonndayishimiye10@gmail.com'){
                 user.isLoggedIn = true;
+                localStorage.setItem('LoggedUserInfo', JSON.stringify(user));
                 window.location.href = './admin/Home.html';
             }
             else{
                 user.isLoggedIn = true;
-                window.location.href = `./index.html?id=${user.userId}`;
+                localStorage.setItem('LoggedUserInfo', JSON.stringify(user));
+                window.location.href = `./index.html`;
             }
-            localStorage.setItem('users', JSON.stringify(users));
         } else {
             alert('Invalid email or password.');
         }
     });
 });
+
+
+    // Get user session from localStorage after DOMContentLoaded
+    const loggedInUserSession = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+    if (loggedInUserSession && loggedInUserSession.isLoggedIn === true) {
+        document.querySelector('.logout').style.display = 'block';
+        document.querySelector('.login').style.display = 'none';
+    } else {
+        document.querySelector('.login').style.display = 'block';
+        document.querySelector('.logout').style.display = 'none';
+    }
+
+    const submenus = document.querySelector('.sub-menu')
+
+    document.querySelector('.loggedUserIcon').addEventListener('click', () =>{
+        submenus.classList.toggle('open');
+    })
+
