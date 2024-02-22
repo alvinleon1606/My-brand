@@ -12,7 +12,7 @@ const mobileProjects = document.querySelector('.mobile-projects');
 const uxProjects = document.querySelector('.ux-projects');
 
 // on page load
-window.addEventListener("load", () =>{
+document.addEventListener('DOMContentLoaded', () =>{
     allProjects.style.display = "grid"
     all.classList.toggle('active');
     [webProjects, mobileProjects, uxProjects].forEach(menu => menu.style.display=('none'));

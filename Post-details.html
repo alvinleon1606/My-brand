@@ -56,9 +56,26 @@
   .comments{
     display: flex;
     gap: 10px;
-    justify-content: center;
+    justify-content: flex-start;
     width: 80%;
     padding: 10px;
+  }
+  .likes-comments h3{
+    color: white;
+  }
+  .likes-comments i{
+    color: red;
+    cursor: pointer;
+  }
+  .likes-comments{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .likeCounter{
+    display: flex;
+    gap:10px;
+    align-items: center;
   }
   .comments img{
     height: 40px;
@@ -279,7 +296,7 @@ form button{
             <div class="blogs-content">
                 <div class="blogs-card">
                     <div class="single-blog-card">
-                        <div class="category-date">
+                        <!-- <div class="category-date">
                             <div class="categ">
                                 <i class="fa-solid fa-grip-lines-vertical" style="color: lightgray;"></i>
                                 <p style="color: white;">Technology</p>
@@ -331,13 +348,13 @@ form button{
                                 </div>
                                 <button>Send</button>
                             </form>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="blogs-sideNav">
                     <div class="blogs-categories">
                         <div class="title">
-                            <h2>Latest News</h2>
+                            <h2>Latest Posts</h2>
                         </div>
                         <div class="categories">
                             <div class="categoty">
@@ -416,6 +433,7 @@ form button{
 <script src="../validations/subscribe.js"></script>
 <script src="./js/Login.js"></script>
 <script src="./js/logout.js"></script>
-<script src="./js/Post_details.js"></script>
+<script src="./homeJs/SingleBlog.js"></script>
+<script src="./js/Comment.js"></script>
 </body>
 </html>

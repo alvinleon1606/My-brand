@@ -142,7 +142,9 @@ form.addEventListener('submit', (e) => {
             image: image,
             description: description,
             tag: tag,
-            category: category
+            category: category,
+            likes: [],
+            comments: []
         };
         CreateBlogs(newBlog);
         window.location.href = './Blogs.html';

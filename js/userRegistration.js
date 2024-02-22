@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let users = JSON.parse(localStorage.getItem('users')) || [];
 
-        if (users.some(user => user.email === email)) {
+        if (users.find(user => user.email === email)) {
             document.querySelector('.email-error').innerHTML = 'Email already exists';
             return;
         }
