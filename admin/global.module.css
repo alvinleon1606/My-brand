@@ -152,3 +152,7 @@ body{
     a{
         text-decoration: none;
     }
+    .image-names{
+        display: flex;
+        gap: 10px;
+    }

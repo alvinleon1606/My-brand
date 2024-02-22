@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('comment-form');
-    //Get logged In user
+    // Get logged In user
     let user = JSON.parse(localStorage.getItem('LoggedUserInfo'));
-    //Get All blogs 
+    // Get All blogs 
     let Blogs = JSON.parse(localStorage.getItem('Blogs'));
     // Recent comments comments
     const RecentCommentsDiv = document.querySelector('.blog-comments');
@@ -31,32 +31,32 @@ document.addEventListener('DOMContentLoaded', function () {
             return
         }
         RecentCommentsDiv.innerHTML = "";
-        // get comments  .blog-comments
-        blog.comments.map((comment) =>{
+         // get comments  .blog-comments
+        blog.comments.forEach((comment) => {
             const CommentsListDiv = document.createElement('div');
             CommentsListDiv.classList.add('comments');
             CommentsListDiv.innerHTML = `
                 <img src="./assets/profile.webp" alt="" class="comment-person">
                 <div class="names-comment">
                     <h4>${comment.posterNames}</h4>
-                    <p>
-                       ${comment.comment}
-                    </p>
+                    <p>${comment.comment}</p>
+                    ${user && user.email === comment.posterEmail ? `<button id="dltBTN" comId="${comment.commentId}">delete</button>` : ''}
                 </div>
-            `
+            `;
             RecentCommentsDiv.appendChild(CommentsListDiv);
-            displayCommentsNumber()
-        })
+            displayCommentsNumber();
+        });
     }
-// commentsNumber
+
+    // commentsNumber
     const displayLikes  = () =>{
         const likeNum = document.getElementById('likeNumber');
         likeNum.innerHTML = blog.likes.length;
     }
-    displayComments()
-    displayLikes()
+    displayComments();
+    displayLikes();
 
-    // Comment on bog
+    // Comment on blog
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const comment = document.querySelector('.post-comment').value;
@@ -74,8 +74,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // save
         localStorage.setItem('Blogs', JSON.stringify(Blogs));
-        comment.value = ''
-        displayComments()
+        document.querySelector('.post-comment').value="";
+        displayComments();
     });
 
     // when comment focused by unregistered visitor
@@ -85,10 +85,10 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!loggedInUserSession) {
             window.location.href = './Login.html'
         }
-    })
+    });
 
     // Like a Blog
-    const like =document.querySelector('#likePost').addEventListener('click', () =>{
+    const like = document.querySelector('#likePost').addEventListener('click', () =>{
         // Check if user Logged In
         const loggedInUserSession = JSON.parse(localStorage.getItem('LoggedUserInfo'));
         if (!loggedInUserSession) {
@@ -110,6 +110,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         localStorage.setItem("Blogs", JSON.stringify(Blogs))
         displayLikes()
-    })
+    });
 
-})
+
+    document.getElementById("dltBTN").addEventListener('click', ()=> {
+        var messageId = parseInt(this.getAttribute("comId"));
+        const commentToDeleteIndex = blog.comments.findIndex((cmt) => cmt.commentId === messageId);
+        if (commentToDeleteIndex !== -1) {
+            const commentToDelete = blog.comments[commentToDeleteIndex];
+            if (user && user.email === commentToDelete.posterEmail) {
+                blog.comments.splice(commentToDeleteIndex, 1);
+                localStorage.setItem('Blogs', JSON.stringify(Blogs));
+                displayComments();
+            } else {
+                console.log("You are not authorized to delete this comment.");
+            }
+        } else {
+            console.log("Comment not found.");
+        }
+    });
+});

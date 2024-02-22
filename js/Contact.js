@@ -13,20 +13,28 @@ document.addEventListener('DOMContentLoaded', () =>{
 
     document.getElementById('contact-form').addEventListener('submit', () =>{
         const Message = document.getElementById('message').value;
+        // find if user has recently sent message
+        
+        const recentMessageIndex = MessageStore.findIndex((recent) => recent.userEmail === user.email);
+        const recentMessages = MessageStore[recentMessageIndex];
 
-        // Message object
-        const newMassege = {
-            msgId: Date.now(),
-            userNames: user.names,
-            userEmail: user.email,
-            message: Message
+        if (recentMessageIndex !== -1) {
+            
+            recentMessages.message.push(Message);
+        }else{
+            // Message object
+            const newMassege = {
+                msgId: Date.now(),
+                userNames: user.names,
+                userEmail: user.email,
+                message: [Message]
+            }
+            MessageStore.push(newMassege);
         }
-
-        MessageStore.push(newMassege);
         // save data
         localStorage.setItem("Messages", JSON.stringify(MessageStore));
         document.getElementById('message').value = ""
-        })
+    })
 })
 
  
