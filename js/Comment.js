@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // save
         localStorage.setItem('Blogs', JSON.stringify(Blogs));
+        comment.value = ''
         displayComments()
     });
 
