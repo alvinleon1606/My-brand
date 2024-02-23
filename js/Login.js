@@ -1,6 +1,6 @@
 const logoutButton = document.querySelector('.logout');
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('.form');
+    const form = document.getElementById('form');
     
     form.addEventListener('submit', function (event) {
         event.preventDefault();
