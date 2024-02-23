@@ -1,21 +1,29 @@
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('admin-settings-form');
+
     // populate form with default values
-    let user = JSON.parse(localStorage.getItem('LoggedUserInfo'));
-
-    document.getElementById('names').value=user.names;
-    document.getElementById('email').value = user.email;
-    document.getElementById('telephone').value = user.telephone;
-    document.getElementById('security').value = user.security;
-    document.getElementById('about').value=user.about;
-    document.getElementById('profile').value=user.profile;
-    document.getElementById('proffession').value=user.proffession;
-
-    const oldPassword =user.password;
-    const newPassword = document.getElementById('new-password').value;
+    const user = JSON.parse(localStorage.getItem('LoggedUserInfo'));
 
     // users
     let users = JSON.parse(localStorage.getItem('users')) || [];
+    const userIndex = users.findIndex((me) => me.email === user.email)
+
+    
+    document.getElementById('names').value=users[userIndex].names;
+    document.getElementById('email').value = users[userIndex].email;
+    document.getElementById('telephone').value = users[userIndex].telephone;
+    document.getElementById('security').value = users[userIndex].security;
+    document.getElementById('about').value=users[userIndex].about;
+    document.getElementById('proffession').value=users[userIndex].proffession;
+
+    const newPassword = document.getElementById('new-password').value;
+
+    // Display my Image
+    const blogImage = (users[userIndex].profile).split("\\").pop();
+    const profImage = document.getElementById('my-settings-profile');
+    profImage.innerHTML = `
+       <img src="../../assets/${blogImage}" alt="" class="my-profile">
+    `
     
 
     // Update user info
@@ -31,34 +39,20 @@ document.addEventListener('DOMContentLoaded', function () {
         const telephone = document.getElementById('telephone').value;
 
                 // update Admin
-                user.names=updatedNames;
-                user.email = updatedEmail;
-                user.about = about;
-                user.profile = profile;
-                user.proffession = proffession;
-                user.introVideo= video;
-                user.telephone = telephone;
-                user.security =  security;
-                user.password = newPassword;
-
-                // update session
-                if(users.length === 0){
-                    console.log("Empty users");
-                    return
+                users[userIndex].names=updatedNames;
+                users[userIndex].email = updatedEmail;
+                users[userIndex].about = about;
+                users[userIndex].profile = profile;
+                users[userIndex].proffession = proffession;
+                users[userIndex].introVideo= video;
+                users[userIndex].telephone = telephone;
+                users[userIndex].security =  security;
+                if (newPassword !=='') {
+                    users[userIndex].password = newPassword;
                 }
-                console.log("Helloooooooooooooooo", users)
-                const me = users.find((existing) => existing.email === user.email)
-                if(!me){
-                    console.log("User Not Found")
-                    return
-                }
+                users[userIndex].password = user.password;
 
-                me.names = updatedNames;
-                me.email = updatedEmail;
-                me.about = about;
-                me.introVideo = video;
-                me.proffession = proffession;
-                me.security = security;
+                // update data
                 localStorage.setItem('users', JSON.stringify(users));
                 window.location.href = './settings.html';
     });

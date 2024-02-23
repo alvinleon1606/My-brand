@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', function () {
             else{
                 user.isLoggedIn = true;
                 localStorage.setItem('LoggedUserInfo', JSON.stringify(user));
+                //const redirectUrl = sessionStorage.getItem('currentUrl');
+
+                //window.location.href = redirectUrl;
                 window.location.href = `./index.html`;
             }
         } else {

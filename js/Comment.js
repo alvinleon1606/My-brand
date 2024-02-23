@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
     Comment.addEventListener('focus', () =>{
         const loggedInUserSession = JSON.parse(localStorage.getItem('LoggedUserInfo'));
         if (!loggedInUserSession) {
+            sessionStorage.setItem('currentUrl', window.location.href)
             window.location.href = './Login.html'
         }
     });
@@ -92,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Check if user Logged In
         const loggedInUserSession = JSON.parse(localStorage.getItem('LoggedUserInfo'));
         if (!loggedInUserSession) {
+            sessionStorage.setItem('currentUrl', window.location.href)
             window.location.href = './Login.html'
         }
 
