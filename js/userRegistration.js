@@ -17,6 +17,12 @@ document.addEventListener('DOMContentLoaded', function () {
             userId: Date.now(),
             names: names,
             email: email,
+            proffession:'',
+            profile: '',
+            telephone: '',
+            security: '',
+            about: '',
+            introVideo: '',
             password: password,
             isLoggedIn: false
         };

@@ -45,5 +45,3 @@ window.onclick = function(e) {
   nextBtn.addEventListener("click", () => {
     cardsContainer.scrollLeft += 900;
   })
-
-

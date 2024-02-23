@@ -24,13 +24,15 @@ body{
     padding: 8px;
 }
 
-/* Search */
-.search, select{
+/* Read and unRead filter */
+select{
     padding: 10px 20px;
-
+    width: 25%;
+    margin-top: 20px;
 }
-.search:focus{
+select:focus{
     outline: none;
+    border: none;
 }
 
 /* visitor card */

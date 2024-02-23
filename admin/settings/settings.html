@@ -22,7 +22,7 @@
                         <h1>LeonX</h1>
                     </div>
                     <div class="nav-menu">
-                        <a href="../../admin/Home.html">
+                        <a href="../Home.html">
                             <div class="each-menu">
                                 <div class="menu-icon"><i class="fa-brands fa-windows"></i></div>
                                 <span>Dashboard</span>
@@ -34,28 +34,22 @@
                                 <span>Blogs</span>
                             </div>
                         </a>
-                        <div class="each-menu">
-                            <div class="menu-icon"><i class="fa-solid fa-code"></i></div>
-                            <span>Skills</span>
-                        </div>
+                        <a href="../skills/Skills.html">
+                            <div class="each-menu">
+                                <div class="menu-icon"><i class="fa-solid fa-code"></i></div>
+                                <span>Skills</span>
+                            </div>
+                        </a>
                         <a href="../projects/Projects.html">
                             <div class="each-menu">
                                 <div class="menu-icon"><i class="fa-brands fa-app-store-ios"></i></div>
                                 <span>Projects</span>
                             </div>
                         </a>
-                        <div class="each-menu">
-                            <div class="menu-icon"><i class="fa-brands fa-servicestack"></i></div>
-                            <span>Services</span>
-                        </div>
-                        <div class="each-menu">
-                            <div class="menu-icon"><i class="fa-solid fa-chart-simple"></i></div>
-                            <span>Statistics</span>
-                        </div>
-                        <a href="../messages/messages.html">
+                        <a href="../services/services.html">
                             <div class="each-menu">
-                                <div class="menu-icon"><i class="fa-solid fa-envelope"></i></div>
-                                <span>Messages</span>
+                                <div class="menu-icon"><i class="fa-brands fa-servicestack"></i></div>
+                                <span>Services</span>
                             </div>
                         </a>
                     </div>
@@ -66,12 +60,10 @@
                             <div class="menu-icon"><i class="fa-solid fa-gear"></i></div>
                             <span>Settings</span>
                         </div>
-                        <a href="../../index.html">
                             <div class="each-menu">
                                 <div class="menu-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
                                 <span>Logout</span>
                             </div>
-                        </a>
                     </div>
                 </div>
             </nav>
@@ -94,7 +86,7 @@
             </div>
                 <div class="body-settings">
                     <div class="left-settings">
-                        <form class="new-blog-form">
+                        <form class="new-blog-form" id="admin-settings-form">
                             <div class="inputs">
                                 <div class="names">
                                     <input type="text" placeholder="Names ..." id="names">
@@ -107,11 +99,11 @@
                             </div>
                             <div class="inputs">
                                 <div class="file">
-                                    <input type="file" id="profile-pic">
+                                    <input type="file" id="profile">
                                     <p class="profile-error"></p>
                                 </div>
                                 <div class="email">
-                                    <input type="text" placeholder="Email ..." id="email">
+                                    <input type="email" placeholder="Email ..." id="email">
                                     <p class="email-error"></p>
                                 </div>
                             </div>
@@ -127,11 +119,11 @@
                             </div>
                             <div class="inputs">
                                 <div class="password">
-                                    <input type="text" placeholder="Password ..." id="password">
+                                    <input type="password" placeholder="Password ..." id="password">
                                     <p class="password-error"></p>
                                 </div>
                                 <div class="password">
-                                    <input type="text" placeholder="Comfirm password ..." id="password">
+                                    <input type="text" placeholder="Comfirm password ..." id="new-password">
                                     <p class="comfirm-password-error"></p>
                                 </div>
                             </div>
@@ -142,12 +134,12 @@
                     </div>
                     <div class="right-settings">
                         <div class="text-area">
-                            <textarea name="description" placeholder="About Me text..." id="about" cols="30" rows="16"></textarea>
+                            <textarea name="description" placeholder="About Me text..." id="about" cols="30" rows="16" ></textarea>
                             <p class="description-error"></p>
                         </div>
                         <div class="file">
                             <p>Intro Video</p>
-                            <input type="file" class="intro-video">
+                            <input type="file" class="intro-video" id="intro-video">
                             <p class="intro-video-error"></p>
                         </div>
                     </div>
@@ -156,5 +148,7 @@
         </main>
     </div>
     <script src="./script.js"></script>
+    <script src="../js/AdminSettings.js"></script>
+    <script src="../auth.js"></script>
 </body>
 </html>

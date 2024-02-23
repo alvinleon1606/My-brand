@@ -302,6 +302,16 @@ hr{
     transition: all 0.3s ease-in-out;
     background-color: white;
   }
+
+
+  #comfirm-notify{
+    color: red;
+    font-size: 30px;
+    display: none;
+  }
+  .email-error{
+    color: red;
+  }
   /* Phones */
   @media (max-width: 600px) {
     /* nav */

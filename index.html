@@ -410,11 +410,12 @@
         <div class="footer">
             <div class="servise-wrapper">
                 <div class="footer-wrapper">
-                    <form class="footer-subscribe">
-                        <input type="text" class="email-input" required placeholder="Emailadres@example.com">
+                    <form class="footer-subscribe" id="footer-subscribe">
+                        <input type="text" class="email-input" required placeholder="Emailadres@example.com" id="subscribe-email">
                         <button class="subscribe-button" type="submit">Subscribe</button>
                     </form>
                     <div class="email-error"></div>
+                    <i class="fa-solid fa-bell fa-shake" style="display: none;" id="comfirm-notify"></i>
                     <hr />
                     <div class="footer-contacts-info">
                         <div class="footer-contacts">
@@ -449,5 +450,6 @@
     <script src="../validations/subscribe.js"></script>
     <script src="./js/Login.js"></script>
     <script src="./js/logout.js"></script>
+    <script src="./js/subscribe.js"></script>
 </body>
 </html>
