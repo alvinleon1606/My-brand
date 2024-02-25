@@ -40,9 +40,11 @@ document.addEventListener('DOMContentLoaded', () =>{
         const deleteButton = row.querySelector('.delete-btn');
         deleteButton.addEventListener('click', () =>{
             const index = parseInt(deleteButton.getAttribute('data-index'));
-            Subscribers=Subscribers.filter((su) => su.subDate !==index)
-            localStorage.setItem('Subscribers', JSON.stringify(Subscribers))
-            row.remove()
+            const su = Subscribers=Subscribers.filter((su) => su.subDate !==index)
+            if(su && confirm("are you?")){
+                localStorage.setItem('Subscribers', JSON.stringify(Subscribers))
+                row.remove()
+            }
         })
         tbody.appendChild(row);
     })

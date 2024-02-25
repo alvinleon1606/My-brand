@@ -44,9 +44,11 @@ document.addEventListener('DOMContentLoaded', () =>{
         const deleteButton = row.querySelector('.delete-btn');
         deleteButton.addEventListener('click', () =>{
             const index = parseInt(deleteButton.getAttribute('data-index'));
-            users=users.filter((user) => user.userId !==index)
-            localStorage.setItem('users', JSON.stringify(users))
-            row.remove()
+            const u = users=users.filter((user) => user.userId !==index)
+            if(u && confirm("are you?")){
+                localStorage.setItem('users', JSON.stringify(users))
+                row.remove()
+            }
         })
         tbody.appendChild(row);
     })
