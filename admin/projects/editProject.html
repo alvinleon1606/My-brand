@@ -245,50 +245,40 @@
             document.addEventListener('DOMContentLoaded', function() {
                 const projects = JSON.parse(localStorage.getItem('Projects')) || [];
         
-                // Function to extract project ID from URL
                 function getProjectIdFromUrl() {
                     const queryParams = new URLSearchParams(window.location.search);
                     return parseInt(queryParams.get('id'));
                 }
         
-                // Function to retrieve project details from localStorage
                 function getProjectDetails(projectId) {
                     return projects.find(project => project.projectId === projectId);
                 }
         
-                // Function to populate form fields with project details
                 function populateFormFields(project) {
                     document.getElementById('edit-project-title').value = project.title;
                     document.getElementById('edit-project-category').value = project.category;
                     document.getElementById('edit-project-link').value = project.link;
                     document.getElementById('project-finished-date').value = project.finisheddate;
-                    // document.getElementById('edit-project-image').value = project.image;
                     document.getElementById('edit-project-description').value = project.description;
                 }
         
                 // Get project ID from URL
                 const projectId = getProjectIdFromUrl();
         
-                // Retrieve project details from localStorage
                 const project = getProjectDetails(projectId);
         
-                // Populate form fields with project details
                 populateFormFields(project);
-        
-                // Event listener for form submission (for editing project)
                 form.addEventListener('submit', function(event) {
                     event.preventDefault();
         
                     // Retrieve updated values from form fields
                     const updatedProject = {
-                        projectId: projectId, // Retain the original project ID
+                        projectId: projectId,
                         title: document.getElementById('edit-project-title').value,
                         category: document.getElementById('edit-project-category').value,
                         link: document.getElementById('edit-project-link').value,
-                        // image: document.getElementById('edit-project-image').value, // Remove this line
                         description: document.getElementById('edit-project-description').value
                     };
-        
                     // Read image as URL
                     const file = document.getElementById('edit-project-image').files[0];
                     if (file) {
@@ -306,7 +296,6 @@
                         };
                         reader.readAsDataURL(file);
                     } else {
-                        // If no image is selected, update project without the image
                         const index = projects.findIndex(project => project.projectId === projectId);
                         if (index !== -1) {
                             projects[index] = updatedProject;
@@ -315,9 +304,6 @@
                             alert("Project updated successfully!");
                         }
                     }
-        
-                    // After updating the project details, you can redirect the user or show a success message
-                    console.log('Project updated:', updatedProject);
                 });
             });
         </script>

@@ -1,9 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const projectsList = document.querySelector('.projects-list');
 
-    // Function to display projects
     const displayProjects = () => {
-        // Clear existing projects
         projectsList.innerHTML = '';
 
         // Fetch projects from localStorage
@@ -69,16 +67,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Call displayProjects initially to show existing projects
     displayProjects();
 
     function deleteProject(projectId) {
-        // Fetch projects from localStorage
         let projects = JSON.parse(localStorage.getItem('Projects')) || [];
         const updatedProjects = projects.filter(project => project.projectId !== projectId);
         localStorage.setItem('Projects', JSON.stringify(updatedProjects));
 
-        // Remove the project's HTML element from the DOM
         const projectElement = document.querySelector(`.single-project[data-id="${projectId}"]`);
         if (projectElement) {
             projectElement.remove();
