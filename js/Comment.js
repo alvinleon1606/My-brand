@@ -115,8 +115,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    document.getElementById("dltBTN").addEventListener('click', ()=> {
-        let messageId = parseInt(this.getAttribute("comId"));
+    document.getElementById("dltBTN").addEventListener('click', (e)=> {z
+        let messageId = parseInt(e.target.getAttribute("comId"));
         const commentToDeleteIndex = blog.comments.findIndex((cmt) => cmt.commentId === messageId);
         if (commentToDeleteIndex !== -1) {
             const commentToDelete = blog.comments[commentToDeleteIndex];
