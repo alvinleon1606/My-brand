@@ -90,26 +90,34 @@
                             <button>projects List</button>
                         </a>
                     </div>
-                    <form action="">
+                    <form id="create-project-form">
                         <div class="inputs">
-                            <input type="text" placeholder="project title ...">
-                            <input type="text" placeholder="Categoty">
+                            <input type="text" placeholder="project title ..." id="project-title">
+                            <select name="category" id="category">
+                                <option value="">Select Project category</option>
+                                <option value="Web">Web</option>
+                                <option value="Mobile">Mobile</option>
+                                <option value="UX">Ui/ux</option>
+                            </select>
                         </div>
                         <div class="inputs">
-                            <input type="file" placeholder="project image..">
-                            <input type="text" placeholder="Tags..">
+                            <input type="file" placeholder="project image.." id="project-image">
+                            <input type="date" id="project-finished-date">
+                        </div>
+                        <div class="inputs">
+                            <input type="text" placeholder="Link ..." id="project-link">
                         </div>
                         <div class="text-area">
-                            <textarea name="description" placeholder="Description ..." id="" cols="30" rows="14"></textarea>
+                            <textarea name="description" placeholder="Description ..." id="project-description" cols="30" rows="14"></textarea>
                         </div>
-                        <button>Create</button>
+                        <button type="submit">New project</button>
                     </form>
                 </div>
             </div>
             </div>
         </main>
     </div>
-    <script src="./script.js"></script>
     <script src="../auth.js"></script>
+    <script src="./Projects.js"></script>
 </body>
 </html>

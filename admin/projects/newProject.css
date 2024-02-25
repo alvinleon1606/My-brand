@@ -28,13 +28,13 @@ form{
     gap: 10px;
     margin: 4px 0;
 }
-.inputs input{
+.inputs input, select{
     padding: 10px;
     border: none;
     width: 100%;
     background-color: white;
 }
-.inputs input:focus{
+.inputs input:focus, select:focus{
     padding: 10px;
     outline: none;
 }
