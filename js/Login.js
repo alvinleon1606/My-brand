@@ -1,6 +1,6 @@
 const logoutButton = document.querySelector('.logout');
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('form');
+    const form = document.getElementById('login-form');
     
     form.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.logout').style.display = 'none';
     }
 
-    const submenus = document.querySelector('.sub-menu')
+    // const submenus = document.querySelector('.sub-menu')
 
-    document.querySelector('.loggedUserIcon').addEventListener('click', () =>{
-        submenus.classList.toggle('open');
-    })
+    // document.querySelector('.loggedUserIcon').addEventListener('click', () =>{
+    //     submenus.classList.toggle('open');
+    // })
 
