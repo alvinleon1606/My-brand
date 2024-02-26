@@ -147,7 +147,6 @@ form.addEventListener('submit', (e) => {
             comments: []
         };
         CreateBlogs(newBlog);
-        alert("Blog created successfully !")
         window.location.href = './Blogs.html';
     }
 });
@@ -172,6 +171,7 @@ const CreateBlogs = (newBlog) => {
     Blogs.push(newBlog);
     const yes = localStorage.setItem('Blogs', JSON.stringify(Blogs));
     if(yes){
+        alert("Blog created successfully !")
         window.location.href = './Blogs.html';
         displayBlogs();
     }
