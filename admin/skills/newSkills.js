@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         skills.push(skill);
         localStorage.setItem('skills', JSON.stringify(skills));
+        alert("New Skill added")
 
         // Reset the form after adding the skill
         form.reset();
