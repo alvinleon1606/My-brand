@@ -147,6 +147,7 @@ form.addEventListener('submit', (e) => {
             comments: []
         };
         CreateBlogs(newBlog);
+        alert("Blog created successfully !")
         window.location.href = './Blogs.html';
     }
 });
