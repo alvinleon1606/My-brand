@@ -300,10 +300,11 @@ form button{
     <div class="footer">
         <div class="wrapper">
             <div class="footer-wrapper">
-                <div class="footer-subscribe">
-                    <input type="text" class="email-input" placeholder="Emailadres@example.com">
-                    <button class="subscribe-button">Subscribe</button>
-                </div>
+              <form class="footer-subscribe" id="footer-subscribe">
+                <input type="email" class="email-input" required placeholder="Emailadres@example.com" id="subscribe-email">
+                <button class="subscribe-button" type="submit">Subscribe</button>
+            </form>
+            <div class="email-error"></div>
                 <hr />
                 <div class="footer-contacts-info">
                     <div class="footer-contacts">
@@ -335,8 +336,8 @@ form button{
     </div>
 </div>
 <script src="script.js"></script>
-<script src="../validations/subscribe.js"></script>
-<script src="../validations/contact.js"></script>
+<script src="./validations/subscribe.js"></script>
+<script src="./validations/contact.js"></script>
 <script src="./js/Login.js"></script>
 <script src="./js/Contact.js"></script>
 <script src="./js/logout.js"></script>
