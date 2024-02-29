@@ -1,30 +1,38 @@
-import mongoose from "mongoose";
+import mongoose, { Document, Schema } from "mongoose";
+import bcrypt from "bcrypt";
 
+export interface IUser extends Document {
+  firstName: string;
+  secondName: string;
+  email: string;
+  password: string;
+  comparePassword: (enteredPassword: string) => boolean;
+}
 
-const userSchema = new mongoose.Schema({
-    firstName:{
-        type: String,
-        required: true
-    },
-    secondName:{
-        type: String,
-        required: true
-    },
-    email:{
-        type: String,
-        unique: true,
-        required: true
-    },
-    password:{
-        type: String,
-        required: true
-    },
-    role: {
-        type: String,
-        default: "user"
-    }
+const userSchema = new Schema<IUser>({
+    firstName: {
+    type: String,
+    required: true,
+  },
+  secondName: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
 });
 
-const Users = mongoose.model('Users', userSchema)
+userSchema.methods.comparePassword = async function (enteredPassword: string) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
 
-export default Users
+const Users = mongoose.model("Users", userSchema);
+
+export default Users;
