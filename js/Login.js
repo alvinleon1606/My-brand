@@ -1,37 +1,33 @@
 const logoutButton = document.querySelector('.logout');
+
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('login-form');
 
-    
-    form.addEventListener('submit', function (event) {
+    form.addEventListener('submit', async function (event) {
         event.preventDefault();
-        
+
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-        const user = users.find(user => user.email === email);
+        try {
+            const response = await axios.post('http://localhost:5500/login', { email, password });
 
-        if (user && user.password === password) {
-            if(user.email ==='leonndayishimiye10@gmail.com'){
-                user.isLoggedIn = true;
+            if (response.status === 200) {
+                const user = response.data;
                 localStorage.setItem('LoggedUserInfo', JSON.stringify(user));
-                window.location.href = './admin/Home.html';
+                if (user.email === 'leonndayishimiye10@gmail.com' && user.role ==='admin') {
+                    window.location.href = './admin/Home.html';
+                } else {
+                    window.location.href = './index.html';
+                }
+            } else {
+                alert('Invalid email or password.');
             }
-            else{
-                user.isLoggedIn = true;
-                localStorage.setItem('LoggedUserInfo', JSON.stringify(user));
-                //const redirectUrl = sessionStorage.getItem('currentUrl');
-
-                //window.location.href = redirectUrl;
-                window.location.href = `./index.html`;
-            }
-        } else {
-            alert('Invalid email or password.');
+        } catch (error) {
+            console.log('Login failed', error);
+            alert("Enable to Login, check internet");
         }
     });
-});
-
 
     // Get user session from localStorage after DOMContentLoaded
     const loggedInUserSession = JSON.parse(localStorage.getItem('LoggedUserInfo'));
@@ -43,9 +39,9 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.logout').style.display = 'none';
     }
 
-    const submenus = document.querySelector('.sub-menu')
+    const submenus = document.querySelector('.sub-menu');
 
-    document.querySelector('.loggedUserIcon').addEventListener('click', () =>{
+    document.querySelector('.loggedUserIcon').addEventListener('click', () => {
         submenus.classList.toggle('open');
-    })
-
+    });
+});
