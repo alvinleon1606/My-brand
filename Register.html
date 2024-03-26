@@ -157,14 +157,19 @@ button{
     </style>
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/86a1656fba.js" crossorigin="anonymous"></script>
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </head>
 <body>
     <div class="login-wrapper">
             <form id="form">
                 <h1>Sign Up</h1>
                 <div class="fields">
-                    <input type="text" required placeholder="Names" id="names">
-                    <p class="names-error"></p>
+                    <input type="text" required placeholder="First Name" id="firstName">
+                    <p class="name1-error"></p>
+                    <input type="text" required placeholder="second name" id="secondName">
+                    <p class="name2-error"></p>
                     <input type="email" required placeholder="Email@example.com" id="email">
                     <p class="email-error"></p>
                     <input type="password" required placeholder="Your password" id="password">

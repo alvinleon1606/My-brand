@@ -1,33 +1,42 @@
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('form');
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        const names = document.getElementById('names').value;
+
+        const firstName = document.getElementById('firstName').value;
+        const secondName = document.getElementById('secondName').value;
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('Comfirm-password').value;
 
-        let users = JSON.parse(localStorage.getItem('users')) || [];
-
-        if (users.find(user => user.email === email)) {
-            document.querySelector('.email-error').innerHTML = 'Email already exists';
+        if (password !== confirmPassword) {
+            document.querySelector('.confirm-password-error').innerHTML = 'Passwords do not match';
             return;
         }
-        const newUser = {
-            userId: Date.now(),
-            names: names,
+
+        const userData = {
+            firstName: firstName,
+            secondName: secondName,
             email: email,
-            proffession:'',
-            profile: '',
-            telephone: '',
-            security: '',
-            about: '',
-            introVideo: '',
-            password: password,
-            isLoggedIn: false
+            password: password
         };
-        users.push(newUser);
-        localStorage.setItem('users', JSON.stringify(users));
-        window.location.href = './Login.html';
+
+        try {
+            const response = await axios.post('http://localhost:5500/users/register', userData, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            
+            if (response.status===200) {
+                alert('Well Registered')
+                window.location.href = './Login.html'; 
+            } else {
+                throw new Error('Failed to register');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+        
     });
 });
