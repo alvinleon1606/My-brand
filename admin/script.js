@@ -9,8 +9,8 @@ humburger.addEventListener('click', () => {
 
 document.addEventListener('DOMContentLoaded', ()=>{
     //get user
-    const user = JSON.parse(localStorage.getItem('LoggedUserInfo'));
-    if (!user || !user.isLoggedIn) {
+    const userLogged = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+    if (!userLogged.user) {
       window.location.href = '../Login.html'
     }
   })

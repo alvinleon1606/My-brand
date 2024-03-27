@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         try {
-            const response = await axios.post('http://localhost:5500/users/register', userData, {
+            const response = await axios.post('http://localhost:8080/users/register', userData, {
                 headers: {
                     'Content-Type': 'application/json'
                 }

@@ -32,7 +32,7 @@ window.onclick = function(e) {
     }
   }
 
-// ++++++++++++++++++++++++ Services +++++++++++++++++++++++++++
+// ++++++++++++++++++++++ Services ++++++++++++++++++++++++
   // Services variables
   const prevBtn = document.querySelector('.fa-circle-chevron-left');
   const nextBtn = document.querySelector('.fa-circle-chevron-right');
