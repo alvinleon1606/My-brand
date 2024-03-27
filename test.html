@@ -1,0 +1,52 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body data-rsssl=1>
+
+<p>The response of the server to submitting the form is printed in the console (CTRL+SHIFT+I in Chrome).</p>
+<form id="form">
+<input name="username" type="text" id="name">
+<input name="password "type="password" id="password">
+<button type="submit">Submit</button>
+</form> 
+<script>
+    const form = document.getElementById('form');
+    const username = document.getElementById('name')
+    const password = document.getElementById('password')
+
+    form.addEventListener('submit', function(e) {
+    // Prevent default behavior
+    e.preventDefault();
+    // Create payload as new FormData object
+    const formdata = new FormData();
+    formdata.append("username", username.value.trim())
+    formdata.append("name", password.value.trim())
+    // Post the payload using Fetch
+
+    const res = Object.fromEntries(formdata)
+    const payload = JSON.stringify(res)
+
+
+    console.log(res)
+
+    fetch('https://httpbin.org/post', {
+    method: 'POST',
+    body: payload,
+    headers: {
+        'Content-Type': "application/json"
+    }
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+    })
+</script>
+  
+</body>
+</html> -->

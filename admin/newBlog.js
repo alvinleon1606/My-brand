@@ -12,8 +12,6 @@ const tagError = document.querySelector('.tag-error');
 const imageError = document.querySelector('.file-error');
 const descriptionError = document.querySelector('.description-error');
 
-
-
 let Blogs = [];
 
 const goToEditBlog = (id) => {
@@ -28,48 +26,64 @@ const deleteBlog = (id) => {
 };
 
 // display blogs
-const displayBlogs = () => {
+// display blogs
+const displayBlogs = async () => {
     const blogList = document.querySelector('.blogs-list');
-    if (Blogs.length === 0) {
-        blogList.innerHTML = 'You do not have blogs';
-        return;
-    }
-    blogList.innerHTML = "";
-    Blogs.forEach((blog) => {
-        const blogImage = (blog.image).split("\\").pop();
-        const blogsDiv = document.createElement('div');
-        blogsDiv.classList.add('single-bloggg');
-        blogsDiv.innerHTML = `
-            <div class="single-blog card">
-            <img src="../assets/${blogImage}" alt="" class="blog-img">
-            <div class="blog-title-description-likesComment">
-                <h2>${blog.title}</h2>
-                <div class="blog-desc-likes">
-                    <p>${blog.description}
-                    </p>
-                    <div class="likes-actions">
-                        <div class="likes">
-                            <div class="comment-like">
-                                <i class="fa-regular fa-heart"></i>
-                                <p>200+</p>
+    try {
+        const response = await fetch('http://localhost:8080/blogs/all');
+        if (!response.ok) {
+            throw new Error('Failed to fetch blogs');
+        }
+        const blogs = await response.json();
+
+        if (blogs.length === 0) {
+            blogList.innerHTML = 'You do not have blogs';
+            return;
+        }
+        blogList.innerHTML = "";
+        blogs?.data.forEach((blog) => {
+            const blogsDiv = document.createElement('div');
+            blogsDiv.classList.add('single-bloggg');
+            blogsDiv.innerHTML = `
+                <div class="single-blog card">
+                <img src="http://localhost:8080/${blog.image}" alt="" class="blog-img">
+                <div class="blog-title-description-likesComment">
+                        <h2>${blog.title}</h2>
+                        <div class="blog-desc-likes">
+                            <p>${blog.desc}</p>
+                            <div class="likes-actions">
+                                <div class="likes">
+                                    <div class="comment-like">
+                                        <i class="fa-regular fa-heart"></i>
+                                        <p>200+</p>
+                                    </div>
+                                    <div class="comment-like">
+                                        <i class="fa-regular fa-comments"></i>
+                                        <p>200+</p>
+                                    </div>
+                                </div>
+                                <div class="actions">
+                                    <i onclick="goToEditBlog(${blog._id})" class="fa-regular fa-pen-to-square"></i>
+                                    <i onclick="deleteBlog(${blog._id})" class="fa-regular fa-trash-can"></i>
+                                </div>
                             </div>
-                            <div class="comment-like">
-                                <i class="fa-regular fa-comments"></i>
-                                <p>200+</p>
-                            </div>
-                        </div>
-                        <div class="actions">
-                            <i onclick="goToEditBlog(${blog.id})" class="fa-regular fa-pen-to-square"></i>
-                            <i onclick="deleteBlog(${blog.id})" class="fa-regular fa-trash-can" ></i>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        `;
-        blogList.appendChild(blogsDiv);
-    });
+            `;
+            blogList.appendChild(blogsDiv);
+        });
+    } catch (error) {
+        console.error('Error fetching blogs:', error.message);
+        blogList.innerHTML = 'Failed to fetch blogs';
+    }
 };
+
+// Initial document load
+document.addEventListener('DOMContentLoaded', async () => {
+    await displayBlogs();
+});
+
 
 // Initial document load
 document.addEventListener('DOMContentLoaded', () => {
@@ -86,7 +100,7 @@ form.addEventListener('submit', (e) => {
 
     const title = titleField.value.trim();
     const category = categoryField.value.trim();
-    const image = imageField.files[0];
+    const image = imageField.files[0]; 
     const tag = tagField.value.trim();
     const description = descriptionField.value.trim();
 
@@ -109,13 +123,13 @@ form.addEventListener('submit', (e) => {
         categoryError.textContent = '';
     }
 
-    if (image === '') {
-        imageError.textContent = 'Blog image cannot be empty';
-        imageError.style.color = 'red';
-        isValid = false;
-    } else {
-        imageError.textContent = '';
-    }
+    // if (image === '') {
+    //     imageError.textContent = 'Blog image cannot be empty';
+    //     imageError.style.color = 'red';
+    //     isValid = false;
+    // } else {
+    //     imageError.textContent = '';
+    // }
 
     if (tag === '') {
         tagError.textContent = 'Tag cannot be empty';
@@ -137,23 +151,22 @@ form.addEventListener('submit', (e) => {
         descriptionError.textContent = '';
     }
 
-    if (!isValid) {
-        console.log("Invalid Input")
+    if (isValid) {
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("desc", description);
+        formData.append("category", category);
+        formData.append("tag", tag);
+        formData.append("image", image);
+
+
+        // const res = Object.fromEntries(formData)
+        // const payload = JSON.stringify(res)
+
+        CreateBlogs(formData);
+        // window.location.href = './Blogs.html';
     }
-    const formData = new FormData()
-    formData.append("title", title);
-    formData.append('category', category);
-    formData.append('tag', tag);
-    formData.append('desc', description);
-    formData.append('image', image);
-
-    // Console log the formData
-    console.log('FormData:', formData);
-
-    // Call the CreateBlogs function if the form data is valid
-    CreateBlogs(formData);
 });
-
 
 // Live validations as typing
 const descriptionRegex = /^.{10,300}$/;
@@ -171,26 +184,23 @@ descriptionField.addEventListener('input', (e) => {
 });
 
 // Create a blog
-const CreateBlogs = async(data) => {
+const CreateBlogs = async (formData) => {
+    try {
+        const response = await fetch('http://localhost:8080/blogs/new', {
+            method: 'POST',
+            body: formData,
+        });
 
-    console.log("Hellloooooooooooooooooooooooooooooooooooooooooooooo", data)
-    const userSession = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+        const data = await response.json();
+        console.log(data);
 
-   await axios.post('http://localhost:8080/blogs/new', formData, {
-        headers: {
-            Authorization: `Bearer ${userSession.token}`,
-            'Content-Type': 'multipart/form-data'
+        if (data) {
+            // alert("Blog created successfully !");
+            window.location.href = './Blogs.html';
+            displayBlogs();
         }
-    })
-    .then(response => {
-        console.log('Blog created successfully:', response.data);
-        alert('Blog created successfully !');
-        window.location.href = './Blogs.html';
-        displayBlogs();
-    })
-    .catch(error => {
-        console.error('Failed to create blog:', error);
-        alert('Failed to create blog. Please try again.');
-    });
+    } catch (error) {
+        console.log(error);
+    }
 };
 
