@@ -12,6 +12,8 @@ const tagError = document.querySelector('.tag-error');
 const imageError = document.querySelector('.file-error');
 const descriptionError = document.querySelector('.description-error');
 
+
+
 let Blogs = [];
 
 const goToEditBlog = (id) => {
@@ -84,7 +86,7 @@ form.addEventListener('submit', (e) => {
 
     const title = titleField.value.trim();
     const category = categoryField.value.trim();
-    const image = imageField.value.trim();
+    const image = imageField.files[0];
     const tag = tagField.value.trim();
     const description = descriptionField.value.trim();
 
@@ -135,21 +137,23 @@ form.addEventListener('submit', (e) => {
         descriptionError.textContent = '';
     }
 
-    if (isValid) {
-        const newBlog = {
-            id: Date.now(),
-            title: title,
-            image: image,
-            description: description,
-            tag: tag,
-            category: category,
-            likes: [],
-            comments: []
-        };
-        CreateBlogs(newBlog);
-        window.location.href = './Blogs.html';
+    if (!isValid) {
+        console.log("Invalid Input")
     }
+    const formData = new FormData()
+    formData.append("title", title);
+    formData.append('category', category);
+    formData.append('tag', tag);
+    formData.append('desc', description);
+    formData.append('image', image);
+
+    // Console log the formData
+    console.log('FormData:', formData);
+
+    // Call the CreateBlogs function if the form data is valid
+    CreateBlogs(formData);
 });
+
 
 // Live validations as typing
 const descriptionRegex = /^.{10,300}$/;
@@ -167,12 +171,26 @@ descriptionField.addEventListener('input', (e) => {
 });
 
 // Create a blog
-const CreateBlogs = (newBlog) => {
-    Blogs.push(newBlog);
-    const yes = localStorage.setItem('Blogs', JSON.stringify(Blogs));
-    if(yes){
-        alert("Blog created successfully !")
+const CreateBlogs = async(data) => {
+
+    console.log("Hellloooooooooooooooooooooooooooooooooooooooooooooo", data)
+    const userSession = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+
+   await axios.post('http://localhost:8080/blogs/new', formData, {
+        headers: {
+            Authorization: `Bearer ${userSession.token}`,
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+    .then(response => {
+        console.log('Blog created successfully:', response.data);
+        alert('Blog created successfully !');
         window.location.href = './Blogs.html';
         displayBlogs();
-    }
+    })
+    .catch(error => {
+        console.error('Failed to create blog:', error);
+        alert('Failed to create blog. Please try again.');
+    });
 };
+
