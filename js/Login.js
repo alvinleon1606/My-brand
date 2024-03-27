@@ -11,22 +11,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
         try {
             const response = await axios.post('http://localhost:5500/login', { email, password });
-
+        
             if (response.status === 200) {
-                const user = response.data;
+                const user = response.data.loggedUser;
+                console.log(user)
                 localStorage.setItem('LoggedUserInfo', JSON.stringify(user));
-                if (user.email === 'leonndayishimiye10@gmail.com' && user.role ==='admin') {
+                if (user.email === 'leonndayishimiye10@gmail.com' && user.role === "admin") {
                     window.location.href = './admin/Home.html';
                 } else {
+                    alert(response.data)
                     window.location.href = './index.html';
                 }
             } else {
-                alert('Invalid email or password.');
+                // Handle other status codes
+                alert('Failed to login. Please try again.');
             }
         } catch (error) {
-            console.log('Login failed', error);
-            alert("Enable to Login, check internet");
+            // Handle network errors or other exceptions
+            console.error('Login failed', error);
+            alert('An error occurred during login.');
         }
+        
     });
 
     // Get user session from localStorage after DOMContentLoaded
