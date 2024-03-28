@@ -33,20 +33,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         
     });
-
-    // Get user session from localStorage after DOMContentLoaded
-    const loggedInUserSession = JSON.parse(localStorage.getItem('LoggedUserInfo'));
-    if (loggedInUserSession && loggedInUserSession.user) {
-        document.querySelector('.logout').style.display = 'block';
-        document.querySelector('.login').style.display = 'none';
-    } else {
-        document.querySelector('.login').style.display = 'block';
-        document.querySelector('.logout').style.display = 'none';
-    }
-
-    const submenus = document.querySelector('.sub-menu');
-
-    document.querySelector('.loggedUserIcon').addEventListener('click', () => {
-        submenus.classList.toggle('open');
-    });
 });
