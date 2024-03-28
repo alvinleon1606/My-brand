@@ -1,19 +1,26 @@
 document.addEventListener('DOMContentLoaded', function() {
     const projectsList = document.querySelector('.projects-list');
 
-    const displayProjects = () => {
+    const displayProjects = async() => {
         projectsList.innerHTML = '';
 
         // Fetch projects from localStorage
-        let projects = JSON.parse(localStorage.getItem('Projects')) || [];
-        projects.forEach(project => {
+        try {
+            const response = await fetch('http://localhost:8080/projects/all');
+            if (!response.ok) {
+                throw new Error('Failed to fetch projects');
+            }
+            const projects = await response.json();
+            
+        
+            projects?.data.forEach(project => {
             // Create elements
             const singleProject = document.createElement('div');
             singleProject.classList.add('single-project', 'card');
-            singleProject.dataset.id = project.projectId;
+            singleProject.dataset.id = project._id;
 
             const img = document.createElement('img');
-            img.src = project.image;
+            img.src = `http://localhost:8080/${project.image}`
             img.alt = project.title;
             img.classList.add('project-img');
 
@@ -64,7 +71,10 @@ document.addEventListener('DOMContentLoaded', function() {
             singleProject.appendChild(projectTitleDescriptionLikesComment);
 
             projectsList.appendChild(singleProject);
-        });
+        })
+    } catch (error) {
+        console.error('Error fetching projects:', error);
+    }
     }
 
     displayProjects();
