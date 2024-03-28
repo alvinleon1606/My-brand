@@ -90,7 +90,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
 
                 const updatedBlog = await response.json();
-                console.log("Helloooooooooooooooooooooooooooooooooooooooooooo",updatedBlog)
                 document.getElementById('likeNumber').innerText = updatedBlog?.foundBlog.likes.length;
             } catch (error) {
                 console.error('Error liking blog:', error);

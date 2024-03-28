@@ -1,5 +1,5 @@
+const form = document.getElementById('form');
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('form');
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -22,13 +22,16 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         try {
-            const response = await axios.post('http://localhost:8080/users/register', userData, {
+            const response = await fetch('http://localhost:8080/users/register', {
+                method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                body: JSON.stringify(userData)
             });
+            console.log("registreeddddddddddddddddddddddddddddddddddddd", response)
             
-            if (response.status===200) {
+            if (response.ok) {
                 alert('Well Registered')
                 window.location.href = './Login.html'; 
             } else {
@@ -36,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         } catch (error) {
             console.error(error);
-        }
+        }        
         
     });
 });

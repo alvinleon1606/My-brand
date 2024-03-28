@@ -20,16 +20,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (userEmail === 'leonndayishimiye10@gmail.com') {
                     window.location.href = './admin/Home.html';
                 } else {
-                    alert(loggedInUserSession.user.email)
                     window.location.href = './index.html';
                 }
             } else {
                 alert('Failed to login. Please try again.');
             }
-            console.log(response.data)
         } catch (error) {
-            console.error('Login failed', error);
-            alert('An error occurred during login.');
+            alert('Ckeck both Email and password.');
         }
         
     });
