@@ -53,6 +53,51 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
         `;
 
+         // when comment focused by unregistered visitor
+        const Comment = document.querySelector('.post-comment');
+        Comment.addEventListener('focus', () =>{
+            const loggedInUserSession = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+            if (!loggedInUserSession) {
+                sessionStorage.setItem('currentUrl', window.location.href)
+                window.location.href = './Login.html'
+            }
+        });
+
+
+        // Like a Blog
+        const likeButton = document.querySelector('#likePost');
+        likeButton.addEventListener('click', async () => {
+            const user = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+            if (!user) {
+                sessionStorage.setItem('currentUrl', window.location.href);
+                window.location.href = './Login.html';
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:8080/blogs/blog/like/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: user?.user.email,
+                    }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to like blog');
+                }
+
+                const updatedBlog = await response.json();
+                console.log("Helloooooooooooooooooooooooooooooooooooooooooooo",updatedBlog)
+                document.getElementById('likeNumber').innerText = updatedBlog?.foundBlog.likes.length;
+            } catch (error) {
+                console.error('Error liking blog:', error);
+            }
+        });
+
+
         // Display existing comments
         displayComments(blog.userInfo.comments);
 
