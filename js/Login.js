@@ -1,9 +1,8 @@
 const logoutButton = document.querySelector('.logout');
 
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('login-form');
 
-    form.addEventListener('submit', async function (e) {
+    document.getElementById('login-form-for-user').addEventListener('submit', async(e) => {
         e.preventDefault();
 
         const email = document.getElementById('email').value;
@@ -15,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (response.status === 200) {
                 const user = response.data;
                 localStorage.setItem('LoggedUserInfo', JSON.stringify(user));
+                localStorage.setItem('isLoggedIn', JSON.stringify(true));
                 const loggedInUserSession = JSON.parse(localStorage.getItem('LoggedUserInfo'));
                 const userEmail = loggedInUserSession.user.email;
                 if (userEmail === 'leonndayishimiye10@gmail.com') {

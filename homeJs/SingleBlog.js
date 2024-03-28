@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <i class="fa-solid fa-grip-lines-vertical" style="color: lightgray;"></i>
                     <p style="color: white;">${blog?.userInfo.category}</p>
                 </div>
-                <div class="date" style="color: lightgray;">${formatDate(new Date(blog.createdAt))}</div>
+                <div class="date" style="color: lightgray;">${formatDate(new Date(blog?.userInfo.createdAt))}</div>
             </div>
             <img src="http://localhost:8080/${blog?.userInfo.image}" alt="">
             <div class="blog-title-and-desc">
