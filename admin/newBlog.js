@@ -1,4 +1,4 @@
-const form = document.querySelector('.new-blog-form');
+// const form = document.getElementById('new-blog-form-creation');
 const titleField = document.getElementById('title');
 const categoryField = document.getElementById('category');
 const imageField = document.getElementById('blog-image');
@@ -19,13 +19,30 @@ const goToEditBlog = (id) => {
 };
 
 // delete blog function
-const deleteBlog = (id) => {
-    Blogs = Blogs.filter((blog) => blog.id !== id);
-    localStorage.setItem('Blogs', JSON.stringify(Blogs));
-    displayBlogs();
+const deleteBlog = async (id) => {
+    const userLog = localStorage.getItem('LoggedUserInfo');
+    const token = userLog?.token
+    try {
+        const response = await fetch(`http://localhost:8080/blogs/delete/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                // 'Authorization': `Bearer ${token}`
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to delete blog');
+        }
+
+        console.log('Blog deleted successfully');
+        displayBlogs();
+    } catch (error) {
+        console.error('Error deleting blog:', error);
+    }
 };
 
-// display blogs
+
 // display blogs
 const displayBlogs = async () => {
     const blogList = document.querySelector('.blogs-list');
@@ -63,14 +80,24 @@ const displayBlogs = async () => {
                                     </div>
                                 </div>
                                 <div class="actions">
-                                    <i onclick="goToEditBlog(${blog._id})" class="fa-regular fa-pen-to-square"></i>
-                                    <i onclick="deleteBlog(${blog._id})" class="fa-regular fa-trash-can"></i>
+                                <i class="fa-regular fa-pen-to-square edit-blog" data-blog-id="${blog._id}"></i>
+                                <i class="fa-regular fa-trash-can delete-blog" data-blog-id="${blog._id}"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             `;
+            const editIcon = blogsDiv.querySelector('.edit-blog');
+            const deleteIcon = blogsDiv.querySelector('.delete-blog');
+        
+            editIcon.addEventListener('click', () => {
+                goToEditBlog(blog._id);
+            });
+        
+            deleteIcon.addEventListener('click', () => {
+                deleteBlog(blog._id);
+            });
             blogList.appendChild(blogsDiv);
         });
     } catch (error) {
@@ -95,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Create a blog
-form.addEventListener('submit', (e) => {
+document.getElementById('new-blog-form-creation').addEventListener('submit', (e) => {
     e.preventDefault();
 
     const title = titleField.value.trim();
@@ -122,14 +149,6 @@ form.addEventListener('submit', (e) => {
     } else {
         categoryError.textContent = '';
     }
-
-    // if (image === '') {
-    //     imageError.textContent = 'Blog image cannot be empty';
-    //     imageError.style.color = 'red';
-    //     isValid = false;
-    // } else {
-    //     imageError.textContent = '';
-    // }
 
     if (tag === '') {
         tagError.textContent = 'Tag cannot be empty';
@@ -164,7 +183,6 @@ form.addEventListener('submit', (e) => {
         // const payload = JSON.stringify(res)
 
         CreateBlogs(formData);
-        // window.location.href = './Blogs.html';
     }
 });
 
@@ -195,7 +213,7 @@ const CreateBlogs = async (formData) => {
         console.log(data);
 
         if (data) {
-            // alert("Blog created successfully !");
+            alert("Blog created successfully !");
             window.location.href = './Blogs.html';
             displayBlogs();
         }
