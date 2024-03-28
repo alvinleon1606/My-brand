@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const id = urlParams.get('id');
 
     const singleBlogCard = document.querySelector('.single-blog-card');
+    const RecentCommentsDiv = document.querySelector('.blog-comments');
 
     try {
         const response = await fetch(`http://localhost:8080/blogs/${id}`);
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         const blog = await response.json();
 
+        // Display the blog content
         singleBlogCard.innerHTML = `
             <div class="category-date">
                 <div class="categ">
@@ -38,21 +40,94 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <p style="color:white">Comments(<h3 id="commentsNumber">${blog?.userInfo.comments.length}</h3>):</p>
             </div>
             <div class="blog-comments">
+                ${blog?.userInfo.comments.length > 0 ? '' : 'No comments yet.'}
             </div>
             <div class="comment-form">
                 <form action="" id='comment-form'>
-                    <input type="number" hidden value=${blog?.userInfo._id} id="blogToComment">
+                    <input type="text" hidden value=${blog?.userInfo._id} id="blogToComment">
                     <div class="comment-textarea">
                         <textarea name="comment" id="" rows="5" placeholder="Type in Comment ..." class="post-comment"></textarea>
                     </div>
-                    <button type="submit">Send</button>
+                    <button type="submit">Comment</button>
                 </form>
             </div>
         `;
+
+        // Display existing comments
+        displayComments(blog.userInfo.comments);
+
+        // Set up event listener for submitting new comment
+        const form = document.getElementById('comment-form');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            let user = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+            const comment = document.querySelector('.post-comment').value;
+
+            // Create a new comment object
+            const newComment = {
+                posterNames: user?.user.secondName,
+                email: user?.user.email,
+                comment: comment
+            };
+
+            // Save the new comment
+            try {
+                const response = await fetch(`http://localhost:8080/blogs/blog/comment/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(newComment)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to add comment');
+                }
+
+                alert('Comment added successfully');
+                // Refresh the comments list after adding a new comment
+                const updatedBlogResponse = await fetch(`http://localhost:8080/blogs/${id}`);
+                if (!updatedBlogResponse.ok) {
+                    throw new Error('Failed to fetch updated blog');
+                }
+                const updatedBlog = await updatedBlogResponse.json();
+                displayComments(updatedBlog.userInfo.comments);
+            } catch (error) {
+                console.error('Error adding comment:', error);
+            }
+
+            // Clear the comment input field
+            document.querySelector('.post-comment').value = "";
+        });
+
     } catch (error) {
         console.error('Error fetching blog:', error);
     }
 });
+
+const displayComments = (comments) => {
+    const RecentCommentsDiv = document.querySelector('.blog-comments');
+    RecentCommentsDiv.innerHTML = '';
+
+    if (comments.length === 0) {
+        RecentCommentsDiv.innerHTML = 'No comments yet.';
+        return;
+    }
+
+    comments.forEach((comment) => {
+        const CommentsListDiv = document.createElement('div');
+        CommentsListDiv.classList.add('comments');
+        CommentsListDiv.innerHTML = `
+            <img src="./assets/profile.webp" alt="" class="comment-person">
+            <div class="names-comment">
+                <h4>${comment.posterNames}</h4>
+                <p>${comment.comment}</p>
+            </div>
+        `;
+        RecentCommentsDiv.appendChild(CommentsListDiv);
+    });
+};
 
 const formatDate = (date) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
