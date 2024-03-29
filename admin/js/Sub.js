@@ -1,8 +1,19 @@
-document.addEventListener('DOMContentLoaded', () =>{
+document.addEventListener('DOMContentLoaded', async() =>{
     const susbList = document.getElementById('users-list');
     let Subscribers = JSON.parse(localStorage.getItem("Subscribers")) || [];
 
-    //
+
+        // Fetch subscribers
+    try {
+        const subsResponse = await fetch('http://localhost:8080/subscribers/all');
+        if (!subsResponse.ok) {
+            throw new Error('Failed to fetch subscribers');
+     }
+    const Subscribers = await subsResponse.json();
+    
+     document.getElementById('subs').innerHTML = subs?.Subs.length;
+        
+
     if (Subscribers.length=== 0) {
         susbList.innerHTML = 'No one Subscribed so far !'
     }
@@ -51,4 +62,8 @@ document.addEventListener('DOMContentLoaded', () =>{
     table.appendChild(tbody);
     tableContainer.appendChild(table)
     susbList.appendChild(tableContainer)
+
+} catch (error) {
+        console.error('Failed to fetch subscribers:', error);
+    }
 })
