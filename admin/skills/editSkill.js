@@ -1,53 +1,69 @@
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('my-form');
-        const titleInput = document.getElementById('title');
-        const descInput = document.getElementById('desc');
-        const iconInput = document.getElementById('icon');
-        const percentInput = document.getElementById('percent');
+document.addEventListener('DOMContentLoaded', async function() {
+    const form = document.getElementById('my-form');
+    const titleInput = document.getElementById('title');
+    const descInput = document.getElementById('desc');
+    const percentInput = document.getElementById('percent');
+    
 
-        function getSkillIdFromUrl() {
-            const queryParams = new URLSearchParams(window.location.search);
-            return parseInt(queryParams.get('id'));
+    function getSkillIdFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('id');
+    }
+
+    const getSkillDetails = async(skillId) => {
+        try {
+            const response = await fetch(`http://localhost:8080/skills/${skillId}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch skill details');
+            }
+            const data = await response.json();
+            return data.data; 
+        } catch (error) {
+            console.error('Error fetching skill details:', error);
+            return null;
         }
+    }
+    
 
-        function getSkillDetails(skillId) {
-            const skills = JSON.parse(localStorage.getItem('skills')) || [];
-            return skills.find(skill => skill.id === skillId);
+    function populateFormFields(skill) {
+        titleInput.value = skill.title;
+        descInput.value = skill.description;
+        percentInput.value = skill.percent;
+    }
+
+    async function updateSkill(updatedSkill) {
+        try {
+            const response = await fetch(`http://localhost:8080/skills/edit/${skillId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: updatedSkill
+            });
+            if (!response.ok) {
+                throw new Error('Failed to update skill');
+            }
+            alert('Skill updated successfully');
+
+        } catch (error) {
+            console.error('Error updating skill:', error);
+            alert('Failed to update skill');
         }
+    }
 
-        function populateFormFields(skill) {
-            titleInput.value = skill.title;
-            descInput.value = skill.desc;
-            percentInput.value = skill.percent;
-        }
+    const skillId = getSkillIdFromUrl();
+    const skill = await getSkillDetails(skillId);
 
-        const skillId = getSkillIdFromUrl();
+    populateFormFields(skill);
 
-        const skill = getSkillDetails(skillId);
-
-        populateFormFields(skill);
-
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const updatedSkill = {
-                id: skillId,
-                title: titleInput.value,
-                desc: descInput.value,
-                percent: percentInput.value
-            };
-
-                let skills = JSON.parse(localStorage.getItem('skills')) || [];
-                const index = skills.findIndex(skill => skill.id === updatedSkill.id);
-
-                if (index !== -1) {
-                    skills[index] = updatedSkill;
-                    localStorage.setItem('skills', JSON.stringify(skills));
-                    form.reset()
-                } else {
-                    console.error('Skill not found for update');
-                }
-
-                alert('Updated Skill:', updatedSkill);
-        });
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        const formData = new FormData();
+        formData.append('title', titleInput.value);
+        formData.append('description', descInput.value);
+        formData.append('percent', percentInput.value);
+    
+        updateSkill(formData);
     });
+});
