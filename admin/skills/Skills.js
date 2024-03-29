@@ -1,18 +1,32 @@
 document.addEventListener('DOMContentLoaded', function() {
     const skillsList = document.querySelector('.skills-list');
 
-    // Retrieve skills from local storage
-    let skills = JSON.parse(localStorage.getItem('skills')) || [];
+    async function fetchSkills() {
+        try {
+            const response = await fetch('http://localhost:8080/skills/all');
+            if (!response.ok) {
+                throw new Error('Failed to fetch skills');
+            }
+            const skills = await response.json();
+            return skills;
+        } catch (error) {
+            console.error('Error fetching skills:', error);
+            return [];
+        }
+    }
 
-    // Function to create and display skills
-    function displaySkills() {
+    async function displaySkills() {
+        // Fetch skills from the server
+        const skills = await fetchSkills();
+
         skillsList.innerHTML = '';
 
         // Iterate over each skill and create HTML elements dynamically
-        skills.forEach(skill => {
+        skills?.data.forEach(skill => {
             // Create elements for the skill
             const singleSkill = document.createElement('div');
             singleSkill.classList.add('single-skills', 'card');
+            singleSkill.dataset.id = skill._id;
 
             const skillTitleDescription = document.createElement('div');
             skillTitleDescription.classList.add('skill-title-description');
@@ -24,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
             skillDesc.classList.add('skill-desc');
 
             const p = document.createElement('p');
-            p.textContent = skill.desc;
+            p.textContent = skill.description;
 
             const skillActions = document.createElement('div');
             skillActions.classList.add('skill-actions');
@@ -35,16 +49,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const trashCanIcon = document.createElement('i');
             trashCanIcon.classList.add('fa-regular', 'fa-trash-can');
             trashCanIcon.addEventListener('click', function() {
-                deleteSkill(skill.id);
+                deleteSkill(skill._id);
             });
 
-
             const editLink = document.createElement('a');
-            editLink.href = `./editSkills.html?id=${skill.id}`;
+            editLink.href = `./editSkills.html?id=${skill._id}`;
             const penToSquareIcon = document.createElement('i');
             penToSquareIcon.classList.add('fa-regular', 'fa-pen-to-square');
 
-            // Append elements to their  parents
+            // Append elements to their parents
             actions.appendChild(trashCanIcon);
             editLink.appendChild(penToSquareIcon);
             actions.appendChild(editLink);
@@ -60,19 +73,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
             skillsList.appendChild(singleSkill);
         });
-        
-        function deleteSkill(skillId) {
-            let skills = JSON.parse(localStorage.getItem('skills')) || [];
-            const index = skills.findIndex(skill => skill.id === skillId);
-            if (index !== -1) {
-                skills.splice(index, 1); 
-                localStorage.setItem('skills', JSON.stringify(skills));
-            } else {
-                console.error('Skill not found for deletion');
-            }
-        }
-
     }
+
+    async function deleteSkill(id) {
+        try {
+            const response = await fetch(`http://localhost:8080/skills/delete/${id}`, {
+                method: 'DELETE',
+            });
+            if (!response.ok) {
+                throw new Error('Failed to delete skill');
+            }
+            const data = await response.json();
+            alert('Skill deleted successfully');
+            const skillCardElement = document.querySelector(`.single-skills[data-id="${id}"]`);
+            if (skillCardElement) {
+                skillCardElement.remove();
+            }
+        } catch (error) {
+            console.error('Error deleting skill:', error);
+            alert('Failed to delete skill');
+        }
+    }
+    
 
     displaySkills();
 });
+
