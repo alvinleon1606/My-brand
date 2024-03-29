@@ -1,50 +1,79 @@
-document.addEventListener('DOMContentLoaded', () =>{
+document.addEventListener('DOMContentLoaded', async () => {
     const usersList = document.getElementById('recent-users-list');
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-    const Subs = JSON.parse(localStorage.getItem("Subscribers")) || [];
-    const messages = JSON.parse(localStorage.getItem("Messages")) || [];
 
-    document.getElementById('subs').innerHTML = Subs.length;
-    document.getElementById('msg').innerHTML = messages.length;
-    document.getElementById('users').innerHTML = users.length;
+    // Fetch subscribers
+    try {
+        const subsResponse = await fetch('http://localhost:8080/subscribers/all');
+        if (!subsResponse.ok) {
+            throw new Error('Failed to fetch subscribers');
+        }
+        const subs = await subsResponse.json();
 
-    //
-    if (users.length=== 0) {
-        usersList.innerHTML = 'No one Recently Registered so far !'
+        document.getElementById('subs').innerHTML = subs?.Subs.length;
+    } catch (error) {
+        console.error('Failed to fetch subscribers:', error);
     }
-    usersList.innerHTML = ""
-    // create table
-    const table = document.createElement('table')
-    const thead = document.createElement('thead')
 
-    thead.innerHTML = `
-    <tr>
-        <th>Names</th>
-        <th>Email</th>
-        <th>Telephone</th>
-    </tr>
-    `
-    table.appendChild(thead);
+    // Fetch messages
+    try {
+        const messagesResponse = await fetch('http://localhost:8080/messages/all');
+        if (!messagesResponse.ok) {
+            throw new Error('Failed to fetch messages');
+        }
+        const messages = await messagesResponse.json();
 
-    // create table body
-    const tbody = document.createElement('tbody')
+        document.getElementById('msg').innerHTML = messages?.content.length;
+    } catch (error) {
+        console.error('Failed to fetch messages:', error);
+    }
 
-    // Table container
-    const tableContainer = document.createElement('div');
-    tableContainer.classList.add('table-container');
+    // Fetch users
+    try {
+        const usersResponse = await fetch('http://localhost:8080/users');
+        if (!usersResponse.ok) {
+            throw new Error('Failed to fetch users');
+        }
+        const users = await usersResponse.json();
 
-    // display each sub
-    users.forEach((user) =>{
-        const row = document.createElement('tr');
+        document.getElementById('users').innerHTML = users?.data.length;
 
-        row.innerHTML = `
-            <td>${user.names}</td>
-            <td>${user.email}</td>
-            <td>${user.phone}</td>
+        if (users?.data.length === 0) {
+            usersList.innerHTML = 'No one has registered recently!';
+            return;
+        }
+
+        // Create a table to display users
+        usersList.innerHTML = '';
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        thead.innerHTML = `
+            <tr>
+                <th>Names</th>
+                <th>Email</th>
+                <th>Telephone</th>
+            </tr>
         `;
-        tbody.appendChild(row);
-    })
-    table.appendChild(tbody);
-    tableContainer.appendChild(table)
-    usersList.appendChild(tableContainer)
-})
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+        users?.data.forEach((user) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${user.firstName+" "+user.secondName}</td>
+                <td>${user.email}</td>
+                <td>${user.telephone}</td>
+            `;
+            tbody.appendChild(row);
+        });
+        table.appendChild(tbody);
+
+        const tableContainer = document.createElement('div');
+        tableContainer.classList.add('table-container');
+        tableContainer.appendChild(table);
+        usersList.appendChild(tableContainer);
+
+    } catch (error) {
+        console.error('Failed to fetch users:', error);
+        usersList.innerHTML = 'Failed to fetch users';
+    }
+});
