@@ -1,69 +1,72 @@
 document.addEventListener('DOMContentLoaded', async() =>{
-    const susbList = document.getElementById('users-list');
-    let Subscribers = JSON.parse(localStorage.getItem("Subscribers")) || [];
+    const usersList = document.getElementById('users-list');
 
-
-        // Fetch subscribers
     try {
         const subsResponse = await fetch('http://localhost:8080/subscribers/all');
         if (!subsResponse.ok) {
             throw new Error('Failed to fetch subscribers');
-     }
-    const Subscribers = await subsResponse.json();
-    
-     document.getElementById('subs').innerHTML = subs?.Subs.length;
-        
+        }
 
-    if (Subscribers.length=== 0) {
-        susbList.innerHTML = 'No one Subscribed so far !'
-    }
-    susbList.innerHTML = ""
+        const subscribers = await subsResponse.json();
+        console.log("Subscribers:", subscribers.Subs);
 
-    // create table
-    const table = document.createElement('table')
-    const thead = document.createElement('thead')
+        document.getElementById('subs').innerHTML = subscribers?.Subs.length;
 
-    thead.innerHTML = `
-    <tr>
-        <th>Email</th>
-        <th>Subscribed Date</th>
-        <th>Action</th>
-    </tr>
-    `
-    table.appendChild(thead);
+        if (subscribers.Subs.length === 0) {
+            usersList.innerHTML = 'No one has subscribed yet!';
+            return;
+        }
 
-    // create table body
-    const tbody = document.createElement('tbody')
+        // Create table
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
 
-    // Table container
-    const tableContainer = document.createElement('div');
-    tableContainer.classList.add('table-container');
-
-    // display each sub
-    Subscribers.forEach((sub) =>{
-        const row = document.createElement('tr');
-
-        row.innerHTML = `
-            <td>${sub.subEmail}</td>
-            <td>${sub.subDate}</td>
-            <td><button class="delete-btn" data-index="${sub.subDate}">Delete</button></td>
+        thead.innerHTML = `
+            <tr>
+                <th>Email</th>
+                <th>Subscribed Date</th>
+                <th>Action</th>
+            </tr>
         `;
-        const deleteButton = row.querySelector('.delete-btn');
-        deleteButton.addEventListener('click', () =>{
-            const index = parseInt(deleteButton.getAttribute('data-index'));
-            const su = Subscribers=Subscribers.filter((su) => su.subDate !==index)
-            if(su && confirm("are you?")){
-                localStorage.setItem('Subscribers', JSON.stringify(Subscribers))
-                row.remove()
-            }
-        })
-        tbody.appendChild(row);
-    })
-    table.appendChild(tbody);
-    tableContainer.appendChild(table)
-    susbList.appendChild(tableContainer)
+        table.appendChild(thead);
 
-} catch (error) {
+        // Create table body
+        const tbody = document.createElement('tbody');
+
+        subscribers.Subs.forEach((sub) => {
+            const row = document.createElement('tr');
+
+            row.innerHTML = `
+                <td>${sub.email}</td>
+                <td>${new Date(sub.subDate).toLocaleString()}</td>
+                <td><button class="delete-btn" data-index="${sub._id}">Delete</button></td>
+            `;
+
+            const deleteButton = row.querySelector('.delete-btn');
+            deleteButton.addEventListener('click', async () => {
+                try {
+                    const response = await fetch(`http://localhost:8080/subscribers/delete/${sub._id}`, {
+                        method: 'DELETE',
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Failed to delete subscriber');
+                    }
+
+                    // Remove the row from the table
+                    row.remove();
+                } catch (error) {
+                    console.error('Failed to delete subscriber:', error);
+                }
+            });
+
+            tbody.appendChild(row);
+        });
+
+        table.appendChild(tbody);
+        usersList.appendChild(table);
+
+    } catch (error) {
         console.error('Failed to fetch subscribers:', error);
     }
-})
+});
