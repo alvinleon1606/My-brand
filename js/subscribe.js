@@ -1,38 +1,27 @@
-document.addEventListener('DOMContentLoaded', () =>{
+document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('footer-subscribe');
-    const subScribers = JSON.parse(localStorage.getItem('Subscribers')) || []
 
-
-    form.addEventListener('submit', ()=> {
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
         const email = document.getElementById('subscribe-email').value;
 
-        // check if already subscribed
-        const alreadySub = subScribers.find((sub) => sub.subEmail === email );
-        if (alreadySub) {
-            document.querySelector('.email-error').innerHTML="You Have Already Subscribed !";
-        }
-        else{
-            //Subscribution object
-            const newSubscribution = {
-                subEmail: email,
-                subDate : Date.now()
+        try {
+            const response = await fetch('http://localhost:8080/subscribers/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email })
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to subscribe');
             }
 
-            // save
-            subScribers.push(newSubscribution);
-            localStorage.setItem("Subscribers", JSON.stringify(subScribers))
-
-             setTimeout(() =>{
-                document.querySelector('.email-error').innerHTML="Subscribution Successfully !";
-                document.querySelector('#comfirm-notify').style.display="block";
-            }, 3000);
-
-            setTimeout(() =>{
-                document.querySelector('.email-error').innerHTML="";
-                document.querySelector('#comfirm-notify').style.display="none";
-            }, 6000);
-
-
+            document.querySelector('.email-error').innerHTML = 'Subscription Successful!';
+        } catch (error) {
+            console.error('Failed to subscribe:', error);
+            document.querySelector('.email-error').innerHTML = 'Subscription Failed!';
         }
-    })
-})
+    });
+});
