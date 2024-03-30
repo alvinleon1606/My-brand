@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     const skillsList = document.querySelector('.skills-list');
 
+    // token
+    const userLog = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+    const token = userLog?.token
+
     async function fetchSkills() {
         try {
             const response = await fetch('http://localhost:8080/skills/all');
@@ -79,6 +83,9 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const response = await fetch(`http://localhost:8080/skills/delete/${id}`, {
                 method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
             });
             if (!response.ok) {
                 throw new Error('Failed to delete skill');

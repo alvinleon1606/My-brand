@@ -1,5 +1,9 @@
 const form = document.getElementById('create-project-form');
 
+// Token ..............
+const userLog = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+const token = userLog?.token
+
 const projectSubmit = async (e) => {
     e.preventDefault();
 
@@ -17,12 +21,15 @@ const projectSubmit = async (e) => {
         try {
             const response = await fetch('http://localhost:8080/projects/add', {
                 method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
                 body: formData
             });
 
             if (response.ok) {
                 alert('New project added successfully!');
-                window.location.href = `http://127.0.0.1:5500/admin/projects/projects.html`
+                window.location.href = `./projects.html`
                 form.reset();
             } else {
                 throw new Error('Failed to add project');

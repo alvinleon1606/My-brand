@@ -1,16 +1,21 @@
 document.addEventListener('DOMContentLoaded', async() =>{
     const usersList = document.getElementById('users-list');
 
+    const userLog = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+    const token = userLog?.token
+
     try {
-        const subsResponse = await fetch('http://localhost:8080/subscribers/all');
+        const subsResponse = await fetch('http://localhost:8080/subscribers/all', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        });
         if (!subsResponse.ok) {
             throw new Error('Failed to fetch subscribers');
         }
 
         const subscribers = await subsResponse.json();
-        console.log("Subscribers:", subscribers.Subs);
-
-        document.getElementById('subs').innerHTML = subscribers?.Subs.length;
 
         if (subscribers.Subs.length === 0) {
             usersList.innerHTML = 'No one has subscribed yet!';
@@ -38,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async() =>{
 
             row.innerHTML = `
                 <td>${sub.email}</td>
-                <td>${new Date(sub.subDate).toLocaleString()}</td>
+                <td>${new Date(sub.subAt).toLocaleString()}</td>
                 <td><button class="delete-btn" data-index="${sub._id}">Delete</button></td>
             `;
 
@@ -47,6 +52,9 @@ document.addEventListener('DOMContentLoaded', async() =>{
                 try {
                     const response = await fetch(`http://localhost:8080/subscribers/delete/${sub._id}`, {
                         method: 'DELETE',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                        },
                     });
 
                     if (!response.ok) {

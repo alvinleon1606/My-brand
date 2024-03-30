@@ -1,12 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
     const projectsList = document.querySelector('.projects-list');
 
+    // token
+    const userLog = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+    const token = userLog?.token
+
     const displayProjects = async() => {
         projectsList.innerHTML = '';
 
         // Fetch projects from localStorage
         try {
-            const response = await fetch('http://localhost:8080/projects/all');
+            const response = await fetch('http://localhost:8080/projects/all', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
             if (!response.ok) {
                 throw new Error('Failed to fetch projects');
             }
@@ -82,6 +91,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function deleteProject(id) {
         fetch(`http://localhost:8080/projects/remove/${id}`, {
             method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
         })
         .then(response => {
             if (!response.ok) {

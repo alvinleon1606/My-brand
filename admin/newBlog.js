@@ -1,4 +1,3 @@
-// const form = document.getElementById('new-blog-form-creation');
 const titleField = document.getElementById('title');
 const categoryField = document.getElementById('category');
 const imageField = document.getElementById('blog-image');
@@ -14,6 +13,9 @@ const descriptionError = document.querySelector('.description-error');
 
 let Blogs = [];
 
+const userLog = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+const token = userLog?.token
+
 const goToEditBlog = (id) => {
     window.location.href = `editBlog.html?id=${id}`;
 };
@@ -27,7 +29,7 @@ const deleteBlog = async (id) => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                // 'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`
             },
         });
 
@@ -206,6 +208,9 @@ const CreateBlogs = async (formData) => {
     try {
         const response = await fetch('http://localhost:8080/blogs/new', {
             method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
             body: formData,
         });
 
@@ -213,7 +218,7 @@ const CreateBlogs = async (formData) => {
         console.log(data);
 
         if (data) {
-            alert("Blog created successfully !");
+            alert(token);
             window.location.href = './Blogs.html';
             displayBlogs();
         }

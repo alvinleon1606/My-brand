@@ -1,8 +1,16 @@
 document.addEventListener('DOMContentLoaded', async() =>{
     const usersList = document.getElementById('users-list');
+    // token ...............
+    const userLog = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+    const token = userLog?.token
 
     try {
-        const usersResponse = await fetch('http://localhost:8080/users');
+        const usersResponse = await fetch('http://localhost:8080/users', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        });
         if (!usersResponse.ok) {
             throw new Error('Failed to fetch users');
         }
@@ -59,6 +67,9 @@ document.addEventListener('DOMContentLoaded', async() =>{
             try {
                 const response = await fetch(`http://localhost:8080/users/delete/${userId}`, {
                     method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    },
                 });
                 if (!response.ok) {
                     throw new Error('Failed to delete user');

@@ -2,6 +2,9 @@
 const singleMessage = document.querySelector('.message');
 const visitorCard = document.querySelector('.visitor-card');
 
+const userLog = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+const token = userLog?.token
+
 
 visitorCard.addEventListener('click', () =>{
     singleMessage.classList.toggle('active')
@@ -13,7 +16,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const eachUserMessage = document.getElementById('Each-User-Message');
 
     try {
-        const response = await fetch('http://localhost:8080/messages/all');
+        const response = await fetch('http://localhost:8080/messages/all', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        });
         if (!response.ok) {
             throw new Error('Failed to fetch messages');
         }
@@ -56,6 +64,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 try {
                     const response = await fetch(`http://localhost:8080/messages/delete/${message._id}`, {
                         method: 'DELETE',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                        },
+                        
                     });
                     if (!response.ok) {
                         throw new Error('Failed to delete message');

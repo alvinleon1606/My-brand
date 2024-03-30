@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', async function() {
     const titleInput = document.getElementById('title');
     const descInput = document.getElementById('desc');
     const percentInput = document.getElementById('percent');
+
+
+    // token
+    const userLog = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+    const token = userLog?.token
     
 
     function getSkillIdFromUrl() {
@@ -36,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             const response = await fetch(`http://localhost:8080/skills/edit/${skillId}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Authorization': `Bearer ${token}`,
                 },
                 body: updatedSkill
             });

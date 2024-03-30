@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('my-form');
 
+    // token
+    const userLog = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+    const token = userLog?.token
+
     // Add event listener to form submission
     form.addEventListener('submit', async function(event) {
         event.preventDefault();
@@ -22,6 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const response = await fetch('http://localhost:8080/skills/new', {
                 method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
                 body: formData
             });
             if (!response.ok) {

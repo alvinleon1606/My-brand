@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
 
+    // token
+    const userLog = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+    const token = userLog?.token
+
     function getProjectDetails(projectId) {
         return fetch(`http://localhost:8080/projects/${id}`)
             .then(response => {
@@ -44,6 +48,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Now you can send the formData to your backend API to update the project
         fetch(`http://localhost:8080/projects/edit/${id}`, {
             method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
             body: formData
         })
         .then(response => {

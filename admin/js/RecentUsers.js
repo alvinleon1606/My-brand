@@ -1,9 +1,19 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const usersList = document.getElementById('recent-users-list');
 
+    // token .....
+    const userLog = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+    const token = userLog?.token
+
+
     // Fetch subscribers
     try {
-        const subsResponse = await fetch('http://localhost:8080/subscribers/all');
+        const subsResponse = await fetch('http://localhost:8080/subscribers/all', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        });
         if (!subsResponse.ok) {
             throw new Error('Failed to fetch subscribers');
         }
@@ -16,7 +26,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Fetch messages
     try {
-        const messagesResponse = await fetch('http://localhost:8080/messages/all');
+        const messagesResponse = await fetch('http://localhost:8080/messages/all', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        });
         if (!messagesResponse.ok) {
             throw new Error('Failed to fetch messages');
         }
@@ -29,7 +44,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Fetch users
     try {
-        const usersResponse = await fetch('http://localhost:8080/users');
+        const usersResponse = await fetch('http://localhost:8080/users', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        });
         if (!usersResponse.ok) {
             throw new Error('Failed to fetch users');
         }
@@ -50,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <tr>
                 <th>Names</th>
                 <th>Email</th>
-                <th>Telephone</th>
+                <th>Role</th>
             </tr>
         `;
         table.appendChild(thead);
@@ -61,7 +81,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             row.innerHTML = `
                 <td>${user.firstName+" "+user.secondName}</td>
                 <td>${user.email}</td>
-                <td>${user.telephone}</td>
+                <td>${user.role}</td>
             `;
             tbody.appendChild(row);
         });
