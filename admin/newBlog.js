@@ -22,8 +22,6 @@ const goToEditBlog = (id) => {
 
 // delete blog function
 const deleteBlog = async (id) => {
-    const userLog = localStorage.getItem('LoggedUserInfo');
-    const token = userLog?.token
     try {
         const response = await fetch(`http://localhost:8080/blogs/delete/${id}`, {
             method: 'DELETE',
@@ -32,13 +30,14 @@ const deleteBlog = async (id) => {
                 'Authorization': `Bearer ${token}`
             },
         });
+        alert("Blog deleted successfully");
+        window.location.href = './Blogs.html';
 
+        displayBlogs();
         if (!response.ok) {
             throw new Error('Failed to delete blog');
         }
 
-        console.log('Blog deleted successfully');
-        displayBlogs();
     } catch (error) {
         console.error('Error deleting blog:', error);
     }
@@ -218,7 +217,7 @@ const CreateBlogs = async (formData) => {
         console.log(data);
 
         if (data) {
-            alert(token);
+            alert("Blog is successfully created");
             window.location.href = './Blogs.html';
             displayBlogs();
         }

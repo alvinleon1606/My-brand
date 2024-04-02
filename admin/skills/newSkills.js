@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const userLog = JSON.parse(localStorage.getItem('LoggedUserInfo'));
     const token = userLog?.token
 
+
+
     // Add event listener to form submission
     form.addEventListener('submit', async function(event) {
         event.preventDefault();
@@ -31,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 body: formData
             });
+            alert(token)
             if (!response.ok) {
                 throw new Error('Failed to add skill');
             }

@@ -29,14 +29,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 body: JSON.stringify(userData)
             });
-            console.log("registreeddddddddddddddddddddddddddddddddddddd", response)
             
-            if (response.ok) {
-                alert('Well Registered')
-                window.location.href = './Login.html'; 
-            } else {
-                throw new Error('Failed to register');
-            }
+            alert('Well Registered')
+            window.location.href = './Login.html'; 
         } catch (error) {
             console.error(error);
         }        

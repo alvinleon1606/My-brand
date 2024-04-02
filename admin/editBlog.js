@@ -36,11 +36,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
 
             alert("Update is successfully")
+            window.location.href = './Blogs.html';
 
             if (!updateResponse.ok) {
                 throw new Error('Failed to update blog');
             }
-            window.location.href = './Blogs.html';
         });
 
     } catch (error) {
