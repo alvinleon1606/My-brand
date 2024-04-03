@@ -19,7 +19,7 @@ const projectSubmit = async (e) => {
        const payload = JSON.stringify(res)
 
         try {
-            const response = await fetch('http://localhost:8080/projects/add', {
+            const response = await fetch('https://leonx.onrender.com/projects/add', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,

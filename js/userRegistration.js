@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         try {
-            const response = await fetch('http://localhost:8080/users/register', {
+            const response = await fetch('https://leonx.onrender.com/users/register', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'

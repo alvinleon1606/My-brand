@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // fetch all skills
     async function fetchSkills() {
         try {
-            const response = await fetch('http://localhost:8080/skills/all');
+            const response = await fetch('https://leonx.onrender.com/skills/all');
             if (!response.ok) {
                 throw new Error('Failed to fetch skills');
             }
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
             card.classList.add('card');
     
             const img = document.createElement('img');
-            img.src = `http://localhost:8080/${skill.icon}`
+            img.src = `https://leonx.onrender.com/${skill.icon}`
     
             const skillDesc = document.createElement('div');
             skillDesc.classList.add('skil-desc');

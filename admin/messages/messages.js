@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const eachUserMessage = document.getElementById('Each-User-Message');
 
     try {
-        const response = await fetch('http://localhost:8080/messages/all', {
+        const response = await fetch('https://leonx.onrender.com/messages/all', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 e.stopPropagation(); // Prevent the click event from bubbling up to the parent element
     
                 try {
-                    const response = await fetch(`http://localhost:8080/messages/delete/${message._id}`, {
+                    const response = await fetch(`https://leonx.onrender.com/messages/delete/${message._id}`, {
                         method: 'DELETE',
                         headers: {
                             'Authorization': `Bearer ${token}`,

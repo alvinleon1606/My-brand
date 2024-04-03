@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let blogs = []
 
     try {
-        const response = await fetch('http://localhost:8080/blogs/all');
+        const response = await fetch('https://leonx.onrender.com/blogs/all');
         if (!response.ok) {
             throw new Error('Failed to fetch blogs');
         }
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 blogListItem.classList.add('single-blog-card');
                 blogListItem.innerHTML = `
                     <a href="./Post-details.html?id=${blog._id}">
-                        <img src="http://localhost:8080/${blog.image}" alt="">
+                        <img src="https://leonx.onrender.com/${blog.image}" alt="">
                     </a>
                     <div class="card-text-part">
                         <h3>${blog.title}- ${formatDate(new Date(blog.createdAt))}</h3>

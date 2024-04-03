@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const id = urlParams.get('id');
 
     try {
-        const response = await fetch(`http://localhost:8080/blogs/${id}`, {
+        const response = await fetch(`https://leonx.onrender.com/blogs/${id}`, {
             method: 'GET',
         });
 
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             formData.append('description', document.getElementById('description').value);
             formData.append('image', document.getElementById('image').files[0]);
 
-            const updateResponse = await fetch(`http://localhost:8080/blogs/update/${id}`, {
+            const updateResponse = await fetch(`https://leonx.onrender.com/blogs/update/${id}`, {
                 method: 'PUT',
                 body: formData
             });

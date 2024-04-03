@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async() =>{
     const token = userLog?.token
 
     try {
-        const subsResponse = await fetch('http://localhost:8080/subscribers/all', {
+        const subsResponse = await fetch('https://leonx.onrender.com/subscribers/all', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async() =>{
             const deleteButton = row.querySelector('.delete-btn');
             deleteButton.addEventListener('click', async () => {
                 try {
-                    const response = await fetch(`http://localhost:8080/subscribers/delete/${sub._id}`, {
+                    const response = await fetch(`https://leonx.onrender.com/subscribers/delete/${sub._id}`, {
                         method: 'DELETE',
                         headers: {
                             'Authorization': `Bearer ${token}`,

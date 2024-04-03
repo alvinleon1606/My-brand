@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Fetch projects from localStorage
         try {
-            const response = await fetch('http://localhost:8080/projects/all', {
+            const response = await fetch('https://leonx.onrender.com/projects/all', {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
             singleProject.dataset.id = project._id;
 
             const img = document.createElement('img');
-            img.src = `http://localhost:8080/${project.image}`
+            img.src = `https://leonx.onrender.com/${project.image}`
             img.alt = project.title;
             img.classList.add('project-img');
 
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
     displayProjects();
 
     function deleteProject(id) {
-        fetch(`http://localhost:8080/projects/remove/${id}`, {
+        fetch(`https://leonx.onrender.com/projects/remove/${id}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`,
