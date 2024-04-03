@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async() =>{
     const token = userLog?.token
 
     try {
-        const usersResponse = await fetch('https://NP Leon.onrender.com/users', {
+        const usersResponse = await fetch('https://leonx.onrender.com/users', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', async() =>{
             const userId = (deleteButton.getAttribute('data-user-id'));
         
             try {
-                const response = await fetch(`https://NP Leon.onrender.com/users/delete/${userId}`, {
+                const response = await fetch(`https://leonx.onrender.com/users/delete/${userId}`, {
                     method: 'DELETE',
                     headers: {
                         'Authorization': `Bearer ${token}`,
