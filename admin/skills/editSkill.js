@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     const getSkillDetails = async(skillId) => {
         try {
-            const response = await fetch(`https://leonx.onrender.com/skills/${skillId}`);
+            const response = await fetch(`https://NP Leon.onrender.com/skills/${skillId}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch skill details');
             }
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     async function updateSkill(updatedSkill) {
         try {
-            const response = await fetch(`https://leonx.onrender.com/skills/edit/${skillId}`, {
+            const response = await fetch(`https://NP Leon.onrender.com/skills/edit/${skillId}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function fetchSkills() {
         try {
-            const response = await fetch('https://leonx.onrender.com/skills/all');
+            const response = await fetch('https://NP Leon.onrender.com/skills/all');
             if (!response.ok) {
                 throw new Error('Failed to fetch skills');
             }
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function deleteSkill(id) {
         try {
-            const response = await fetch(`https://leonx.onrender.com/skills/delete/${id}`, {
+            const response = await fetch(`https://NP Leon.onrender.com/skills/delete/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`,

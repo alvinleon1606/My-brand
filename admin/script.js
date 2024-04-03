@@ -11,6 +11,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     //get user
     const userLogged = JSON.parse(localStorage.getItem('LoggedUserInfo'));
     if (!userLogged.user) {
-      window.location.href = 'https://np-leonx.netlify.app/login'
+      window.location.href = 'https://NP Leon.netlify.app/login'
     }
   })
