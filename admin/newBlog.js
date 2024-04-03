@@ -23,7 +23,7 @@ const goToEditBlog = (id) => {
 // delete blog function
 const deleteBlog = async (id) => {
     try {
-        const response = await fetch(`https://NP Leon.onrender.com/blogs/delete/${id}`, {
+        const response = await fetch(`https://leonx.onrender.com/blogs/delete/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ const deleteBlog = async (id) => {
 const displayBlogs = async () => {
     const blogList = document.querySelector('.blogs-list');
     try {
-        const response = await fetch('https://NP Leon.onrender.com/blogs/all');
+        const response = await fetch('https://leonx.onrender.com/blogs/all');
         if (!response.ok) {
             throw new Error('Failed to fetch blogs');
         }
@@ -64,7 +64,7 @@ const displayBlogs = async () => {
             blogsDiv.classList.add('single-bloggg');
             blogsDiv.innerHTML = `
                 <div class="single-blog card">
-                <img src="https://NP Leon.onrender.com/${blog.image}" alt="" class="blog-img">
+                <img src="https://leonx.onrender.com/${blog.image}" alt="" class="blog-img">
                 <div class="blog-title-description-likesComment">
                         <h2>${blog.title}</h2>
                         <div class="blog-desc-likes">
@@ -205,7 +205,7 @@ descriptionField.addEventListener('input', (e) => {
 // Create a blog
 const CreateBlogs = async (formData) => {
     try {
-        const response = await fetch('https://NP Leon.onrender.com/blogs/new', {
+        const response = await fetch('https://leonx.onrender.com/blogs/new', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
