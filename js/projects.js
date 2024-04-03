@@ -54,10 +54,6 @@ ux.addEventListener('click', () =>{
  const closeBtn = document.querySelector('.close');
  const card = document.querySelectorAll('.card');
 
-//  on page load
-window.addEventListener('load', ()=>{
-    projectModal.style.display = "none";
-})
 
 // all projects cards
 card.forEach(eacgCard => eacgCard.addEventListener('click', ()=>{

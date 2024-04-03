@@ -206,13 +206,13 @@
                 <li class="nav-item">
                     <a href="./Contact.html" class="nav-link">Contact</a>
                 </li>
-                <a href="./Login.html" class="login">
+                <a href="./Login.html" class="login" id="loginButton">
                   <li>
                       Login
                   </li>
               </a>
-              <div class="logout">
-                  <i class="fa-regular fa-circle-user loggedUserIcon"></i>
+              <div class="logout" id="logoutDiv">
+                  <i class="fa-regular fa-circle-user loggedUserIcon" id="loggedUserIcon"></i>
                   <div class="sub-menu">
                       <a href="./Settings.html">
                           <li>Settings</li>
@@ -246,78 +246,21 @@
         <div class="wrapper-noColor">
             <div class="blogs-content">
                 <div class="blogs-card">
-                    <!-- <div class="single-blog-card">
-                        <a href="./Post-details.html">
-                          <img src="./assets/blog-image.jpg" alt="">
-                        </a>
-                        <div class="card-text-part">
-                            <h3>Ai detection - January 6, 2024</h3>
-                            <p class="blog-desc">The standard Lorem Ipsum passage, used since the 1500s.</p>
-                            <div class="likes-comments">
-                                <div class="likes">
-                                    <i class="fa-solid fa-heart"></i>
-                                    <p>300k</p>
-                                </div>
-                                <div class="comments">
-                                    <i class="fa-solid fa-comments"></i>
-                                    <p>200k</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-blog-card">
-                        <a href="./Post-details.html">
-                          <img src="./assets/blog-image.jpg" alt="">
-                        </a>
-                        <div class="card-text-part">
-                            <h3>Ai detection - January 6, 2024</h3>
-                            <p class="blog-desc">The standard Lorem Ipsum passage, used since the 1500s.</p>
-                            <div class="likes-comments">
-                                <div class="likes">
-                                    <i class="fa-solid fa-heart"></i>
-                                    <p>300k</p>
-                                </div>
-                                <div class="comments">
-                                    <i class="fa-solid fa-comments"></i>
-                                    <p>200k</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-blog-card">
-                        <img src="./assets/blog-image.jpg" alt="">
-                        <div class="card-text-part">
-                            <h3>Ai detection - January 6, 2024</h3>
-                            <p class="blog-desc">The standard Lorem Ipsum passage, used since the 1500s.</p>
-                            <div class="likes-comments">
-                                <div class="likes">
-                                    <i class="fa-solid fa-heart"></i>
-                                    <p>300k</p>
-                                </div>
-                                <div class="comments">
-                                    <i class="fa-solid fa-comments"></i>
-                                    <p>200k</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="blogs-sliders">
-                        <div><i class="fa-solid fa-angles-right"></i><a style="color: var(--text2-color); padding-left: 10px;" href="#">read ...</a></div>
-                    </div>
                 </div>
                 <div class="blogs-sideNav">
                     <div class="sidebar-blog-search">
-                        <input type="text" placeholder="Search ....." class="search-input">
+                      <!-- <input type="text" id="searchInput" placeholder="Search blogs..." />  -->
+                      <input type="text" id="searchInput" placeholder="Search ....." class="search-input">
                     </div>
                     <div class="blogs-categories">
                         <div class="title">
                             <h2>Categories</h2>
                         </div>
                         <div class="categories">
-                            <div class="categoty">Technology</div>
-                            <div class="categoty">Science</div>
-                            <div class="categoty">Engineering</div>
-                            <div class="categoty">Artificial intelligence</div>
+                            <div class="categoty" id="Technology">Technology</div>
+                            <div class="categoty" id="Science">Science</div>
+                            <div class="categoty" id="Engineering">Engineering</div>
+                            <div class="categoty" id="Ai">Artificial intelligence</div>
                         </div>
                     </div>
                 </div>
@@ -367,5 +310,6 @@
 <script src="./js/Login.js"></script>
 <script src="./js/logout.js"></script>
 <script src="./homeJs/Blogs.js"></script>
+<script src="./js/session.js"></script>
 </body>
 </html>

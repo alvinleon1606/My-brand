@@ -155,13 +155,13 @@
                     <li class="nav-item">
                         <a href="./Contact.html" class="nav-link">Contact</a>
                     </li>
-                    <a href="./Login.html" class="login">
+                    <a href="./Login.html" class="login" id="loginButton">
                         <li>
                             Login
                         </li>
                     </a>
-                    <div class="logout">
-                        <i class="fa-regular fa-circle-user loggedUserIcon"></i>
+                    <div class="logout" id="logoutDiv">
+                        <i class="fa-regular fa-circle-user loggedUserIcon" id="loggedUserIcon"></i>
                         <div class="sub-menu">
                             <a href="./Settings.html">
                                 <li>Settings</li>
@@ -173,8 +173,6 @@
                     </div>
                 </ul>
                 <div class="humburger">
-                    <!-- <i class="fa-solid fa-bars"></i>
-                    <i class="fa-solid fa-xmark"></i> -->
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -204,104 +202,7 @@
                     <h2>I'm Specialized in those Skills</h2>
                 </div>
                 <div class="skills-cards">
-                    <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/adonisjs/adonisjs-original.svg" />
-                        <div class="skil-desc">
-                            <div class="skill-name-percent">
-                                <div class="skill-name">Next js</div>
-                                <div class="percent">90%</div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="main-bar">
-                                    <div class="inner-bar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/adonisjs/adonisjs-original.svg" />
-                        <div class="skil-desc">
-                            <div class="skill-name-percent">
-                                <div class="skill-name">React js</div>
-                                <div class="percent">90%</div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="main-bar">
-                                    <div class="inner-bar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/adonisjs/adonisjs-original.svg" />
-                        <div class="skil-desc">
-                            <div class="skill-name-percent">
-                                <div class="skill-name">Django</div>
-                                <div class="percent">90%</div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="main-bar">
-                                    <div class="inner-bar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/adonisjs/adonisjs-original.svg" />
-                        <div class="skil-desc">
-                            <div class="skill-name-percent">
-                                <div class="skill-name">Prisma</div>
-                                <div class="percent">90%</div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="main-bar">
-                                    <div class="inner-bar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/adonisjs/adonisjs-original.svg" />
-                        <div class="skil-desc">
-                            <div class="skill-name-percent">
-                                <div class="skill-name">React-native</div>
-                                <div class="percent">90%</div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="main-bar">
-                                    <div class="inner-bar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/adonisjs/adonisjs-original.svg" />
-                        <div class="skil-desc">
-                            <div class="skill-name-percent">
-                                <div class="skill-name">GraphQL</div>
-                                <div class="percent">90%</div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="main-bar">
-                                    <div class="inner-bar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/adonisjs/adonisjs-original.svg" />
-                        <div class="skil-desc">
-                            <div class="skill-name-percent">
-                                <div class="skill-name">Node</div>
-                                <div class="percent">90%</div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="main-bar">
-                                    <div class="inner-bar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Skills are here -->
                 </div>
             </div>
         </div>
@@ -348,5 +249,7 @@
 <script src="../validations/subscribe.js"></script>
 <script src="./js/Login.js"></script>
 <script src="./js/logout.js"></script>
+<script src="./js/session.js"></script>
+<script src="./js/SkillsHome.js"></script>
 </body>
 </html>

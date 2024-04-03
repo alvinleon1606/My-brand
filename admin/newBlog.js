@@ -1,4 +1,3 @@
-const form = document.querySelector('.new-blog-form');
 const titleField = document.getElementById('title');
 const categoryField = document.getElementById('category');
 const imageField = document.getElementById('blog-image');
@@ -14,60 +13,105 @@ const descriptionError = document.querySelector('.description-error');
 
 let Blogs = [];
 
+const userLog = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+const token = userLog?.token
+
 const goToEditBlog = (id) => {
     window.location.href = `editBlog.html?id=${id}`;
 };
 
 // delete blog function
-const deleteBlog = (id) => {
-    Blogs = Blogs.filter((blog) => blog.id !== id);
-    localStorage.setItem('Blogs', JSON.stringify(Blogs));
-    displayBlogs();
+const deleteBlog = async (id) => {
+    try {
+        const response = await fetch(`https://leonx.onrender.com/blogs/delete/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        });
+        alert("Blog deleted successfully");
+        window.location.href = './Blogs.html';
+
+        displayBlogs();
+        if (!response.ok) {
+            throw new Error('Failed to delete blog');
+        }
+
+    } catch (error) {
+        console.error('Error deleting blog:', error);
+    }
 };
 
+
 // display blogs
-const displayBlogs = () => {
+const displayBlogs = async () => {
     const blogList = document.querySelector('.blogs-list');
-    if (Blogs.length === 0) {
-        blogList.innerHTML = 'You do not have blogs';
-        return;
-    }
-    blogList.innerHTML = "";
-    Blogs.forEach((blog) => {
-        const blogImage = (blog.image).split("\\").pop();
-        const blogsDiv = document.createElement('div');
-        blogsDiv.classList.add('single-bloggg');
-        blogsDiv.innerHTML = `
-            <div class="single-blog card">
-            <img src="../assets/${blogImage}" alt="" class="blog-img">
-            <div class="blog-title-description-likesComment">
-                <h2>${blog.title}</h2>
-                <div class="blog-desc-likes">
-                    <p>${blog.description}
-                    </p>
-                    <div class="likes-actions">
-                        <div class="likes">
-                            <div class="comment-like">
-                                <i class="fa-regular fa-heart"></i>
-                                <p>200+</p>
+    try {
+        const response = await fetch('https://leonx.onrender.com/blogs/all');
+        if (!response.ok) {
+            throw new Error('Failed to fetch blogs');
+        }
+        const blogs = await response.json();
+
+        if (blogs.length === 0) {
+            blogList.innerHTML = 'You do not have blogs';
+            return;
+        }
+        blogList.innerHTML = "";
+        blogs?.data.forEach((blog) => {
+            const blogsDiv = document.createElement('div');
+            blogsDiv.classList.add('single-bloggg');
+            blogsDiv.innerHTML = `
+                <div class="single-blog card">
+                <img src="https://leonx.onrender.com/${blog.image}" alt="" class="blog-img">
+                <div class="blog-title-description-likesComment">
+                        <h2>${blog.title}</h2>
+                        <div class="blog-desc-likes">
+                            <p>${blog.desc}</p>
+                            <div class="likes-actions">
+                                <div class="likes">
+                                    <div class="comment-like">
+                                        <i class="fa-regular fa-heart"></i>
+                                        <p>200+</p>
+                                    </div>
+                                    <div class="comment-like">
+                                        <i class="fa-regular fa-comments"></i>
+                                        <p>200+</p>
+                                    </div>
+                                </div>
+                                <div class="actions">
+                                <i class="fa-regular fa-pen-to-square edit-blog" data-blog-id="${blog._id}"></i>
+                                <i class="fa-regular fa-trash-can delete-blog" data-blog-id="${blog._id}"></i>
+                                </div>
                             </div>
-                            <div class="comment-like">
-                                <i class="fa-regular fa-comments"></i>
-                                <p>200+</p>
-                            </div>
-                        </div>
-                        <div class="actions">
-                            <i onclick="goToEditBlog(${blog.id})" class="fa-regular fa-pen-to-square"></i>
-                            <i onclick="deleteBlog(${blog.id})" class="fa-regular fa-trash-can" ></i>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        `;
-        blogList.appendChild(blogsDiv);
-    });
+            `;
+            const editIcon = blogsDiv.querySelector('.edit-blog');
+            const deleteIcon = blogsDiv.querySelector('.delete-blog');
+        
+            editIcon.addEventListener('click', () => {
+                goToEditBlog(blog._id);
+            });
+        
+            deleteIcon.addEventListener('click', () => {
+                deleteBlog(blog._id);
+            });
+            blogList.appendChild(blogsDiv);
+        });
+    } catch (error) {
+        console.error('Error fetching blogs:', error.message);
+        blogList.innerHTML = 'Failed to fetch blogs';
+    }
 };
+
+// Initial document load
+document.addEventListener('DOMContentLoaded', async () => {
+    await displayBlogs();
+});
+
 
 // Initial document load
 document.addEventListener('DOMContentLoaded', () => {
@@ -79,12 +123,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Create a blog
-form.addEventListener('submit', (e) => {
+document.getElementById('new-blog-form-creation').addEventListener('submit', (e) => {
     e.preventDefault();
 
     const title = titleField.value.trim();
     const category = categoryField.value.trim();
-    const image = imageField.value.trim();
+    const image = imageField.files[0]; 
     const tag = tagField.value.trim();
     const description = descriptionField.value.trim();
 
@@ -105,14 +149,6 @@ form.addEventListener('submit', (e) => {
         isValid = false;
     } else {
         categoryError.textContent = '';
-    }
-
-    if (image === '') {
-        imageError.textContent = 'Blog image cannot be empty';
-        imageError.style.color = 'red';
-        isValid = false;
-    } else {
-        imageError.textContent = '';
     }
 
     if (tag === '') {
@@ -136,18 +172,18 @@ form.addEventListener('submit', (e) => {
     }
 
     if (isValid) {
-        const newBlog = {
-            id: Date.now(),
-            title: title,
-            image: image,
-            description: description,
-            tag: tag,
-            category: category,
-            likes: [],
-            comments: []
-        };
-        CreateBlogs(newBlog);
-        window.location.href = './Blogs.html';
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("desc", description);
+        formData.append("category", category);
+        formData.append("tag", tag);
+        formData.append("image", image);
+
+
+        // const res = Object.fromEntries(formData)
+        // const payload = JSON.stringify(res)
+
+        CreateBlogs(formData);
     }
 });
 
@@ -167,12 +203,26 @@ descriptionField.addEventListener('input', (e) => {
 });
 
 // Create a blog
-const CreateBlogs = (newBlog) => {
-    Blogs.push(newBlog);
-    const yes = localStorage.setItem('Blogs', JSON.stringify(Blogs));
-    if(yes){
-        alert("Blog created successfully !")
-        window.location.href = './Blogs.html';
-        displayBlogs();
+const CreateBlogs = async (formData) => {
+    try {
+        const response = await fetch('https://leonx.onrender.com/blogs/new', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+            body: formData,
+        });
+
+        const data = await response.json();
+        console.log(data);
+
+        if (data) {
+            alert("Blog is successfully created");
+            window.location.href = './Blogs.html';
+            displayBlogs();
+        }
+    } catch (error) {
+        console.log(error);
     }
 };
+

@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,3}$/;
         const telephoneRegex = /^\+\d{9,15}$/;
         const subjectRegex = /^.{5,20}$/;
-        const messageRegex = /^.{10,600}$/;
+        const messageRegex = /^.{10,4000}$/;
 
         // Validate Names
         if (!namesRegex.test(names)) {
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('message').addEventListener('input', function() {
         const message = this.value.trim();
-        const messageRegex = /^.{10,40}$/;
+        const messageRegex = /^.{10,4000}$/;
 
         if (!messageRegex.test(message)) {
             this.style.borderColor = 'red';

@@ -1,40 +1,43 @@
-// new project
 const form = document.getElementById('create-project-form');
-const projectTitle = document.getElementById('project-title');
-const projectLink = document.getElementById('project-link');
-const projectCategory = document.getElementById('category');
-const projectImage = document.getElementById('project-image');
-const projectFinishedDate = document.getElementById('project-finished-date');
-const projectDescription = document.getElementById('project-description');
+
+// Token ..............
+const userLog = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+const token = userLog?.token
+
+const projectSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('title', document.getElementById('project-title').value);
+    formData.append('category', document.getElementById('category').value);
+    formData.append('link', document.getElementById('project-link').value);
+    formData.append('description', document.getElementById('project-description').value);
+    formData.append('image', document.getElementById('project-image').files[0]);
 
 
-const projectSubmit = (e) =>{
-    e.preventDefault()
-    // project object
-    const newProject = {
-        projectId: Date.now(),
-        title: projectTitle.value,
-        link: projectLink.value,
-        category: projectCategory.value,
-        finisheddate: projectFinishedDate.value,
-        image: projectImage.value,
-        description: projectDescription.value
-    };
+       const res = Object.fromEntries(formData)
+       const payload = JSON.stringify(res)
 
-    let Projects = JSON.parse(localStorage.getItem('Projects')) || [];
+        try {
+            const response = await fetch('https://leonx.onrender.com/projects/add', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: formData
+            });
 
-    // read image as url image
-    const file = projectImage.files[0];
-    if(file){
-        const reader = new FileReader();
-        reader.onload = (e) =>{
-            newProject.image = e.target.result;
-            Projects.push(newProject);
-            localStorage.setItem('Projects', JSON.stringify(Projects));
-            form.reset();
-            alert("New projet is added!");
+            if (response.ok) {
+                alert('New project added successfully!');
+                window.location.href = `./projects.html`
+                form.reset();
+            } else {
+                throw new Error('Failed to add project');
+            }
+        } catch (error) {
+            console.log('Error adding project:', error);
         }
-        reader.readAsDataURL(file);
-    }
-}
+};
+
 form.addEventListener('submit', projectSubmit);
+

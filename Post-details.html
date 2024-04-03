@@ -253,13 +253,13 @@ form button{
                 <li class="nav-item">
                     <a href="./Contact.html" class="nav-link">Contact</a>
                 </li>
-                <a href="./Login.html" class="login">
+                <a href="./Login.html" class="login" id="loginButton">
                   <li>
                       Login
                   </li>
               </a>
-              <div class="logout">
-                  <i class="fa-regular fa-circle-user loggedUserIcon"></i>
+              <div class="logout" id="logoutDiv">
+                  <i class="fa-regular fa-circle-user loggedUserIcon" id="loggedUserIcon"></i>
                   <div class="sub-menu">
                       <a href="./Settings.html">
                           <li>Settings</li>
@@ -294,59 +294,6 @@ form button{
             <div class="blogs-content">
                 <div class="blogs-card">
                     <div class="single-blog-card">
-                        <!-- <div class="category-date">
-                            <div class="categ">
-                                <i class="fa-solid fa-grip-lines-vertical" style="color: lightgray;"></i>
-                                <p style="color: white;">Technology</p>
-                            </div>
-                            <div class="date" style="color: lightgray;">jun 24, 2025</div>
-                        </div>
-                        <img src="./assets/blog-image.jpg" alt="">
-                        <div class="blog-title-and-desc">
-                            <div class="blog-title">
-                                <h3>Is machine learning worth learning?</h3>
-                            </div>
-                            <div class="blog-desc">
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                    when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                                    It has survived not only five centuries, but also the leap ielectronic typesetting, remaining 
-                                    essentially unchanged. It was popularised in the 1960s with the release of
-                                </p>
-                            </div>
-                        </div>
-                        <div class="blog-comments">
-                            <h3>Comments:</h3>
-                            <div class="comments">
-                                <img src="./assets/profile.webp" alt="" class="comment-person">
-                                <div class="names-comment">
-                                    <h4>Leon Alvin</h4>
-                                    <p>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting and has 
-                                        been the industry's standard.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="comments">
-                                <img src="./assets/profile.webp" alt="" class="comment-person">
-                                <div class="names-comment">
-                                    <h4>Leon Alvin</h4>
-                                    <p>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting and has 
-                                        been the industry's standard.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment-form">
-                            <form action="">
-                                <div class="comment-textarea">
-                                    <textarea name="comment" id="" rows="5" placeholder="Type in Comment ..." class="post-comment"></textarea>
-                                </div>
-                                <button>Send</button>
-                            </form>
-                        </div> -->
                     </div>
                 </div>
                 <div class="blogs-sideNav">
@@ -433,5 +380,6 @@ form button{
 <script src="./js/logout.js"></script>
 <script src="./homeJs/SingleBlog.js"></script>
 <script src="./js/Comment.js"></script>
+<script src="./js/session.js"></script>
 </body>
 </html>

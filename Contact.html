@@ -58,7 +58,7 @@
     border: none;
     margin-top: 10px;
     padding: 10px;
-    background-color: red;
+    background-color: transparent;
     border: 1px solid var(--text1-color);
   }
   .comment-textarea textarea:focus{
@@ -199,13 +199,13 @@ form button{
                 <li class="nav-item">
                     <a href="./Contact.html" class="nav-link">Contact</a>
                 </li>
-                <a href="./Login.html" class="login">
+                <a href="./Login.html" class="login" id="loginButton">
                   <li>
                       Login
                   </li>
               </a>
-              <div class="logout">
-                  <i class="fa-regular fa-circle-user loggedUserIcon"></i>
+              <div class="logout" id="logoutDiv">
+                  <i class="fa-regular fa-circle-user loggedUserIcon" id="loggedUserIcon"></i>
                   <div class="sub-menu">
                       <a href="./Settings.html">
                           <li>Settings</li>
@@ -239,7 +239,7 @@ form button{
         <div class="wrapper-noColor">
             <div class="contact-content">
                     <div class="comment-form">
-                        <form class="form" id="contact-form">
+                        <form class="form" id="contact-form-sending">
                             <div class="names-email" id="for-logged-user-only">
                                 <div class="row-1">
                                     <input type="text" placeholder="Names" id="names">
@@ -255,7 +255,7 @@ form button{
                                 </div>
                             </div>
                             <div class="comment-textarea">
-                                <input name="message"  id="message" style="width: 100%; height: 200px;">
+                              <textarea name="message" id="message" cols="30" rows="10"></textarea>
                                 <p class="message-error"></p>
                             </div>
                                 <button type="submit" id="send-button">Send Message</button>
@@ -339,7 +339,8 @@ form button{
 <script src="./validations/subscribe.js"></script>
 <script src="./validations/contact.js"></script>
 <script src="./js/Login.js"></script>
-<script src="./js/Contact.js"></script>
 <script src="./js/logout.js"></script>
+<script src="./js/session.js"></script>
+<script src="./js/Contact.js"></script>
 </body>
 </html>

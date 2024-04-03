@@ -1,19 +1,35 @@
 document.addEventListener('DOMContentLoaded', function() {
     const projectsList = document.querySelector('.projects-list');
 
-    const displayProjects = () => {
+    // token
+    const userLog = JSON.parse(localStorage.getItem('LoggedUserInfo'));
+    const token = userLog?.token
+
+    const displayProjects = async() => {
         projectsList.innerHTML = '';
 
         // Fetch projects from localStorage
-        let projects = JSON.parse(localStorage.getItem('Projects')) || [];
-        projects.forEach(project => {
+        try {
+            const response = await fetch('https://leonx.onrender.com/projects/all', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch projects');
+            }
+            const projects = await response.json();
+            
+        
+            projects?.data.forEach(project => {
             // Create elements
             const singleProject = document.createElement('div');
             singleProject.classList.add('single-project', 'card');
-            singleProject.dataset.id = project.projectId;
+            singleProject.dataset.id = project._id;
 
             const img = document.createElement('img');
-            img.src = project.image;
+            img.src = `https://leonx.onrender.com/${project.image}`
             img.alt = project.title;
             img.classList.add('project-img');
 
@@ -39,12 +55,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const trashCanIcon = document.createElement('i');
             trashCanIcon.classList.add('fa-regular', 'fa-trash-can');
             trashCanIcon.addEventListener('click', function() {
-                deleteProject(project.projectId); // Call deleteProject function
+                deleteProject(project._id); 
             });
 
             // Create edit link for edit functionality
             const editLink = document.createElement('a');
-            editLink.href = `./editProject.html?id=${project.projectId}`;
+            editLink.href = `./editProject.html?id=${project._id}`;
             const penToSquareIcon = document.createElement('i');
             penToSquareIcon.classList.add('fa-regular', 'fa-pen-to-square');
             editLink.appendChild(penToSquareIcon);
@@ -64,19 +80,38 @@ document.addEventListener('DOMContentLoaded', function() {
             singleProject.appendChild(projectTitleDescriptionLikesComment);
 
             projectsList.appendChild(singleProject);
-        });
+        })
+    } catch (error) {
+        console.log('Error fetching projects:', error);
+    }
     }
 
     displayProjects();
 
-    function deleteProject(projectId) {
-        let projects = JSON.parse(localStorage.getItem('Projects')) || [];
-        const updatedProjects = projects.filter(project => project.projectId !== projectId);
-        localStorage.setItem('Projects', JSON.stringify(updatedProjects));
-
-        const projectElement = document.querySelector(`.single-project[data-id="${projectId}"]`);
-        if (projectElement) {
-            projectElement.remove();
-        }
+    function deleteProject(id) {
+        fetch(`https://leonx.onrender.com/projects/remove/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to delete project');
+            }
+            return response.json();
+        })
+        .then(() => {
+            alert('Project deleted successfully');
+            const projectElement = document.querySelector(`.single-project[data-id="${id}"]`);
+            if (projectElement) {
+                projectElement.remove();
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting project:', error);
+            alert('Failed to delete project');
+        });
     }
+    
 });

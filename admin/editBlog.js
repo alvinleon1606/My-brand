@@ -1,40 +1,49 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const id = parseInt(urlParams.get('id'));
+    const id = urlParams.get('id');
 
-    let blogData = JSON.parse(localStorage.getItem('Blogs'));
-
-    // Find the index of the blog to update
-    const updateIndex = blogData.findIndex((blog) => {
-        return blog.id === id;
-    });
-
-    if (updateIndex !== -1) {
-        const update = blogData[updateIndex];
-
-        // Populate form fields with the data
-        document.getElementById('title').value = update.title;
-        document.getElementById('category').value = update.category;
-        document.getElementById('tag').value = update.tag;
-        document.getElementById('description').value = update.description;
-    
-
-        // Handle form submission
-        document.getElementById('my-form').addEventListener('submit', (event) => {
-            event.preventDefault();
-            
-            // Update properties of the found blog
-            update.title = document.getElementById('title').value;
-            update.category = document.getElementById('category').value;
-            update.tag = document.getElementById('tag').value;
-            update.description = document.getElementById('description').value;
-            update.image = document.getElementById('image').value;
-
-            blogData[updateIndex] = update;
-            localStorage.setItem('Blogs', JSON.stringify(blogData))
-            window.location.href = './Blogs.html';
+    try {
+        const response = await fetch(`https://leonx.onrender.com/blogs/${id}`, {
+            method: 'GET',
         });
 
+        if (!response.ok) {
+            throw new Error('Failed to fetch blog');
+        }
+
+        const blog = await response.json();
+
+        // Populate form fields with the blog data
+        document.getElementById('title').value = blog?.userInfo.title;
+        document.getElementById('category').value = blog?.userInfo.category;
+        document.getElementById('tag').value = blog?.userInfo.tag;
+        document.getElementById('description').value = blog?.userInfo.desc;
+
+        // Handle form submission
+        document.getElementById('my-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData();
+            formData.append('title', document.getElementById('title').value);
+            formData.append('category', document.getElementById('category').value);
+            formData.append('tag', document.getElementById('tag').value);
+            formData.append('description', document.getElementById('description').value);
+            formData.append('image', document.getElementById('image').files[0]);
+
+            const updateResponse = await fetch(`https://leonx.onrender.com/blogs/update/${id}`, {
+                method: 'PUT',
+                body: formData
+            });
+
+            alert("Update is successfully")
+            window.location.href = './Blogs.html';
+
+            if (!updateResponse.ok) {
+                throw new Error('Failed to update blog');
+            }
+        });
+
+    } catch (error) {
+        console.log('Error:', error);
     }
 });
-
