@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const password = document.getElementById('password').value;
 
         try {
-            const response = await axios.post('https://leonx.onrender.com/login', { email, password });
+            const response = await axios.post('https://NP Leon.onrender.com/login', { email, password });
         
             if (response.status === 200) {
                 const user = response.data;

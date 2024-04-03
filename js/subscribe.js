@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = document.getElementById('subscribe-email').value;
 
         try {
-            const response = await fetch('https://leonx.onrender.com/subscribers/subscribe', {
+            const response = await fetch('https://NP Leon.onrender.com/subscribers/subscribe', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
