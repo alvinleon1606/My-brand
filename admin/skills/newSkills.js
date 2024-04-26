@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
         try {
-            const response = await fetch('https://leonx.onrender.com/skills/new', {
+            const response = await fetch('https://leonx-ldu1.onrender.com/skills/new', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,

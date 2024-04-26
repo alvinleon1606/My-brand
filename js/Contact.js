@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Send the message 
         try {
-            const response = await fetch('https://leonx.onrender.com/messages/new', {
+            const response = await fetch('https://leonx-ldu1.onrender.com/messages/new', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

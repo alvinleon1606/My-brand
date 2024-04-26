@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Fetch subscribers
     try {
-        const subsResponse = await fetch('https://leonx.onrender.com/subscribers/all', {
+        const subsResponse = await fetch('https://leonx-ldu1.onrender.com/subscribers/all', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Fetch messages
     try {
-        const messagesResponse = await fetch('https://leonx.onrender.com/messages/all', {
+        const messagesResponse = await fetch('https://leonx-ldu1.onrender.com/messages/all', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Fetch users
     try {
-        const usersResponse = await fetch('https://leonx.onrender.com/users', {
+        const usersResponse = await fetch('https://leonx-ldu1.onrender.com/users', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,

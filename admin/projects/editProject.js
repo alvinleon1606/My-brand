@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const token = userLog?.token
 
     function getProjectDetails(projectId) {
-        return fetch(`https://leonx.onrender.com/projects/${id}`)
+        return fetch(`https://leonx-ldu1.onrender.com/projects/${id}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch project');
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
         // Now you can send the formData to your backend API to update the project
-        fetch(`https://leonx.onrender.com/projects/edit/${id}`, {
+        fetch(`https://leonx-ldu1.onrender.com/projects/edit/${id}`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,

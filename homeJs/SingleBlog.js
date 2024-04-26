@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const RecentCommentsDiv = document.querySelector('.blog-comments');
 
     try {
-        const response = await fetch(`https://leonx.onrender.com/blogs/${id}`);
+        const response = await fetch(`https://leonx-ldu1.onrender.com/blogs/${id}`);
         if (!response.ok) {
             throw new Error('Failed to fetch blog');
         }
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
                 <div class="date" style="color: lightgray;">${formatDate(new Date(blog?.userInfo.createdAt))}</div>
             </div>
-            <img src="https://leonx.onrender.com/${blog?.userInfo.image}" alt="">
+            <img src="https://leonx-ldu1.onrender.com/${blog?.userInfo.image}" alt="">
             <div class="blog-title-and-desc">
                 <div class="blog-title">
                     <h3>${blog?.userInfo.title}</h3>
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
 
             try {
-                const response = await fetch(`https://leonx.onrender.com/blogs/blog/like/${id}`, {
+                const response = await fetch(`https://leonx-ldu1.onrender.com/blogs/blog/like/${id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // Save the new comment
             try {
-                const response = await fetch(`https://leonx.onrender.com/blogs/blog/comment/${id}`, {
+                const response = await fetch(`https://leonx-ldu1.onrender.com/blogs/blog/comment/${id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 alert('Comment added successfully');
                 // Refresh the comments list after adding a new comment
-                const updatedBlogResponse = await fetch(`https://leonx.onrender.com/blogs/${id}`);
+                const updatedBlogResponse = await fetch(`https://leonx-ldu1.onrender.com/blogs/${id}`);
                 if (!updatedBlogResponse.ok) {
                     throw new Error('Failed to fetch updated blog');
                 }
