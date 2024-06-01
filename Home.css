@@ -120,9 +120,12 @@
     font-size: 10px;
 }
 .hero-pic{
-    width: 200px;
-    height: 200px;
-    transform: rotate(325deg);
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* transform: rotate(325deg); */
 }
 .scroll-icon{
     height: 50px;
@@ -176,16 +179,6 @@
     grid-template-columns: 0.2fr 2.6fr 0.2fr;
     gap: 20px;
 }
-/* .cards{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-}
-.single-card{
-    height: 400px;
-    width: 100%;
-    padding: 4px;
-} */
 .carousel-viewport {
     white-space: nowrap;
     min-width: 800px;
